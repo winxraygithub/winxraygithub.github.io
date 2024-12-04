@@ -2,11 +2,10 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://winxraygithub.github.io" />
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-21015.htm" />
     <meta charset="utf-8">
-    <title>2024-11归档 - Winxray Github免费节点分享站</title>
-        <meta name="keywords" content="2024-11归档" />
-        <meta name="description" content="2024-11归档" />
+    <title>HashMap中红黑树插入节点的调整过程分析_在线工具</title>
+        <meta name="description" content="目录  一、引言 二、HashMap源码中红黑树插入节点的调整过程 三、阅读HashMap源码的一些Tips  1. 代码风格 2. 变量名  balanceInsertion方法中的变量名 rota" />
         <link rel="icon" href="__ADDON__/img/winxraygithub/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
@@ -35,7 +34,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="index">
+<body data-page="detail">
     <div id="overlayer"></div>
     <div class="loader">
         <div class="spinner-border text-primary" role="status">
@@ -82,9 +81,9 @@
                         <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
                         <div class="row" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-lg-6 mr-auto">
-                                <h1>2024-11 归档</h1>
+                                <h1>HashMap中红黑树插入节点的调整过程分析_在线工具</h1>
                                 <p class="mb-5">
-                                    <a href="/">首页</a> / <span>2024-11 归档</span>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                                 </p>
                             </div>
                         </div>
@@ -96,62 +95,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="xcblog-blog-list">
-                                                        <div class="row item xcblog-blog-item" data-date="2024-11-04">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-11-4-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/66c90e7ea0035f531c3e32109805c80f.webp" alt="11月4日 | Winxray Github每天更新22.3M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-11-4-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">11月4日 | Winxray Github每天更新22.3M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了欧洲、日本、美国、加拿大、香港、新加坡、韩国等地区,最高速度可达22.3 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                                                        <div class="row item xcblog-blog-item" data-date="2024-11-03">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-11-3-node-share-links.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/7a0a805eb75448c0d36f33cb6b68640e.webp" alt="11月3日 | Winxray Github每天更新21.1M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-11-3-node-share-links.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">11月3日 | Winxray Github每天更新21.1M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了日本、韩国、香港、欧洲、美国、加拿大、新加坡等地区,最高速度可达21.1 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                                                        <div class="row item xcblog-blog-item" data-date="2024-11-02">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-11-2-latest-winxray-node.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/209c919131d4150a1ab038db875ad717.webp" alt="11月2日 | Winxray Github每天更新21.4M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-11-2-latest-winxray-node.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">11月2日 | Winxray Github每天更新21.4M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了美国、新加坡、日本、欧洲、韩国、加拿大、香港等地区,最高速度可达21.4 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                                                        <div class="row item xcblog-blog-item" data-date="2024-11-01">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-11-1-today-winxray-node.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/86304d802735273fb99a65fc0a250f03.webp" alt="11月1日 | Winxray Github每天更新18.4M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-11-1-today-winxray-node.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">11月1日 | Winxray Github每天更新18.4M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了新加坡、欧洲、韩国、美国、日本、香港、加拿大等地区,最高速度可达18.4 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                            
-                            <ul class="pagination"><li><a href="/date/2024-11/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-11/">1</a></li><li><a href="/date/2024-11/page-2.htm">2</a></li><li><a href="/date/2024-11/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                        </div>
-                    </div>
+                                          				  				  				<div class="toc"> <div class="toc-container-header">目录</div> <ul> <li><a href="#%E4%B8%80%E5%BC%95%E8%A8%80" rel="nofollow">一、引言</a></li> <li><a href="#%E4%BA%8Chashmap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BA%A2%E9%BB%91%E6%A0%91%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9%E7%9A%84%E8%B0%83%E6%95%B4%E8%BF%87%E7%A8%8B" rel="nofollow">二、HashMap源码中红黑树插入节点的调整过程</a></li> <li><a href="#%E4%B8%89%E9%98%85%E8%AF%BBhashmap%E6%BA%90%E7%A0%81%E7%9A%84%E4%B8%80%E4%BA%9Btips" rel="nofollow">三、阅读HashMap源码的一些Tips</a> <ul> <li><a href="#1-%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC" rel="nofollow">1. 代码风格</a></li> <li><a href="#2-%E5%8F%98%E9%87%8F%E5%90%8D" rel="nofollow">2. 变量名</a> <ul> <li><a href="#balanceinsertion%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E5%90%8D" rel="nofollow"><code>balanceInsertion</code>方法中的变量名</a></li> <li><a href="#rotateleftrotateright%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F%E5%90%8D" rel="nofollow"><code>rotateLeft</code>、<code>rotateRight</code>方法中的变量名</a></li> </ul> </li> </ul> </li> </ul> </div> <h2 id="一引言">一、引言</h2> <p>如果有对红黑树的定义及调整过程有过研究，其实很容易理解HashMap中的红黑树插入节点的调整过程。</p> <blockquote> <p>“红黑树定义及调整过程”的参考文章：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/daheww/p/16214028.html"  target="_blank" rel="nofollow">《红黑树原理、查找效率、插入及变化规则分析》</a></p> </blockquote> <p>下面的<a href="#HashMap%E6%BA%90%E7%A0%81%E4%B8%AD%E7%BA%A2%E9%BB%91%E6%A0%91%E6%8F%92%E5%85%A5%E8%8A%82%E7%82%B9%E7%9A%84%E8%B0%83%E6%95%B4%E8%BF%87%E7%A8%8B" rel="nofollow">流程图</a>就是HashMap源码中，红黑树插入节点的调整过程。这个过程要是写文章讲的话，感觉也没什么意思，其实关键还是需要你要清楚红黑树的定义及调整过程，然后知道数据结构里二叉树左旋、右旋调整的过程。接下来需要做的，就是慢慢啃这段不长的源码。</p> <p>你看到最后会发现，<strong>这个过程中的判断、步骤，都是基于我上面说的：红黑树的定义、红黑树的调整过程、二叉树左旋/右旋调整的过程</strong>，然后就是一些指针操作。</p> <h2 id="二hashmap源码中红黑树插入节点的调整过程">二、HashMap源码中红黑树插入节点的调整过程</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220507/754847def3a9b2f7d4ca81da370f09ad.jpg" alt="HashMap中红黑树插入节点的调整过程分析_在线工具"></p> <h2 id="三阅读hashmap源码的一些tips">三、阅读HashMap源码的一些Tips</h2> <h3 id="1-代码风格">1. 代码风格</h3> <p>HashMap源码中特别喜欢在判断语句中加赋值语句，形如：<code>if ((xp = x.parent) == null)</code>。它这一行代码做了两件事：</p> <ol> <li>把x.parent赋值给xp</li> <li>判断xp是否为null</li> </ol> <p>还喜欢使用连等号，形如：<code>pp = r.parent = p.parent</code>。它这一行代码也做了两件事：</p> <ol> <li>把p.parent赋值给r.parent</li> <li>把r.parent赋值给pp</li> </ol> <p>这种代码风格我看着很不习惯，但是看多了后，也就习惯了。</p> <h3 id="2-变量名">2. 变量名</h3> <blockquote> <p>源码中的树指针的变量命名其实很有规律：<code>r</code>对应右子树，<code>l</code>对应左子树，<code>p</code>对应父节点，<code>pp</code>对应爷爷节点。<br /> 举个例子：变量名pr的含义是，父节点的右子树。</p> </blockquote> <h4 id="balanceinsertion方法中的变量名"><code>balanceInsertion</code>方法中的变量名</h4> <pre><code class="language-txt">root x所在树的根节点 x    要插入的节点 xp   x的parent节点 xpp  x的parent的parent -&gt; 爷爷节点 xppl x的爷爷节点的左子树 xppr x的爷爷节点的右子树                    +-----+              +----+     +----+              |    +-----+    |              |      xpp      |           +--v--+         +--v--+    +------+     |         |     |    |      +-----+         +-----+    |        xppl            xppr +--v--+      xp |     | +-----+    x</code></pre> <h4 id="rotateleftrotateright方法中的变量名"><code>rotateLeft</code>、<code>rotateRight</code>方法中的变量名</h4> <pre><code class="language-txt">p    旋转的关键点 pp   p的parent节点 r    p的右子节点节点 l    p的左子节点节点 rl   p的右子节点节点的左子节点 lr   p的左子节点节点的右子节点</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-20563.htm">上哪领养狗狗（上哪可以领养狗狗）</a></p>
+                                        <p>下一个：<a href="/news/article-21016.htm">兰州哪里有卖猫粮的（兰州哪里有卖狗粮的地方）</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -159,16 +108,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-17-free-high-speed-nodes.htm" title="8月17日 | Winxray Github每天更新21.8M/S免费节点订阅链接">8月17日 | Winxray Github每天更新21.8M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-26-free-node-subscribe-links.htm" title="11月26日 | Winxray Github每天更新19.6M/S免费节点订阅链接">11月26日 | Winxray Github每天更新19.6M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-4-free-high-speed-nodes.htm" title="10月4日 | Winxray Github每天更新21.3M/S免费节点订阅链接">10月4日 | Winxray Github每天更新21.3M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-16-free-high-speed-nodes.htm" title="9月16日 | Winxray Github每天更新21.8M/S免费节点订阅链接">9月16日 | Winxray Github每天更新21.8M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-31-free-node-subscribe.htm" title="8月31日 | Winxray Github每天更新22.1M/S免费节点订阅链接">8月31日 | Winxray Github每天更新22.1M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-11-free-subscribe-node.htm" title="8月11日 | Winxray Github每天更新19.2M/S免费节点订阅链接">8月11日 | Winxray Github每天更新19.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-13-winxray-github.htm" title="9月13日 | Winxray Github每天更新20.9M/S免费节点订阅链接">9月13日 | Winxray Github每天更新20.9M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-20-latest-winxray-node.htm" title="9月20日 | Winxray Github每天更新22.6M/S免费节点订阅链接">9月20日 | Winxray Github每天更新22.6M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-9-free-node-subscribe-links.htm" title="11月9日 | Winxray Github每天更新20.8M/S免费节点订阅链接">11月9日 | Winxray Github每天更新20.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20562.htm" title="python 数据加载工作">python 数据加载工作</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-high-speed-nodes.htm" title="10月29日 | Winxray Github每天更新22.6M/S免费节点订阅链接">10月29日 | Winxray Github每天更新22.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-high-speed-nodes.htm" title="9月25日 | Winxray Github每天更新22.5M/S免费节点订阅链接">9月25日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-12-winxray-node.htm" title="9月12日 | Winxray Github每天更新18.6M/S免费节点订阅链接">9月12日 | Winxray Github每天更新18.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20101.htm" title="合肥宠物狗领养中心地址（合肥有宠物领养中心吗）">合肥宠物狗领养中心地址（合肥有宠物领养中心吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-7-winxray-node-share.htm" title="10月7日 | Winxray Github每天更新19.4M/S免费节点订阅链接">10月7日 | Winxray Github每天更新19.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-23-free-winxray-node.htm" title="8月23日 | Winxray Github每天更新20.6M/S免费节点订阅链接">8月23日 | Winxray Github每天更新20.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-23-winxray-github.htm" title="11月23日 | Winxray Github每天更新21M/S免费节点订阅链接">11月23日 | Winxray Github每天更新21M/S免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2024-11-22-latest-winxray-node.htm" title="11月22日 | Winxray Github每天更新19.4M/S免费节点订阅链接">11月22日 | Winxray Github每天更新19.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-winxray-node-github.htm" title="11月24日 | Winxray Github每天更新18.4M/S免费节点订阅链接">11月24日 | Winxray Github每天更新18.4M/S免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
