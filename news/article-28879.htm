@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-28879.htm" />
+    <meta charset="utf-8">
+    <title>springboot嵌入式数据库derby初探</title>
+        <meta name="description" content="Apache Derby 是100% Java 编写的内存数据库，属于 Apache 的一个开源项目。并且是一个容易管理的关系数据库管理系统 Apache Derby 是一个与平台无关的数据库引擎，它" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                                                <a href="/" class="text-black h2 mb-0">Winxray<span class="text-primary">github</span></a>
+                                            </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                                
+                                <li><a href="#" class="nav-link">关于</a></li>
+                                <li><a href="#" class="nav-link">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>springboot嵌入式数据库derby初探</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>Apache Derby 是100% Java 编写的内存数据库，属于 Apache 的一个开源项目。并且是一个容易管理的关系数据库管理系统<br /> Apache Derby 是一个与平台无关的数据库引擎，它以 Java 类库的形式对外提供服务。与其他难以部署的数据库不同， Derby 数据库体积小、安装非常简单</p> <h2>主要特点</h2> <p>1.程序小巧，基础引擎和内嵌的JDBC驱动总共大约2MB。</p> <p>2.基于Java、JDBC和SQL标准。</p> <p>3.提供内嵌的JDBC驱动，你可把Derby嵌入到基于Java的应用程序中。</p> <p>4.支持客户端/服务器模式。</p> <p>5.安装、布置和使用简单。</p> <h2>Derby 数据库的两种运行模式</h2> <p>1. 嵌入式模式。Derby 在应用程序的 JVM中运行。在这种模式下，只有应用程序可以访问数据库，例如另一个用户/应用程序将无法访问数据库。<br /> 2. 服务器模式。如果 Derby 在<em>服务器模式下</em>运行，负责处理数据库请求的 Derby 网络服务器，可以把它当成类似mysql等的server服务器，可以供多个客户端应用程序访问</p> <p>好了，我们直接例一个嵌入式模式下的例子吧，这个单独作为sql server服务器模式的情况下不多，反正我是没看到过</p> <p><img fetchpriority="high" decoding="async" alt="" height="684" src="http://img.555519.xyz/uploads/20230108/a1f4dc98f38aba3639ba0259f824bbf4.jpg"></p> <p>&nbsp;</p> <pre><code class="language-java">package com.zkb.conf;  import io.swagger.annotations.ApiOperation; import io.swagger.models.auth.In; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration; import springfox.documentation.builders.ApiInfoBuilder; import springfox.documentation.builders.PathSelectors; import springfox.documentation.builders.RequestHandlerSelectors; import springfox.documentation.service.ApiInfo; import springfox.documentation.service.ApiKey; import springfox.documentation.service.Contact; import springfox.documentation.spi.DocumentationType; import springfox.documentation.spring.web.plugins.Docket; import springfox.documentation.swagger2.annotations.EnableSwagger2;  import java.util.Arrays; import java.util.List;  @Configuration @EnableSwagger2 public class SwaggerConfig {      @Bean     public Docket createRestApi1() {         return new Docket(DocumentationType.SWAGGER_2).enable(true).apiInfo(apiInfo()).select()                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))                 .apis(RequestHandlerSelectors.basePackage("com.zkb.controller"))                 .paths(PathSelectors.any()).build().securitySchemes(apiKeyList()).groupName("系统接口");     }      private ApiInfo apiInfo() {         return new ApiInfoBuilder()                 .title("系统接口文档")                 .description("这是系统接口文档说明")                 .contact(new Contact("h2", "", ""))                 .version("1.0")                 .build();     }      private List&lt;ApiKey&gt; apiKeyList() {         return Arrays.asList(new ApiKey("登录token", "token", In.HEADER.name()),                 new ApiKey("设备类型(android,ios,pc)---必填", "deviceType", In.HEADER.name()));     } }    </code></pre> <pre><code class="language-java">package com.zkb.controller;  import com.zkb.entity.Student; import com.zkb.mapper.StudentMapper; import com.zkb.service.StudentService; import io.swagger.annotations.Api; import io.swagger.annotations.ApiOperation; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.web.bind.annotation.GetMapping; import org.springframework.web.bind.annotation.RequestMapping; import org.springframework.web.bind.annotation.RestController;  import java.util.List;  @RequestMapping("/test") @RestController @Api(value = "Student", tags = "Student") public class TestController {      @Autowired     StudentService studentService;     @GetMapping("list")     @ApiOperation(value = "获取列表")     public List&lt;Student&gt; getList(){         return studentService.list();     } } </code></pre> <pre><code class="language-java">package com.zkb.entity;  import com.baomidou.mybatisplus.annotation.TableName; import com.baomidou.mybatisplus.extension.activerecord.Model; import lombok.Data; import lombok.EqualsAndHashCode;  @Data @EqualsAndHashCode(callSuper = false) @TableName("student") public class Student extends Model&lt;Student&gt; {     private Integer id;     private String name;     private Integer age; } </code></pre> <pre><code class="language-java">package com.zkb.mapper;  import com.baomidou.mybatisplus.core.mapper.BaseMapper; import com.zkb.entity.Student;   public interface StudentMapper extends BaseMapper&lt;Student&gt; {     void createStudentTable(); } </code></pre> <pre><code class="language-java">package com.zkb.service.impl;  import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl; import com.zkb.entity.Student; import com.zkb.mapper.StudentMapper; import com.zkb.service.StudentService; import org.springframework.stereotype.Service;  @Service public class StudentServiceImpl extends ServiceImpl&lt;StudentMapper, Student&gt; implements StudentService {     @Override     public void createStudentTable() {         baseMapper.createStudentTable();     } } </code></pre> <pre><code class="language-java">package com.zkb.service;  import com.baomidou.mybatisplus.extension.service.IService; import com.zkb.entity.Student;  public interface StudentService extends IService&lt;Student&gt; {     void createStudentTable(); } </code></pre> <pre><code class="language-java">package com.zkb;  import com.zkb.entity.Student; import com.zkb.service.StudentService; import org.mybatis.spring.annotation.MapperScan; import org.springframework.beans.factory.annotation.Autowired; import org.springframework.boot.SpringApplication; import org.springframework.boot.autoconfigure.SpringBootApplication; import springfox.documentation.swagger2.annotations.EnableSwagger2;  import javax.annotation.PostConstruct; import java.util.ArrayList; import java.util.List;  @SpringBootApplication @MapperScan("com.zkb.mapper") @EnableSwagger2 public class DerbyTestApplication {      public static void main(String[] args) {         SpringApplication.run(DerbyTestApplication.class, args);     }      @Autowired     StudentService studentService;      @PostConstruct     public void init(){         studentService.createStudentTable();          List&lt;Student&gt; list= new ArrayList&lt;&gt;();          Student student = new Student();         student.setId(1);         student.setName("张三");         student.setAge(20);          Student student1 = new Student();         student1.setId(2);         student1.setName("李四");         student1.setAge(21);          list.add(student);         list.add(student1);         studentService.saveBatch(list);     }  } </code></pre> <pre><code class="language-java">&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt; &lt;mapper namespace="com.zkb.mapper.StudentMapper"&gt;      &lt;!-- 通用查询映射结果 --&gt;     &lt;resultMap id="BaseResultMap" type="com.zkb.entity.Student"&gt;         &lt;id column="id" property="id" /&gt;         &lt;result column="name" property="name" /&gt;         &lt;result column="age" property="age" /&gt;     &lt;/resultMap&gt;       &lt;update id="createStudentTable"&gt;         CREATE TABLE student(             id int not null,             name varchar(20),             age int         )     &lt;/update&gt;  &lt;/mapper&gt; </code></pre> <pre><code class="language-java">server:     port: 8888 dbBaseDir: /tmp/derby spring:     datasource:         type: com.alibaba.druid.pool.DruidDataSource         driver-class-name: org.apache.derby.jdbc.EmbeddedDriver         url: jdbc:derby:${dbBaseDir}/MyDB;create=true         username: root         password: 123456     jackson:         date-format: yyyy-MM-dd HH:mm:ss         time-zone: GMT+8 logging:     level:         com:             fs: debug mybatis-plus:     configuration:         map-underscore-to-camel-case: true         auto-mapping-behavior: full         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl     mapper-locations: classpath:mapping/*.xml     global-config:         # 逻辑删除配置         db-config:             # 删除前             logic-not-delete-value: 0             # 删除后             logic-delete-value: 1 </code></pre> <pre><code class="language-java">&lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;     &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;     &lt;parent&gt;         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;         &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;         &lt;version&gt;2.5.2&lt;/version&gt;         &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;     &lt;/parent&gt;     &lt;groupId&gt;com.zkb&lt;/groupId&gt;     &lt;artifactId&gt;derby-test&lt;/artifactId&gt;     &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;     &lt;name&gt;derby-test&lt;/name&gt;     &lt;description&gt;derby-test&lt;/description&gt;     &lt;properties&gt;         &lt;java.version&gt;1.8&lt;/java.version&gt;         &lt;mybatis-plus.version&gt;3.3.2&lt;/mybatis-plus.version&gt;         &lt;swagger-ui.version&gt;1.5.22&lt;/swagger-ui.version&gt;         &lt;springfox.version&gt;2.9.2&lt;/springfox.version&gt;         &lt;swagger-bootstrap-ui.version&gt;1.9.1&lt;/swagger-bootstrap-ui.version&gt;         &lt;fastjson.version&gt;1.2.47&lt;/fastjson.version&gt;     &lt;/properties&gt;     &lt;dependencies&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;             &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;         &lt;/dependency&gt;          &lt;!--derby内嵌数据库依赖--&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.apache.derby&lt;/groupId&gt;             &lt;artifactId&gt;derby&lt;/artifactId&gt;             &lt;version&gt;10.13.1.1&lt;/version&gt;         &lt;/dependency&gt;         &lt;!--druid数据源依赖--&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;druid&lt;/artifactId&gt;             &lt;version&gt;1.0.31&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;             &lt;artifactId&gt;lombok&lt;/artifactId&gt;             &lt;optional&gt;true&lt;/optional&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.baomidou&lt;/groupId&gt;             &lt;artifactId&gt;mybatis-plus-boot-starter&lt;/artifactId&gt;             &lt;version&gt;${mybatis-plus.version}&lt;/version&gt;         &lt;/dependency&gt;           &lt;dependency&gt;             &lt;groupId&gt;io.springfox&lt;/groupId&gt;             &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;             &lt;version&gt;${springfox.version}&lt;/version&gt;             &lt;exclusions&gt;                 &lt;exclusion&gt;                     &lt;groupId&gt;io.swagger&lt;/groupId&gt;                     &lt;artifactId&gt;swagger-annotations&lt;/artifactId&gt;                 &lt;/exclusion&gt;                 &lt;exclusion&gt;                     &lt;groupId&gt;io.swagger&lt;/groupId&gt;                     &lt;artifactId&gt;swagger-models&lt;/artifactId&gt;                 &lt;/exclusion&gt;             &lt;/exclusions&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;io.swagger&lt;/groupId&gt;             &lt;artifactId&gt;swagger-annotations&lt;/artifactId&gt;             &lt;version&gt;${swagger-ui.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;io.swagger&lt;/groupId&gt;             &lt;artifactId&gt;swagger-models&lt;/artifactId&gt;             &lt;version&gt;${swagger-ui.version}&lt;/version&gt;         &lt;/dependency&gt;           &lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui --&gt;         &lt;dependency&gt;             &lt;groupId&gt;io.springfox&lt;/groupId&gt;             &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;             &lt;version&gt;${springfox.version}&lt;/version&gt;         &lt;/dependency&gt;          &lt;dependency&gt;             &lt;groupId&gt;com.github.xiaoymin&lt;/groupId&gt;             &lt;artifactId&gt;swagger-bootstrap-ui&lt;/artifactId&gt;             &lt;version&gt;${swagger-bootstrap-ui.version}&lt;/version&gt;         &lt;/dependency&gt;         &lt;dependency&gt;             &lt;groupId&gt;com.alibaba&lt;/groupId&gt;             &lt;artifactId&gt;fastjson&lt;/artifactId&gt;             &lt;version&gt;${fastjson.version}&lt;/version&gt;         &lt;/dependency&gt;       &lt;/dependencies&gt;      &lt;build&gt;         &lt;plugins&gt;             &lt;plugin&gt;                 &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;                 &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;                 &lt;configuration&gt;                     &lt;excludes&gt;                         &lt;exclude&gt;                             &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;                             &lt;artifactId&gt;lombok&lt;/artifactId&gt;                         &lt;/exclude&gt;                     &lt;/excludes&gt;                 &lt;/configuration&gt;             &lt;/plugin&gt;         &lt;/plugins&gt;     &lt;/build&gt;  &lt;/project&gt; </code></pre> <p><img decoding="async" alt="" height="256" src="http://img.555519.xyz/uploads/20230108/5ef4abb15f35c5834abb71db95eaac1c.jpg"></p> <p>运行demo后会产生一个MyDB的文件夹&nbsp; 以上便是该文件夹里面的内容</p> <p>&nbsp;demo里面我写了一个初始化的方法，第二次运行要把对应的内容注释掉，不然会报表已存在错误</p> <p><img decoding="async" alt="" height="738" src="http://img.555519.xyz/uploads/20230108/c2a2ef5def863fa7379f7d9ffbb67587.jpg"></p> <p>&nbsp;<img loading="lazy" decoding="async" alt="" height="861" src="http://img.555519.xyz/uploads/20230108/91e813807eee1f50ae07a8792a23b080.jpg"></p> <p>&nbsp;可以看到，我已经查从derby数据库查出数据了，到这里demo就结束了</p> <p>demo地址:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://download.csdn.net/download/qq_14926283/86543026"  title="https://download.csdn.net/download/qq_14926283/86543026" rel="nofollow">https://download.csdn.net/download/qq_14926283/86543026</a></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-28414.htm">Java程序查找数字的偶数因数之和</a></p>
+                                        <p>下一个：<a href="/news/article-28881.htm">宠物粮生产流程图片 宠物粮生产流程图片大全</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-winxray-github.htm" title="10月18日 | Winxray Github每天更新21.8M/S免费节点订阅链接">10月18日 | Winxray Github每天更新21.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-high-speed-nodes.htm" title="9月25日 | Winxray Github每天更新22.5M/S免费节点订阅链接">9月25日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-today-winxray-node.htm" title="12月15日 | Winxray Github每天更新19.4M/S免费节点订阅链接">12月15日 | Winxray Github每天更新19.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25624.htm" title="Git 代码管理（代码提交和代码回退）">Git 代码管理（代码提交和代码回退）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-node-share.htm" title="8月16日 | Winxray Github每天更新18.9M/S免费节点订阅链接">8月16日 | Winxray Github每天更新18.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22850.htm" title="免费领养宠物的正规平台上海有哪些公司（上海2020年宠物领养活动）">免费领养宠物的正规平台上海有哪些公司（上海2020年宠物领养活动）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-10-latest-winxray-node.htm" title="10月10日 | Winxray Github每天更新21.5M/S免费节点订阅链接">10月10日 | Winxray Github每天更新21.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-winxray-github.htm" title="9月13日 | Winxray Github每天更新20.9M/S免费节点订阅链接">9月13日 | Winxray Github每天更新20.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-5-node-share.htm" title="9月5日 | Winxray Github每天更新18.6M/S免费节点订阅链接">9月5日 | Winxray Github每天更新18.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27955.htm" title="宠物粮食品牌取名怎么取好听点（宠物粮品牌起名字）">宠物粮食品牌取名怎么取好听点（宠物粮品牌起名字）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
