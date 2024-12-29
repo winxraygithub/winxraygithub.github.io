@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-32686.htm" />
+    <meta charset="utf-8">
+    <title>ASP.NET Core 6.0 添加 JWT 认证和授权</title>
+        <meta name="description" content="1 前言 1.1 本文介绍 本文将分别简单介绍 Authentication（认证） 和 Authorization（授权）。 并以简单的例子在 ASP.NET Core 6.0 的 WebAPI 中" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                                                <a href="/" class="text-black h2 mb-0">Winxray<span class="text-primary">github</span></a>
+                                            </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                                
+                                <li><a href="#" class="nav-link">关于</a></li>
+                                <li><a href="#" class="nav-link">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>ASP.NET Core 6.0 添加 JWT 认证和授权</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2 id="1-前言">1 前言</h2> <h3 id="11-本文介绍">1.1 本文介绍</h3> <p>本文将分别简单介绍 Authentication（认证） 和 Authorization（授权）。</p> <p>并以简单的例子在 ASP.NET Core 6.0 的 WebAPI 中以 JWT 方案实现认证，并辅以相应的授权例子。</p> <h3 id="12-相关名词">1.2 相关名词</h3> <p>Authentication 和 Authorization 长得很像，傻傻分不清楚。</p> <p>Authentication（认证）：标识用户的身份，一般发生在登录的时候。</p> <p>Authorization（授权）：授予用户权限，指定用户能访问哪些资源；授权的前提是知道这个用户是谁，所以授权必须在认证之后。</p> <p>其实，认证和授权其实是不分家的。</p> <p></p> <h2 id="2-认证authentication">2 认证（Authentication）</h2> <h3 id="21-基本步骤">2.1 基本步骤</h3> <ol> <li>安装相关 Nuget 包：Microsoft.AspNetCore.Authentication.JwtBearer</li> <li>准备配置信息（密钥等）</li> <li>注册服务</li> <li>调用中间件</li> <li>实现一个 JwtHelper，用于生成 Token</li> <li>控制器限制访问（添加 Authorize 标签）</li> </ol> <h3 id="22-安装-nuget-包">2.2 安装 Nuget 包</h3> <p>安装 Microsoft.AspNetCore.Authentication.JwtBearer</p> <p>在控制台中：</p> <pre><code class="language-bash">dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer -v 6.0.1</code></pre> <h3 id="23-准备配置信息">2.3 准备配置信息</h3> <p>在 appsetting.json 中，添加一个 Jwt 节点</p> <pre><code class="language-json">"Jwt": {     "SecretKey": "lisheng741@qq.com",     "Issuer": "WebAppIssuer",     "Audience": "WebAppAudience" }</code></pre> <h3 id="24-注册服务和调用中间件">2.4 注册服务和调用中间件</h3> <p>在 Program.cs 文件中注册服务，和调用相关中间件。</p> <pre><code class="language-csharp">//引入所需的命名空间 using Microsoft.AspNetCore.Authentication.JwtBearer; using Microsoft.IdentityModel.Tokens; using System.Text;  var configuration = builder.Configuration;  //注册服务 builder.Services.AddAuthentication(options =&gt; {     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; }) .AddJwtBearer(options =&gt; {     options.TokenValidationParameters = new TokenValidationParameters()     {         ValidateIssuer = true, //是否验证Issuer         ValidIssuer = configuration["Jwt:Issuer"], //发行人Issuer         ValidateAudience = true, //是否验证Audience         ValidAudience = configuration["Jwt:Audience"], //订阅人Audience         ValidateIssuerSigningKey = true, //是否验证SecurityKey         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])), //SecurityKey         ValidateLifetime = true, //是否验证失效时间         ClockSkew = TimeSpan.FromSeconds(30), //过期时间容错值，解决服务器端时间不同步问题（秒）         RequireExpirationTime = true,     }; });  //调用中间件：UseAuthentication（认证），必须在所有需要身份认证的中间件前调用，比如 UseAuthorization（授权）。 app.UseAuthentication(); app.UseAuthorization();</code></pre> <h3 id="25-jwthelper-类实现">2.5 JwtHelper 类实现</h3> <p>主要是用于生成 JWT 的 Token。</p> <pre><code class="language-csharp">using Microsoft.IdentityModel.Tokens; using System.IdentityModel.Tokens.Jwt; using System.Security.Claims; using System.Text;  namespace AuthenticationTest;  public class JwtHelper {     private readonly IConfiguration _configuration;      public JwtHelper(IConfiguration configuration)     {         _configuration = configuration;     }      public string CreateToken()     {         // 1. 定义需要使用到的Claims         var claims = new[]         {             new Claim(ClaimTypes.Name, "u_admin"), //HttpContext.User.Identity.Name             new Claim(ClaimTypes.Role, "r_admin"), //HttpContext.User.IsInRole("r_admin")             new Claim(JwtRegisteredClaimNames.Jti, "admin"),             new Claim("Username", "Admin"),             new Claim("Name", "超级管理员")         };          // 2. 从 appsettings.json 中读取SecretKey         var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));          // 3. 选择加密算法         var algorithm = SecurityAlgorithms.HmacSha256;          // 4. 生成Credentials         var signingCredentials = new SigningCredentials(secretKey, algorithm);          // 5. 根据以上，生成token         var jwtSecurityToken = new JwtSecurityToken(             _configuration["Jwt:Issuer"],     //Issuer             _configuration["Jwt:Audience"],   //Audience             claims,                          //Claims,             DateTime.Now,                    //notBefore             DateTime.Now.AddSeconds(30),    //expires             signingCredentials               //Credentials         );          // 6. 将token变为string         var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);          return token;     } }</code></pre> <p>该 JwtHelper 依赖于 IConfiguration（为了读取配置文件），将 JwtHelper 的创建交由 DI 容器，在 Program.cs 中添加服务：</p> <pre><code class="language-csharp">builder.Services.AddSingleton(new JwtHelper(configuration));</code></pre> <p>将 JwtHelper 注册为单例模式。</p> <h3 id="26-控制器配置">2.6 控制器配置</h3> <p>新建一个 AccountController，以构造函数方式注入 JwtHelper，添加两个 Action：GetToken 用于获取 Token，GetTest 打上 [Authorize] 标签用于验证认证。</p> <pre><code class="language-csharp">using Microsoft.AspNetCore.Authorization; using Microsoft.AspNetCore.Mvc;  namespace AuthenticationTest.Controllers;  [Route("api/[controller]/[action]")] [ApiController] public class AccountController : ControllerBase {     private readonly JwtHelper _jwtHelper;      public AccountController(JwtHelper jwtHelper)     {         _jwtHelper = jwtHelper;     }      [HttpGet]     public ActionResult&lt;string&gt; GetToken()     {         return _jwtHelper.CreateToken();     }      [Authorize]     [HttpGet]     public ActionResult&lt;string&gt; GetTest()     {         return "Test Authorize";     } }</code></pre> <h3 id="27-测试调用">2.7 测试调用</h3> <p><strong>方式一：通过 Postman、Apifox 等接口调试软件调试</strong></p> <p>使用 Postman 调用 /api/Account/GetToken 生成 Token</p> <p>在调用 /api/Account/GetTest 时传入 Token，得到返回结果</p> <p><strong>方式二：在浏览器控制台调试</strong></p> <p>调试 /api/Account/GetToken</p> <pre><code class="language-js">var xhr = new XMLHttpRequest(); xhr.addEventListener("readystatechange", function() {    if(this.readyState === 4) {       console.log(token = this.responseText); //这里用了一个全局变量 token，为下一个接口服务    } }); xhr.open("GET", "/api/Account/GetToken"); xhr.send();</code></pre> <p>调试 /api/Account/GetTest</p> <pre><code class="language-js">var xhr = new XMLHttpRequest(); xhr.addEventListener("readystatechange", function() {    if(this.readyState === 4) {       console.log(this.status, this.responseText); //this.status为响应状态码，401为无认证状态    } }); xhr.open("GET", "/api/Account/GetTest"); xhr.setRequestHeader("Authorization",`Bearer ${token}`); //附带上 token xhr.send();</code></pre> <p></p> <h2 id="3-授权authorization">3 授权（Authorization）</h2> <p><strong>注意</strong>：授权必须基于认证，即：若没有完成上文关于认证的配置，则下面的授权是不会成功的。</p> <h3 id="31-基本介绍">3.1 基本介绍</h3> <p>其实 JWT 是认证的一种方案，其他的方案如 Cookies。本节介绍的授权，实际上与 JWT 没有什么关系，是基于 ASP.NET Core 的基本能力。</p> <p>这一部分，将先介绍相关标签、授权方式，再介绍基于策略的授权。这三部分大致的内容如下描述：</p> <p>相关标签：Authorize 和 AllowAnonymous</p> <p>授权方式：介绍三种授权方式（Policy、Role、Scheme）</p> <p>基于策略（Policy）的授权：深入 Policy 授权方式</p> <h3 id="32-相关标签attribute">3.2 相关标签（Attribute）</h3> <p>授权相关标签具体请查考官方文档<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/aspnet/core/security/authorization/simple?view=aspnetcore-6.0"  target="_blank" rel="nofollow">简单授权</a></p> <h4 id="321-authorize">3.2.1 [Authorize]</h4> <p>打上该标签的 Controller 或 Action 必须经过认证，且可以标识需要满足哪些授权规则。</p> <p>授权规则可以是 Policy（策略）、Roles（角色） 或 AuthenticationSchemes（方案）。</p> <pre><code class="language-csharp">[Authorize(Policy = "", Roles ="", AuthenticationSchemes ="")]</code></pre> <h4 id="322-allowanonymous">3.2.2 [AllowAnonymous]</h4> <p>允许匿名访问，级别高于 [Authorize] ，若两者同时作用，将生效 [AllowAnonymous]</p> <h3 id="33-授权方式">3.3 授权方式</h3> <p>基本上授权只有：Policy、Role、Scheme 这3种方式，对应 Authorize 标签的3个属性。</p> <h4 id="331-policy策略">3.3.1 Policy（策略）</h4> <p>推荐的授权方式，在 ASP.NET Core 的官方文档提及最多的。一个 Policy 可以包含多个要求（要求可能是 Role 匹配，也可能是 Claims 匹配，也可能是其他方式。）</p> <p>下面举个基础例子（说是基础例子，主要是基于 Policy 的授权方式可以不断深入追加一些配置）：</p> <p>在 Program.cs 中，添加两条 Policy：</p> <p>policy1 要求用户拥有一个 Claim，其 ClaimType 值为 EmployeeNumber。</p> <p>policy2 要求用户拥有一个 Claim，其 ClaimType 值为 EmployeeNumber，且其 ClaimValue 值为1、2、3、4 或 5。</p> <pre><code class="language-csharp">builder.Services.AddAuthorization(options =&gt; {     options.AddPolicy("policy1", policy =&gt; policy.RequireClaim("EmployeeNumber"));     options.AddPolicy("policy2", policy =&gt; policy.RequireClaim("EmployeeNumber", "1", "2", "3", "4", "5")); })</code></pre> <p>在控制器中添加 [Authorize] 标签即可生效：</p> <pre><code class="language-csharp">[Authorize(Policy = "policy1")] public class TestController : ControllerBase</code></pre> <p>或在控制器的 Action 上：</p> <pre><code class="language-csharp">public class TestController : ControllerBase {     [Authorize(Policy = "policy1")]     public ActionResult&lt;string&gt; GetTest =&gt; "GetTest"; }</code></pre> <h4 id="332-role角色">3.3.2 Role（角色）</h4> <p>基于角色授权，只要用户拥有角色，即可通过授权验证。</p> <p>在认证时，给用户添加角色相关的 Claim ，即可标识用户拥有的角色（注：一个用户可以拥有多个角色的 Claim），如：</p> <pre><code class="language-csharp">new Claim(ClaimTypes.Role, "admin"), new Claim(ClaimTypes.Role, "user")</code></pre> <p>在 Controller 或 Action 中：</p> <pre><code class="language-csharp">[Authorize(Roles = "user")] public class TestController : ControllerBase {     public ActionResult&lt;string&gt; GetUser =&gt; "GetUser";          [Authorize(Roles = "admin")] //与控制器的Authorize叠加作用，除了拥有user，还需拥有admin     public ActionResult&lt;string&gt; GetAdmin =&gt; "GetAdmin";          [Authorize(Roles = "user,admin")] //user 或 admin 其一满足即可     public ActionResult&lt;string&gt; GetUserOrAdmin =&gt; "GetUserOrAdmin"; }</code></pre> <h4 id="333-scheme方案">3.3.3 Scheme（方案）</h4> <p>方案如：Cookies 和 Bearer，当然也可以是自定义的方案。</p> <p>由于这种方式不常用，这里不做展开，请参考官方文档<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/aspnet/core/security/authorization/limitingidentitybyscheme?view=aspnetcore-6.0"  target="_blank" rel="nofollow">按方案限制标识</a>。</p> <h3 id="34-基于策略policy的授权">3.4 基于策略（Policy）的授权</h3> <p>上面已经提及了一个基于策略授权的基础例子，下面将继续深入这种授权方式。</p> <p>授权主要的方式，是通过 Handler 程序判断授权，需要实现的接口是 IAuthorizationHandler。</p> <p>基于策略的授权，需要继承 AuthorizationHandler&lt;TRequirement&gt; 并重写 HandleRequirementAsync 方法，该方法需要 Requirement 作为入参，相关的接口是 IAuthorizationRequirement。</p> <p>具体步骤为：</p> <ol> <li>准备自定义的 Requirement 实现 IAuthorizationRequirement</li> <li>自定义 Handler 程序继承 AuthorizationHandler&lt;TRequirement&gt; 并重写 HandleRequirementAsync 方法</li> </ol> <h4 id="341-定义权限项">3.4.1 定义权限项</h4> <p>在实现 Requirement 之前，我们需要先定义一些权限项，主要用于后续作为 Policy 的名称，并传入 我们实现的 Requirement 之中。</p> <pre><code class="language-csharp">public static class Permissions {     public const string User = "User";     public const string UserCreate = User + ".Create";     public const string UserDelete = User + ".Delete";     public const string UserUpdate = User + ".Update"; }</code></pre> <p>如上，定义了“增”、“删”、“改”等权限，其中 User 将拥有完整权限。</p> <h4 id="342-实现-requirement">3.4.2 实现 Requirement</h4> <pre><code class="language-csharp">public class PermissionAuthorizationRequirement : IAuthorizationRequirement {     public PermissionAuthorizationRequirement(string name)     {         Name = name;     }     public string Name { get; set; } }</code></pre> <p>使用 Name 属性表示权限的名称，与 Permissions 中的常量对应。</p> <h4 id="343-实现授权处理程序-handler">3.4.3 实现授权处理程序 Handler</h4> <p>这里<strong>假定</strong>用户的 Claim 中 ClaimType 为 Permission 的项，如：</p> <pre><code class="language-csharp">new Claim("Permission", Permissions.UserCreate), new Claim("Permission", Permissions.UserUpdate)</code></pre> <p>如上，标识该用户用户 UserCreate 和 UserUpdate 的权限。</p> <p><strong>注意</strong>：当然，实际程序我们肯定不是这样实现的，这里只是简易示例。</p> <p>接着，实现一个授权 Handler：</p> <pre><code class="language-csharp">public class PermissionAuthorizationHandler : AuthorizationHandler&lt;PermissionAuthorizationRequirement&gt; {     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionAuthorizationRequirement requirement)     {         var permissions = context.User.Claims.Where(_ =&gt; _.Type == "Permission").Select(_ =&gt; _.Value).ToList();         if (permissions.Any(_ =&gt; _.StartsWith(requirement.Name)))         {             context.Succeed(requirement);         }         return Task.CompletedTask;     } }</code></pre> <p>运行<code>HandleRequirementAsync</code> 时，会将用户的 Claim 中 ClaimType 为 Permission 的项取出，并获取其 Value 组成一个<code>List&lt;string&gt;</code>。</p> <p>接着验证 Requirement 是否满足授权，满足则运行<code>context.Succeed</code> 。</p> <h4 id="344-注册授权处理程序服务">3.4.4 注册授权处理程序服务</h4> <p>在 Program.cs 中，将<code>PermissionAuthorizationHandler</code> 添加到 DI 中：</p> <pre><code class="language-csharp">builder.Services.AddSingleton&lt;IAuthorizationHandler, PermissionAuthorizationHandler&gt;();</code></pre> <h4 id="345-添加授权策略">3.4.5 添加授权策略</h4> <pre><code class="language-csharp">builder.Services.AddAuthorization(options =&gt; {     options.AddPolicy(Permissions.UserCreate, policy =&gt; policy.AddRequirements(new PermissionAuthorizationRequirement(Permissions.UserCreate)));     options.AddPolicy(Permissions.UserUpdate, policy =&gt; policy.AddRequirements(new PermissionAuthorizationRequirement(Permissions.UserUpdate)));     options.AddPolicy(Permissions.UserDelete, policy =&gt; policy.AddRequirements(new PermissionAuthorizationRequirement(Permissions.UserDelete))); });</code></pre> <h4 id="346-控制器配置">3.4.6 控制器配置</h4> <p>控制器如下：</p> <pre><code class="language-csharp">[Route("api/[controller]/[action]")] [ApiController] public class UserController : ControllerBase {     [HttpGet]     [Authorize(Permissions.UserCreate)]     public ActionResult&lt;string&gt; UserCreate() =&gt; "UserCreate";      [HttpGet]     [Authorize(Permissions.UserUpdate)]     public ActionResult&lt;string&gt; UserUpdate() =&gt; "UserUpdate";      [HttpGet]     [Authorize(Permissions.UserDelete)]     public ActionResult&lt;string&gt; UserDelete() =&gt; "UserDelete"; }</code></pre> <p>基于上面的<strong>假定</strong>，用户访问接口的情况如下：</p> <pre><code class="language-bash">/api/User/UserCreate #成功 /api/User/UserUpdate #成功 /api/User/UserDelete #403无权限</code></pre> <p>至此，基于策略（Policy）的授权其实已经<strong>基本完成</strong>。</p> <p>接下去的内容，将是对上面一些内容的完善或补充。</p> <h4 id="347-完善实现策略提供程序-policyprovider">3.4.7 完善：实现策略提供程序 PolicyProvider</h4> <p>一般添加授权策略如下是在 Program.cs 中，方式如下：</p> <pre><code class="language-csharp">builder.Services.AddAuthorization(options =&gt; {     options.AddPolicy("policy", policy =&gt; policy.RequireClaim("EmployeeNumber")); });</code></pre> <p>通过 AuthorizationOptions.AddPolicy 添加授权策略这种方式不灵活，无法动态添加。</p> <p>通过实现 IAuthorizationPolicyProvider 并添加到 DI 中，可以实现动态添加 Policy。</p> <p>IAuthorizationPolicyProvider 的默认实现为 DefaultAuthorizationPolicyProvider 。</p> <p>实现一个 PolicyProvider 如下：</p> <pre><code class="language-csharp">public class TestAuthorizationPolicyProvider : DefaultAuthorizationPolicyProvider, IAuthorizationPolicyProvider {     public TestAuthorizationPolicyProvider(IOptions&lt;AuthorizationOptions&gt; options) : base(options) { }      public new Task&lt;AuthorizationPolicy&gt; GetDefaultPolicyAsync()         =&gt;  base.GetDefaultPolicyAsync();      public new Task&lt;AuthorizationPolicy?&gt; GetFallbackPolicyAsync()         =&gt; base.GetFallbackPolicyAsync();      public new Task&lt;AuthorizationPolicy?&gt; GetPolicyAsync(string policyName)     {         if (policyName.StartsWith(Permissions.User))         {             var policy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme);             policy.AddRequirements(new PermissionAuthorizationRequirement(policyName));             return Task.FromResult&lt;AuthorizationPolicy?&gt;(policy.Build());         }         return base.GetPolicyAsync(policyName);     } }</code></pre> <p><strong>注意</strong>：自定义的<code>TestAuthorizationPolicyProvider</code> 必须实现<code>IAuthorizationPolicyProvider</code>，否则添加到 DI 时会不生效。</p> <p>在 Program.cs 中，将自定义的 PolicyProvider 添加到 DI 中：</p> <pre><code class="language-csharp">builder.Services.AddSingleton&lt;IAuthorizationPolicyProvider, TestAuthorizationPolicyProvider&gt;();</code></pre> <p><strong>注意</strong>：只会生效最后一个添加的 PolicyProvider。</p> <h4 id="348-补充自定义-authorizationmiddleware">3.4.8 补充：自定义 AuthorizationMiddleware</h4> <p>自定义 AuthorizationMiddleware 可以：</p> <ul> <li>返回自定义的响应</li> <li>增强（或者说改变）默认的 challenge 或 forbid 响应</li> </ul> <p>具体请查看官方文档<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/aspnet/core/security/authorization/customizingauthorizationmiddlewareresponse?view=aspnetcore-6.0"  target="_blank" rel="nofollow">自定义 AuthorizationMiddleware 的行为</a></p> <h4 id="349-补充基于资源的授权">3.4.9 补充：基于资源的授权</h4> <p>具体请查看官方文档<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/aspnet/core/security/authorization/resourcebased?view=aspnetcore-6.0"  target="_blank" rel="nofollow">基于资源的授权</a></p> <h4 id="3410-补充miniapi-的授权">3.4.10 补充：MiniApi 的授权</h4> <p>在 MiniApi 中几乎都是形如 MapGet() 的分支节点，这类终结点无法使用 [Authorize] 标签，可以用使用 RequireAuthorization("Something") 进行授权，如：</p> <pre><code class="language-csharp">app.MapGet("/helloworld", () =&gt; "Hello World!")     .RequireAuthorization("AtLeast21");</code></pre> <h3 id="35-授权过程">3.5 授权过程</h3> <p>建议看一下<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/RainingNight/p/authorize-how-to-work-in-asp-net-core.html#iauthorizationservice"  target="_blank" rel="nofollow">ASP.NET Core 认证与授权6:授权策略是怎么执行的？</a>这篇文章，文章将授权相关的源码整理出来了，并说明了其中的关系。</p> <p>与授权相关的 interface 和 class 如下：</p> <pre><code class="language-bash">IAuthorizationService #验证授权的服务，主要方法AuthorizeAsync DefaultAuthorizationService #IAuthorizationService的默认实现 IAuthorizationHandler #负责检查是否满足要求，主要方法HandleAsync IAuthorizationRequirement #只有属性，没有方法；用于标记服务，以及用于追踪授权是否成功的机制。 AuthorizationHandler&lt;TRequirement&gt; #主要方法HandleRequirementAsync</code></pre> <p>这里简述一下其关系：</p> <p><code>[Authorize]</code> 标签生效时，调用的是<code>IAuthorizationService</code> 的<code>AuthorizeAsync</code>（由<code>DefaultAuthorizationService</code> 实现）。</p> <p><code>AuthorizeAsync</code> 会去调用所有<code>IAuthorizationHandler</code> 的<code>HandleAsync</code> （由<code>AuthorizationHandler&lt;TRequirement&gt;</code> 实现）。</p> <p><code>HandleAsync</code> 会去调用<code>AuthorizationHandler&lt;TRequirement&gt;</code>  的<code>HandleRequirementAsync</code> 的方法。</p> <p><strong>注意</strong>：这里只是列出了主要的接口和类，部分没有列出，如：<code>IAuthorizationHandlerProvider</code>（这个接口的默认实现<code>DefaultAuthorizationHandlerProvider</code>，主要是用于收集<code>IAuthorizationHandler</code> 并返回<code>IEnumerable&lt;IAuthorizationHandler&gt;</code>）</p> <p></p> <h2 id="4-源码">4 源码</h2> <p>Gitee：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://gitee.com/lisheng741/testnetcore/tree/master/Security/AuthenticationTest"  target="_blank" rel="nofollow">https://gitee.com/lisheng741/testnetcore/tree/master/Security/AuthenticationTest</a></p> <p>Github：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/lisheng741/testnetcore/tree/master/Security/AuthenticationTest"  target="_blank" rel="nofollow">https://github.com/lisheng741/testnetcore/tree/master/Security/AuthenticationTest</a></p> <p></p> <h2 id="参考来源">参考来源</h2> <p>ASP.NET Core 6.0 官方文档：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://docs.microsoft.com/zh-cn/aspnet/core/security/authorization/iauthorizationpolicyprovider?view=aspnetcore-6.0"  target="_blank" rel="nofollow">授权策略提供程序</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.dongchuanmin.com/archives/738.html"  target="_blank" rel="nofollow">.NET 6 使用JWT Bearer认证和授权的步骤</a></p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/RainingNight/p/authorize-how-to-work-in-asp-net-core.html#iauthorizationservice"  target="_blank" rel="nofollow">ASP.NET Core 认证与授权6:授权策略是怎么执行的？</a>（mark：这篇很强！）</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-asp-net-core.html"  target="_blank" rel="nofollow">ASP.NET Core 认证与授权7:动态授权</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-32222.htm">参观宠物医院的心得体会（宠物医院参观社会实践总结）</a></p>
+                                        <p>下一个：<a href="/news/article-32688.htm">长沙宠物领养平台有哪些（长沙市宠物领养）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-27956.htm" title="被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）">被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-3-winxray-node-share.htm" title="12月3日 | Winxray Github每天更新19M/S免费节点订阅链接">12月3日 | Winxray Github每天更新19M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24238.htm" title="动物防疫管理要点有哪些内容（动物防疫相关管理制度）">动物防疫管理要点有哪些内容（动物防疫相关管理制度）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-9-node-share.htm" title="9月9日 | Winxray Github每天更新20.6M/S免费节点订阅链接">9月9日 | Winxray Github每天更新20.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-4-winxray-node-github.htm" title="9月4日 | Winxray Github每天更新21.7M/S免费节点订阅链接">9月4日 | Winxray Github每天更新21.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-1-free-node-subscribe.htm" title="9月1日 | Winxray Github每天更新18.9M/S免费节点订阅链接">9月1日 | Winxray Github每天更新18.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-winxray-github.htm" title="12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接">12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-25626.htm" title="2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）">2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-winxray-node.htm" title="10月28日 | Winxray Github每天更新18.8M/S免费节点订阅链接">10月28日 | Winxray Github每天更新18.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22851.htm" title="动物疫苗打几次有效果啊（动物疫苗打一次管多长时间）">动物疫苗打几次有效果啊（动物疫苗打一次管多长时间）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
