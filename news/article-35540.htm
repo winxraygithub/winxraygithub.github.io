@@ -2,11 +2,10 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://winxraygithub.github.io" />
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-35540.htm" />
     <meta charset="utf-8">
-    <title>2024-10归档 - 第3页 - Winxray Github免费节点分享站</title>
-        <meta name="keywords" content="2024-10归档Winxray Github免费节点分享站" />
-        <meta name="description" content="2024-10归档，当前是第3页" />
+    <title>golang 的panic、defer、recover和error应用方式</title>
+        <meta name="description" content="&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;异常处理在软件开发过程中是避不开的环节，各类高级语言都有自己的异常处理机制，例如：java的try-catch-finally、py" />
         <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
@@ -34,7 +33,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="index">
+<body data-page="detail">
     <div id="overlayer"></div>
     <div class="loader">
         <div class="spinner-border text-primary" role="status">
@@ -81,9 +80,9 @@
                         <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
                         <div class="row" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-lg-6 mr-auto">
-                                <h1>2024-10 归档</h1>
+                                <h1>golang 的panic、defer、recover和error应用方式</h1>
                                 <p class="mb-5">
-                                    <a href="/">首页</a> / <span>2024-10 归档</span>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                                 </p>
                             </div>
                         </div>
@@ -95,23 +94,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="xcblog-blog-list">
-                                                        <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-10-1-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/d6a74753a4a335071792be4134f97d41.webp" alt="10月1日 | Winxray Github每天更新20M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-10-1-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">10月1日 | Winxray Github每天更新20M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了日本、韩国、新加坡、香港、美国、欧洲、加拿大等地区,最高速度可达20 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                            
-                            <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                        </div>
-                    </div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;异常处理在软件开发过程中是避不开的环节，各类高级语言都有自己的异常处理机制，例如：java的try-catch-finally、python的try-except 等，然而蛋疼的是golang并没有类似的捕获异常的方式，而是将异常和错误进行区分。所谓异常就是不在软件开发过程中所预料到的不正常行为，而错误是在开发过程中我们就可以预测到可能存在的业务上的问题，例如：在开发读取文件的程序过程中，开发人员认为这个文件不能不存在，但是很显然文件可能会不存在，因此这个不正常对与开发人员来说是一个异常；又例如：在执行一个除法计算的函数div(a,b float64)，除数b如果是0是不应该被传递到函数中的，这个时候我们清楚的知道应该告诉调用者，你不应该传递0 ，所以在div函数中可以给调用者返回一个错误。异常和错误的处理在java中都可以用throw error 并且 进行try catch。而golang则提供了panic、recover、error的处理方式。</p> <h2 id="%E4%B8%80%E3%80%81%E5%85%B3%E4%BA%8Epanic%E3%80%81defer%E5%92%8Crecover">一、关于panic、defer和recover</h2> <p>&nbsp; &nbsp; 在golang中提供了一个类似java finally的做法，这个就是defer，defer 代码段是用于确保在函数运行之后仍然可以被执行的代码。例如：</p> <pre><code>package main import "fmt" import "errors" func hello(a int) error{     defer func() {         fmt.Println("hello的最后执行")     }()      fmt.Println("step 1")      if a==0{       errors.New("a不能为0")     }           fmt.Println("step 2")     return nil       } func main() {    err:=hello(0)    fmt.Printf( "hello返回：%v",err)     }</code></pre> <p>执行结果是：</p> <pre><code>step 1 hello的最后执行 hello返回：a不能为0</code></pre> <p>&nbsp; &nbsp;</p> <p>&nbsp; &nbsp;golang的异常处理方式是panic()。 panic其实是制造一种系统宕机，任何的异常如果继续运行也许就已经偏离的程序的逻辑路线，所以也许宕机是最好的处理方式。但是go在宕机之前仍然会执行defer，也提供了系统恢复的可能，想要在panic之后仍然确保系统可以恢复运行，我们就需要利用recover。处理方式如下所示：</p> <pre><code class="language-Go">package main import "fmt" func main() {     defer func() {         if info := recover(); info != nil {             fmt.Println("有人触发了宕机：", info)         } else {             fmt.Println("程序执行正常退出")         }     }()      fmt.Println("step 1")      panic("我要宕机")      fmt.Println("step 2")          defer func() {         fmt.Println("step 3")     }() }</code></pre> <p>&nbsp;运行结果如下：</p> <pre><code>step 1 有人触发了宕机：我要宕机</code></pre> <h2 id="%E4%BA%8C%E3%80%81%E5%85%B3%E4%BA%8Eerrors%C2%A0%20%C2%A0">二、关于errors&nbsp; &nbsp;</h2> <p>errors 包是golang的错误的处理方式，可预测的错误都应该被返回和处理，例如：</p> <pre><code class="language-Go">func say(a,b string)(string, error){    if b=="fuck"{        return 0, errors.New("不能说脏话"); &nbsp;  }  &nbsp;&nbsp;&nbsp;return fmt.Sprintf("%s:%s",a,b),nil&nbsp;  &nbsp;}&nbsp;</code></pre> <p>&nbsp; &nbsp; 但是这样的错误处理方式在多层次的调用之后很容易因为不规范的开发或者不小心的处理遗漏。如果层层处理，到最后，我们回顾代码发现到处都是if err != nil { ...... }， 这真的很影响可读性<strong>。</strong>也许这就是golang让人不爽的一点，当然我认为这些个缺点不影响我们使用golang这个优秀的语言。重要的是我们应该为error处理进行规范，以下是我在golang进行项目开发中总结的几点。</p> <p><strong>1、减少不必要的error使用</strong></p> <p>如果这个错误是可预测的并且只有一个，我们可以直接使用bool或者返回nil或者非nil进行区分。例如：</p> <pre><code class="language-Go">ipnet, ok := address.(*net.IPNet) if !ok {     // ipnet应用 }</code></pre> <p><strong>&nbsp;2、多个返回值时，把error放在最后一个</strong></p> <p><strong>&nbsp;3、建立错误信息常量，而不是随意使用</strong></p> <p>这么做有利于错误信息的判断、排错、提示。例如：</p> <pre><code>var ERR_CLOSED_PIPE = errors.New("io: read/write on closed pipe") var ERR_NO_PROGRESS = errors.New("multiple Read calls return no data or error") var ERR_SHORT_BUFFER = errors.New("short buffer") var ERR_SHORT_WRITE = errors.New("short write")</code></pre> <p><strong>4、多层次调用函数时，在每一层都日志输出</strong></p> <p>这样做有利于定位故障。</p> <p><strong>5、错误如果不影响系统运行，则不返回error</strong></p> <p>如果调用方不在呼是否执行出问题，函数就不要返回error了，免得调用方麻烦混淆使用。</p> <p><strong>6、为便于区分错误类型，可以统一定制错误类</strong></p> <p>&nbsp; &nbsp; &nbsp; 定义自己的错误类，然后使用.(type)进行区分处理。<br /> &nbsp; &nbsp; &nbsp;</p> <p>以上是阶段性的思路，如有不正确的或遗漏，请见谅！</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35539.htm">java多线程学习2，线程的属性</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -119,16 +107,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-high-speed-nodes.htm" title="11月13日 | Winxray Github每天更新22.5M/S免费节点订阅链接">11月13日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19188.htm" title="vue+Echarts绘制动态折线图">vue+Echarts绘制动态折线图</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-winxray-node.htm" title="9月24日 | Winxray Github每天更新22.7M/S免费节点订阅链接">9月24日 | Winxray Github每天更新22.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-9-winxray-node-github.htm" title="8月9日 | Winxray Github每天更新18.3M/S免费节点订阅链接">8月9日 | Winxray Github每天更新18.3M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-winxray-node-share.htm" title="12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-free-node-subscribe.htm" title="8月15日 | Winxray Github每天更新21M/S免费节点订阅链接">8月15日 | Winxray Github每天更新21M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-18776.htm" title="动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）">动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）</a></li>
-                        <li class="py-2"><a href="/news/article-29344.htm" title="中国兽药网站（中国兽药网站有哪些）">中国兽药网站（中国兽药网站有哪些）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-winxray-node-share.htm" title="11月25日 | Winxray Github每天更新23M/S免费节点订阅链接">11月25日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-23-latest-winxray-node.htm" title="9月23日 | Winxray Github每天更新22.4M/S免费节点订阅链接">9月23日 | Winxray Github每天更新22.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29822.htm" title="重庆宠物狗领养公司电话（重庆宠物领养平台）">重庆宠物狗领养公司电话（重庆宠物领养平台）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-2-free-node-subscribe-links.htm" title="12月2日 | Winxray Github每天更新22M/S免费节点订阅链接">12月2日 | Winxray Github每天更新22M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-7-winxray-github.htm" title="11月7日 | Winxray Github每天更新22.9M/S免费节点订阅链接">11月7日 | Winxray Github每天更新22.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-today-winxray-node.htm" title="12月10日 | Winxray Github每天更新18.8M/S免费节点订阅链接">12月10日 | Winxray Github每天更新18.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31202.htm" title="springboot读取resources下文件方式">springboot读取resources下文件方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-node-share.htm" title="12月28日 | Winxray Github每天更新21M/S免费节点订阅地址分享">12月28日 | Winxray Github每天更新21M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-subscribe-node.htm" title="12月12日 | Winxray Github每天更新22.5M/S免费节点订阅链接">12月12日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-32222.htm" title="参观宠物医院的心得体会（宠物医院参观社会实践总结）">参观宠物医院的心得体会（宠物医院参观社会实践总结）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-12-free-subscribe-node.htm" title="8月12日 | Winxray Github每天更新23M/S免费节点订阅链接">8月12日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35032.htm" title="Go语言标准库log介绍">Go语言标准库log介绍</a></li>
                     </ul>
     </div>
 </div>

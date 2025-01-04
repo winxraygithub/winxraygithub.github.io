@@ -2,11 +2,10 @@
 <html lang="zh-CN">
 
 <head>
-        <link rel="canonical" href="https://winxraygithub.github.io" />
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-35539.htm" />
     <meta charset="utf-8">
-    <title>2024-10归档 - 第3页 - Winxray Github免费节点分享站</title>
-        <meta name="keywords" content="2024-10归档Winxray Github免费节点分享站" />
-        <meta name="description" content="2024-10归档，当前是第3页" />
+    <title>java多线程学习2，线程的属性</title>
+        <meta name="description" content="示例代码 public class ThreadProperty {  	public static void main(String[] args) { 		TestThread testThrea" />
         <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
@@ -34,7 +33,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="index">
+<body data-page="detail">
     <div id="overlayer"></div>
     <div class="loader">
         <div class="spinner-border text-primary" role="status">
@@ -81,9 +80,9 @@
                         <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
                         <div class="row" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-lg-6 mr-auto">
-                                <h1>2024-10 归档</h1>
+                                <h1>java多线程学习2，线程的属性</h1>
                                 <p class="mb-5">
-                                    <a href="/">首页</a> / <span>2024-10 归档</span>
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
                                 </p>
                             </div>
                         </div>
@@ -95,23 +94,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="xcblog-blog-list">
-                                                        <div class="row item xcblog-blog-item" data-date="2024-10-01">
-                                <div class="col-md-3">
-                                    <a href="/free-nodes/2024-10-1-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <img src="/uploads/20240803/d6a74753a4a335071792be4134f97d41.webp" alt="10月1日 | Winxray Github每天更新20M/S免费节点订阅链接" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-9">
-                                    <a href="/free-nodes/2024-10-1-free-winxray-node.htm" class="xcblog-blog-url">
-                                        <h3 class="text-black xcblog-blog-title">10月1日 | Winxray Github每天更新20M/S免费节点订阅链接</h3>
-                                    </a>
-                                    <p class="mb-4">这一次的节点更新覆盖了日本、韩国、新加坡、香港、美国、欧洲、加拿大等地区,最高速度可达20 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                            
-                            <ul class="pagination"><li><a href="/date/2024-10/page-3.htm">&laquo;</a></li> <li><a href="/date/2024-10/">1</a></li><li><a href="/date/2024-10/page-2.htm">2</a></li><li><a href="/date/2024-10/page-3.htm">3</a></li><li class="active"><span>4</span></li> <li class="disabled"><span>&raquo;</span></li></ul>                        </div>
-                    </div>
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>示例代码</p> <pre><code class="language-java">public class ThreadProperty {  	public static void main(String[] args) { 		TestThread testThread = new TestThread(); 		for (int i = 0; i &lt; 5; i++) { 			Thread t = new Thread(testThread, "name" + (i + 1)); 			t.setPriority(10 - i); 			if (i == 1) 				t.setDaemon(true); 			t.start(); 		}  		Thread main = Thread.currentThread(); 		String threadName = main.getName(); 		System.out.println("这是主线程" + threadName); 		System.out.println("返回当前线程" + threadName + "的线程组中活动线程的数目" + Thread.activeCount()); 		System.out.println("返回当前线程" + threadName + "标识符" + main.getId()); 		System.out.println("返回当前线程" + threadName + "优先级" + main.getPriority()); 		System.out.println("返回当前线程" + threadName + "状态" + main.getState()); 		System.out.println("返回当前线程" + threadName + "所属的线程组" + main.getThreadGroup()); 		System.out.println("返回当前线程" + threadName + "是否处于活动状态" + main.isAlive()); 		System.out.println("返回当前线程" + threadName + "是否为守护线程" + main.isDaemon()); 		System.out.println("返回当前线程" + threadName + "是否中断" + main.isInterrupted()); 		try { 			Thread.sleep(5000); 		} catch (InterruptedException e) { 			e.printStackTrace(); 		} 		System.out.println("主线程结束了"); 	} }  class TestThread implements Runnable {  	@Override 	public void run() { 		try { 			Thread.sleep(10000); 		} catch (Exception e) { 		} 		Thread thread = Thread.currentThread(); 		String threadName = thread.getName(); 		System.out.println("这是线程名称" + threadName); 		System.out.println("返回当前线程" + threadName + "的线程组中活动线程的数目" + Thread.activeCount()); 		System.out.println("返回当前线程" + threadName + "标识符" + thread.getId()); 		System.out.println("返回当前线程" + threadName + "优先级" + thread.getPriority()); 		System.out.println("返回当前线程" + threadName + "状态" + thread.getState()); 		System.out.println("返回当前线程" + threadName + "所属的线程组" + thread.getThreadGroup()); 		System.out.println("返回当前线程" + threadName + "是否处于活动状态" + thread.isAlive()); 		System.out.println("返回当前线程" + threadName + "是否为守护线程" + thread.isDaemon()); 		System.out.println("返回当前线程" + threadName + "是否中断" + thread.isInterrupted()); 	} }</code></pre> <p>运行结果 </p> <p>这是主线程main<br /> 返回当前线程main的线程组中活动线程的数目6<br /> 返回当前线程main标识符1<br /> 返回当前线程main优先级5<br /> 返回当前线程main状态RUNNABLE<br /> 返回当前线程main所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程main是否处于活动状态true<br /> 返回当前线程main是否为守护线程false<br /> 返回当前线程main是否中断false<br /> 主线程结束了<br /> 这是线程名称name2<br /> 这是线程名称name4<br /> 这是线程名称name1<br /> 这是线程名称name3<br /> 返回当前线程name2的线程组中活动线程的数目6<br /> 返回当前线程name3的线程组中活动线程的数目6<br /> 返回当前线程name3标识符12<br /> 返回当前线程name3优先级8<br /> 返回当前线程name3状态RUNNABLE<br /> 返回当前线程name3所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name3是否处于活动状态true<br /> 返回当前线程name3是否为守护线程false<br /> 返回当前线程name3是否中断false<br /> 这是线程名称name5<br /> 返回当前线程name4的线程组中活动线程的数目6<br /> 返回当前线程name1的线程组中活动线程的数目6<br /> 返回当前线程name2标识符11<br /> 返回当前线程name4标识符13<br /> 返回当前线程name1标识符10<br /> 返回当前线程name2优先级9<br /> 返回当前线程name5的线程组中活动线程的数目5<br /> 返回当前线程name1优先级10<br /> 返回当前线程name1状态RUNNABLE<br /> 返回当前线程name1所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name1是否处于活动状态true<br /> 返回当前线程name1是否为守护线程false<br /> 返回当前线程name1是否中断false<br /> 返回当前线程name4优先级7<br /> 返回当前线程name4状态RUNNABLE<br /> 返回当前线程name4所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name4是否处于活动状态true<br /> 返回当前线程name4是否为守护线程false<br /> 返回当前线程name4是否中断false<br /> 返回当前线程name2状态RUNNABLE<br /> 返回当前线程name2所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name2是否处于活动状态true<br /> 返回当前线程name2是否为守护线程true<br /> 返回当前线程name2是否中断false<br /> 返回当前线程name5标识符14<br /> 返回当前线程name5优先级6<br /> 返回当前线程name5状态RUNNABLE<br /> 返回当前线程name5所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name5是否处于活动状态true<br /> 返回当前线程name5是否为守护线程false<br /> 返回当前线程name5是否中断false</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-35033.htm">动物防疫法对人和动物危害严重（动物防疫法法律责任）</a></p>
+                                        <p>下一个：<a href="/news/article-35540.htm">golang 的panic、defer、recover和error应用方式</a></p>
+                                    </div>
+                                    </div>
                     <div class="col-md-3">
                         <div class="panel panel-default">
     <div class="panel-heading">
@@ -119,16 +108,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-high-speed-nodes.htm" title="11月13日 | Winxray Github每天更新22.5M/S免费节点订阅链接">11月13日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19188.htm" title="vue+Echarts绘制动态折线图">vue+Echarts绘制动态折线图</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-24-winxray-node.htm" title="9月24日 | Winxray Github每天更新22.7M/S免费节点订阅链接">9月24日 | Winxray Github每天更新22.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-9-winxray-node-github.htm" title="8月9日 | Winxray Github每天更新18.3M/S免费节点订阅链接">8月9日 | Winxray Github每天更新18.3M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-winxray-node-share.htm" title="12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-15-free-node-subscribe.htm" title="8月15日 | Winxray Github每天更新21M/S免费节点订阅链接">8月15日 | Winxray Github每天更新21M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-18776.htm" title="动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）">动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）</a></li>
-                        <li class="py-2"><a href="/news/article-29344.htm" title="中国兽药网站（中国兽药网站有哪些）">中国兽药网站（中国兽药网站有哪些）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-25-winxray-node-share.htm" title="11月25日 | Winxray Github每天更新23M/S免费节点订阅链接">11月25日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-23-latest-winxray-node.htm" title="9月23日 | Winxray Github每天更新22.4M/S免费节点订阅链接">9月23日 | Winxray Github每天更新22.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-winxray-node.htm" title="10月23日 | Winxray Github每天更新23M/S免费节点订阅链接">10月23日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-7-winxray-node.htm" title="8月7日 | Winxray Github每天更新20.3M/S免费节点订阅链接">8月7日 | Winxray Github每天更新20.3M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-free-node-subscribe.htm" title="12月19日 | Winxray Github每天更新19M/S免费节点订阅链接">12月19日 | Winxray Github每天更新19M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-22-free-node-subscribe-links.htm" title="10月22日 | Winxray Github每天更新22.2M/S免费节点订阅链接">10月22日 | Winxray Github每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24238.htm" title="动物防疫管理要点有哪些内容（动物防疫相关管理制度）">动物防疫管理要点有哪些内容（动物防疫相关管理制度）</a></li>
+                        <li class="py-2"><a href="/news/article-32688.htm" title="长沙宠物领养平台有哪些（长沙市宠物领养）">长沙宠物领养平台有哪些（长沙市宠物领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-4-winxray-github.htm" title="12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接">12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-high-speed-nodes.htm" title="10月21日 | Winxray Github每天更新18.8M/S免费节点订阅链接">10月21日 | Winxray Github每天更新18.8M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-16-node-share.htm" title="8月16日 | Winxray Github每天更新18.9M/S免费节点订阅链接">8月16日 | Winxray Github每天更新18.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26553.htm" title="泰安泰宠宠物食品有限公司代工（泰安泰宠宠物食品工厂）">泰安泰宠宠物食品有限公司代工（泰安泰宠宠物食品工厂）</a></li>
                     </ul>
     </div>
 </div>
