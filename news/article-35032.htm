@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://winxraygithub.github.io/news/article-35032.htm" />
@@ -7,9 +7,38 @@
     <title>Go语言标准库log介绍</title>
         <meta name="description" content="无论是软件开发的调试阶段还是软件上线之后的运行阶段，日志一直都是非常重要的一个环节，我们也应该养成在程序中记录日志的好习惯。  Go语言内置的log包实现了简单的日志服务。本文介绍了标准库log的基本" />
         <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-35032.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Go语言标准库log介绍" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/cb833540afcf892396ccedd4ab559de9.webp" />
+        <meta property="og:release_date" content="2025-01-03T00:20:01" />
+    <meta property="og:updated_time" content="2025-01-03T00:20:01" />
+        <meta property="og:description" content="无论是软件开发的调试阶段还是软件上线之后的运行阶段，日志一直都是非常重要的一个环节，我们也应该养成在程序中记录日志的好习惯。  Go语言内置的log包实现了简单的日志服务。本文介绍了标准库log的基本" />
+        
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Go语言标准库log介绍">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
@@ -17,7 +46,7 @@
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
     <!-- Google tag (gtag.js) -->
@@ -77,7 +106,7 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
-                        <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
                         <div class="row" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-lg-6 mr-auto">
                                 <h1>Go语言标准库log介绍</h1>
@@ -108,16 +137,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-25626.htm" title="2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）">2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）</a></li>
-                        <li class="py-2"><a href="/news/article-20099.htm" title="Python——Fibonacci斐波那契数列的函数fib(n) 输出前20项（每项宽度5字符位置，右对齐），每行输出10个 递归和非递归实现">Python——Fibonacci斐波那契数列的函数fib(n) 输出前20项（每项宽度5字符位置，右对齐），每行输出10个 递归和非递归实现</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-17-latest-winxray-node.htm" title="11月17日 | Winxray Github每天更新20.2M/S免费节点订阅链接">11月17日 | Winxray Github每天更新20.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-16-free-node-subscribe.htm" title="11月16日 | Winxray Github每天更新22.7M/S免费节点订阅链接">11月16日 | Winxray Github每天更新22.7M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-subscribe-node.htm" title="12月18日 | Winxray Github每天更新19.5M/S免费节点订阅链接">12月18日 | Winxray Github每天更新19.5M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-12-free-subscribe-node.htm" title="12月12日 | Winxray Github每天更新22.5M/S免费节点订阅链接">12月12日 | Winxray Github每天更新22.5M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-15-winxray-node-github.htm" title="11月15日 | Winxray Github每天更新22.2M/S免费节点订阅链接">11月15日 | Winxray Github每天更新22.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-29821.htm" title="新疆领养宠物的地方（新疆宠物救助）">新疆领养宠物的地方（新疆宠物救助）</a></li>
-                        <li class="py-2"><a href="/news/article-35032.htm" title="Go语言标准库log介绍">Go语言标准库log介绍</a></li>
-                        <li class="py-2"><a href="/news/article-34597.htm" title="动物疫苗生产原料 动物疫苗生产原料有哪些">动物疫苗生产原料 动物疫苗生产原料有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-38470.htm" title="如果未提供任何参数，MySQL ASCII()函数将返回什么？">如果未提供任何参数，MySQL ASCII()函数将返回什么？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-winxray-windows.htm" title="12月27日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享">12月27日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-43421.htm" title="三国杀武将技能特效大全（三国杀武将技能特效大全图）">三国杀武将技能特效大全（三国杀武将技能特效大全图）</a></li>
+                        <li class="py-2"><a href="/news/article-36506.htm" title="动物疫苗接种方法有哪些种类的 动物疫苗接种方法有哪些种类的图片">动物疫苗接种方法有哪些种类的 动物疫苗接种方法有哪些种类的图片</a></li>
+                        <li class="py-2"><a href="/news/article-34118.htm" title="动物疫苗的使用年限 动物疫苗的使用年限是多少年">动物疫苗的使用年限 动物疫苗的使用年限是多少年</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="12月1日 | Winxray Github每天更新19.9M/S免费节点订阅链接">12月1日 | Winxray Github每天更新19.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-node-share-links.htm" title="1月23日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享">1月23日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-winxray-github.htm" title="2月1日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享">2月1日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-33641.htm" title="IDEA配置Maven详细版教程">IDEA配置Maven详细版教程</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-winxray-node-share.htm" title="12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
                     </ul>
     </div>
 </div>
@@ -129,16 +158,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

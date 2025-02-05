@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-50389.htm" />
+    <meta charset="utf-8">
+    <title>Spring boot项目打包成jar在linux环境下设置开机自启动</title>
+        <meta name="description" content="#!/bin/bash # The three branches of the scouting program,Add to auto. # chkconfig: 2345 20 80 # desc" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-50389.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Spring boot项目打包成jar在linux环境下设置开机自启动" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/732c0b3ed65f6f22e4c421484a305656.webp" />
+        <meta property="og:release_date" content="2025-02-03T09:26:05" />
+    <meta property="og:updated_time" content="2025-02-03T09:26:05" />
+        <meta property="og:description" content="#!/bin/bash # The three branches of the scouting program,Add to auto. # chkconfig: 2345 20 80 # desc" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Spring boot项目打包成jar在linux环境下设置开机自启动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                                
+                                <li><a href="#" class="nav-link">关于</a></li>
+                                <li><a href="#" class="nav-link">联系</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>Spring boot项目打包成jar在linux环境下设置开机自启动</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>#!/bin/bash</p> <p># The three branches of the scouting program,Add to auto.<br /> # chkconfig: 2345 20 80<br /> # description: py-0.0.1-SNAPSHOT-exec.jar<br /> # author: Love丶TG</p> <p># 这样的启动方式不是最好的，一般都是：友好的控制nginx执行连接端口，再处理启动与停止操作<br /> echo "******************************************************"<br /> echo "******* Welcome to launch the puzzle App *************"<br /> echo "******************************************************"</p> <p># import JDK config<br /> JAVA_HOME=/usr/java/jdk1.8.0_111<br /> JRE_HOME=/usr/java/jdk1.8.0_111/jre<br /> PATH=$PATH:$JAVA_HOME/bin:$JRe_HOME/bin:$TOMCAT_HOME/bin<br /> CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib<br /> export JAVA_HOME JRE_HOME PATH CLASSPATH</p> <p># Second parameter : project url &nbsp; | &nbsp; PRO_URL expression<br /> #PRO_URL=/project/py/pyapp2018-07-25</p> <p># The file stores the startup path<br /> PRO_URL=/project/py/py_path</p> <p>function initialize(){<!-- --><br /> &nbsp;&nbsp; &nbsp;# 判断PRO_URL文件是否存在，不存在就新建这么一个文件，用于当每次调用第二个参数启动时都会随着更改文件里面的内容<br /> &nbsp;&nbsp; &nbsp;if [ ! -f "$PRO_URL" ]; then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;touch $PRO_URL<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;chmod 777 $PRO_URL<br /> &nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;# 取项目的待执行目录<br /> &nbsp;&nbsp; &nbsp;readFile=`cat $PRO_URL`<br /> &nbsp;&nbsp; &nbsp;if [ "$readFile" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The read file was empty and failed to start &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# echo "" &gt; $PRO_URL<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# echo "$1 cleaned up."<br /> &nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The project is being restarted &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cd $readFile<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 检查8088 8089 8090端口是否启动状态<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;process1=`netstat -an|grep LISTEN|grep :8088`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 如果端口检查为空就重启8088服务<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$process1" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8088<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; 8088 Port started successfully &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The 8088 port is running &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;process2=`netstat -an|grep LISTEN|grep :8089`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 如果端口检查为空就重启8089服务<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$process2" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8089<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; 8089 Port started successfully &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The 8089 port is running &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;process3=`netstat -an|grep LISTEN|grep :8090`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 如果端口检查为空就重启8090服务<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$process3" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8090<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; 8090 Port started successfully &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The 8090 port is running &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;fi</p> <p> }</p> <p># nohup也可新创一个函数<br /> fStart()<br /> {<!-- --><br /> &nbsp;&nbsp; &nbsp;pid=`lsof -F p &nbsp;-i:$1 | cut -b 2-`<br /> &nbsp;&nbsp; &nbsp;if [ "$pid" != "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;kill -9 $pid;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;nohup java -Xmx24000m &nbsp;-Xss10m -jar py-0.0.1-SNAPSHOT-exec.jar --server.port=$1 &nbsp;&amp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; $1 Port occupancy forced offline and start again &lt;-----"<br /> &nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;nohup java -Xmx24000m &nbsp;-Xss10m -jar py-0.0.1-SNAPSHOT-exec.jar --server.port=$1 &nbsp;&amp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The $1 port starting success &lt;-----"<br /> &nbsp;&nbsp; &nbsp;fi<br /> }</p> <p>fStop()<br /> {<!-- --><br /> &nbsp;&nbsp; &nbsp;pid=`lsof -F p &nbsp;-i:$1 | cut -b 2-`<br /> &nbsp;&nbsp; &nbsp;if [ "$pid" != "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;kill -9 $pid;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; $1 Port Stop success &lt;-----"<br /> &nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The $1 port Has been discontinued &lt;-----"<br /> &nbsp;&nbsp; &nbsp;fi<br /> }</p> <p>case "$1" in<br /> &nbsp; &nbsp; &nbsp;start)<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 如果$1等于空，这种情况下大多是服务器重启<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$2" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;initialize<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; Restart through boss Ben,Verification is recommended. &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 判断2是否目录为空<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ ! -d "$2" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "-----&gt; The specified file directory does not exist &lt;-----"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;cd $2<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;readFile=`cat $PRO_URL`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$2" != "$readFile" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "" &gt; $PRO_URL<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo "$2" &gt; $PRO_URL<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$3" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#nohup java -Xmx24000m &nbsp;-Xss10m -jar py-0.0.1-SNAPSHOT-exec.jar --server.port=8088 &nbsp;&amp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#nohup java -Xmx24000m &nbsp;-Xss10m -jar py-0.0.1-SNAPSHOT-exec.jar --server.port=8089 &nbsp;&amp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#nohup java -Xmx24000m &nbsp;-Xss10m -jar py-0.0.1-SNAPSHOT-exec.jar --server.port=8090 &nbsp;&amp;<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8088<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8089<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart 8090<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStart $3<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp; ;;</p> <p> &nbsp; &nbsp; &nbsp;stop)<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 停止不需要传路径 2就代表待停端口<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if [ "$2" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 这儿：当start启动没有成功执行完时，执行stop会失败。<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 8088 8089 8090端口全部停止<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStop 8088<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStop 8089<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStop 8090<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 指定性端口停止<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fStop $2<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#process=`netstat -an|grep LISTEN|grep :8088`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#process = `lsof -i:8088`<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#if [ "$process" != "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#&nbsp;&nbsp; &nbsp;echo "JAR8088 is running"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#else<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#&nbsp;&nbsp; &nbsp;echo "JAR8088 is not running"<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#fi<br /> &nbsp;&nbsp; &nbsp; ;;</p> <p>&nbsp; &nbsp; &nbsp;*)<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;# 如果$1等于空，这种情况下大多是服务器重启<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#if [ "$1" == "" ];then<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#&nbsp;&nbsp; &nbsp;initialize<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;#fi<br /> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;echo " ---&gt; service py_start [start|stop] [start:project path] [8088|8089|8090] &lt;---"<br /> &nbsp;&nbsp; &nbsp; ;;</p> <p>esac</p> <p>===========================END===============================</p> <p>* 注：</p> <p>1. 需优化，当start刚执行就执行stop再执行start会出问题。</p> <p>2. 第二个参数是版本控制jar的指定文件夹路径</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-50388.htm">feign post 参数对象不加@RequestBody的用法</a></p>
+                                        <p>下一个：<a href="/news/article-50905.htm">使用JavaScript的温度转换器</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-winxray-github.htm" title="12月9日 | Winxray Github每天更新22M/S免费节点订阅链接">12月9日 | Winxray Github每天更新22M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26553.htm" title="泰安泰宠宠物食品有限公司代工（泰安泰宠宠物食品工厂）">泰安泰宠宠物食品有限公司代工（泰安泰宠宠物食品工厂）</a></li>
+                        <li class="py-2"><a href="/news/article-22390.htm" title="动物疫苗的重要性（动物疫苗的生产原料有哪些）">动物疫苗的重要性（动物疫苗的生产原料有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-40952.htm" title="中国宠物用品市场（中国宠物用品市场在哪里）">中国宠物用品市场（中国宠物用品市场在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-36992.htm" title="领养宠物协议书范本免费下载大全（领养宠物协议书范本免费下载大全）">领养宠物协议书范本免费下载大全（领养宠物协议书范本免费下载大全）</a></li>
+                        <li class="py-2"><a href="/news/article-36991.htm" title="宠物美容好学吗学多久才会（宠物美容好学吗学多久才会学）">宠物美容好学吗学多久才会（宠物美容好学吗学多久才会学）</a></li>
+                        <li class="py-2"><a href="/news/article-38972.htm" title="给动物打的狂犬疫苗有效期多久啊（给动物打狂犬疫苗打几针）">给动物打的狂犬疫苗有效期多久啊（给动物打狂犬疫苗打几针）</a></li>
+                        <li class="py-2"><a href="/news/article-30305.htm" title="宠物领养平台论文摘要写什么内容好（宠物领养系统的开题报告）">宠物领养平台论文摘要写什么内容好（宠物领养系统的开题报告）</a></li>
+                        <li class="py-2"><a href="/news/article-27956.htm" title="被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）">被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-winxray-node.htm" title="2月4日 | Winxray Github每天更新22.3M/S免费节点订阅地址分享">2月4日 | Winxray Github每天更新22.3M/S免费节点订阅地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">15</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>

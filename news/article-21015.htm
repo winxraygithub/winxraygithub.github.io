@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://winxraygithub.github.io/news/article-21015.htm" />
@@ -7,9 +7,38 @@
     <title>HashMap中红黑树插入节点的调整过程分析_在线工具</title>
         <meta name="description" content="目录  一、引言 二、HashMap源码中红黑树插入节点的调整过程 三、阅读HashMap源码的一些Tips  1. 代码风格 2. 变量名  balanceInsertion方法中的变量名 rota" />
         <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-21015.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="HashMap中红黑树插入节点的调整过程分析_在线工具" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/3a318ebabb122794e9890a6505b78634.webp" />
+        <meta property="og:release_date" content="2024-12-04T08:42:19" />
+    <meta property="og:updated_time" content="2024-12-04T08:42:19" />
+        <meta property="og:description" content="目录  一、引言 二、HashMap源码中红黑树插入节点的调整过程 三、阅读HashMap源码的一些Tips  1. 代码风格 2. 变量名  balanceInsertion方法中的变量名 rota" />
+        
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="HashMap中红黑树插入节点的调整过程分析_在线工具">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
@@ -17,7 +46,7 @@
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="__ADDON__/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
     <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
     <!-- Google tag (gtag.js) -->
@@ -77,7 +106,7 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
-                        <img href="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
                         <div class="row" data-aos="fade-up" data-aos-delay="200">
                             <div class="col-lg-6 mr-auto">
                                 <h1>HashMap中红黑树插入节点的调整过程分析_在线工具</h1>
@@ -108,16 +137,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-10-31-winxray-github.htm" title="10月31日 | Winxray Github每天更新22.9M/S免费节点订阅链接">10月31日 | Winxray Github每天更新22.9M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-19188.htm" title="vue+Echarts绘制动态折线图">vue+Echarts绘制动态折线图</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-9-5-node-share.htm" title="9月5日 | Winxray Github每天更新18.6M/S免费节点订阅链接">9月5日 | Winxray Github每天更新18.6M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-22850.htm" title="免费领养宠物的正规平台上海有哪些公司（上海2020年宠物领养活动）">免费领养宠物的正规平台上海有哪些公司（上海2020年宠物领养活动）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-29-free-subscribe-node.htm" title="8月29日 | Winxray Github每天更新20M/S免费节点订阅链接">8月29日 | Winxray Github每天更新20M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-27956.htm" title="被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）">被猫抓伤以后多长时间打疫苗有效（被猫抓了之后多长时间打疫苗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-10-winxray-windows.htm" title="11月10日 | Winxray Github每天更新20M/S免费节点订阅链接">11月10日 | Winxray Github每天更新20M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-25626.htm" title="2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）">2021年中牧股份动物疫苗中标（中牧兽用疫苗代理）</a></li>
-                        <li class="py-2"><a href="/news/article-18776.htm" title="动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）">动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）</a></li>
-                        <li class="py-2"><a href="/news/article-31203.htm" title="动物医院资质查询系统（动物医院有限公司）">动物医院资质查询系统（动物医院有限公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-node-subscribe.htm" title="1月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">1月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-winxray-node.htm" title="1月12日 | Winxray Github每天更新22.6M/S免费节点订阅地址分享">1月12日 | Winxray Github每天更新22.6M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-48879.htm" title="瑞鹏宠物医院收费价目表最新版图片（瑞鹏宠物医院是公立还是私立）">瑞鹏宠物医院收费价目表最新版图片（瑞鹏宠物医院是公立还是私立）</a></li>
+                        <li class="py-2"><a href="/news/article-19189.htm" title="猫咪抓伤轻微出血要***吗多久（猫轻微抓伤有一点渗血要***吗?）">猫咪抓伤轻微出血要***吗多久（猫轻微抓伤有一点渗血要***吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-22-latest-winxray-node.htm" title="11月22日 | Winxray Github每天更新19.4M/S免费节点订阅链接">11月22日 | Winxray Github每天更新19.4M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-winxray-node.htm" title="1月10日 | Winxray Github每天更新21.3M/S免费节点订阅地址分享">1月10日 | Winxray Github每天更新21.3M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-47373.htm" title="mybatis 加载配置文件的方法（两种方式）">mybatis 加载配置文件的方法（两种方式）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-1-free-node-subscribe-links.htm" title="12月1日 | Winxray Github每天更新19.9M/S免费节点订阅链接">12月1日 | Winxray Github每天更新19.9M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-46909.htm" title="正规宠物领养平台排名前十有哪些（宠物领养平台免费）">正规宠物领养平台排名前十有哪些（宠物领养平台免费）</a></li>
+                        <li class="py-2"><a href="/news/article-20563.htm" title="上哪领养狗狗（上哪可以领养狗狗）">上哪领养狗狗（上哪可以领养狗狗）</a></li>
                     </ul>
     </div>
 </div>
@@ -129,22 +158,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
