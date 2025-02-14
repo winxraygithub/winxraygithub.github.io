@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-55754.htm" />
+    <meta charset="utf-8">
+    <title>element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）</title>
+        <meta name="description" content="突然发现已经半年没更新的element-ui更新了 更新了什么还不清楚，但是告知了基于vue3.x版本的 element-plus 已经出来了。 先来上手体验一下 首先安装一个最新的@vue-cli，" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-55754.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/ef371cf0467c8c023f569b3607eb84bb.webp" />
+        <meta property="og:release_date" content="2025-02-13T03:09:15" />
+    <meta property="og:updated_time" content="2025-02-13T03:09:15" />
+        <meta property="og:description" content="突然发现已经半年没更新的element-ui更新了 更新了什么还不清楚，但是告知了基于vue3.x版本的 element-plus 已经出来了。 先来上手体验一下 首先安装一个最新的@vue-cli，" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p>突然发现已经半年没更新的element-ui更新了<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/328a36ab7fc5d63d368af7fec8b7be4a.jpg" alt="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）"><br /> 更新了什么还不清楚，但是告知了基于vue3.x版本的 element-plus 已经出来了。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/78d662a0777fcbdf84aeb08c8460da90.jpg" alt="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）"><br /> 先来上手体验一下<br /> 首先安装一个最新的@vue-cli，搭建一个vue3.x的项目，脚手架创建流程已经很简洁了，这里就不多说了。建好之后，直接开始安装吧</p> <pre><code>npm i element-plus</code></pre> <p>为了方便，直接采取全部引入的方式</p> <p>src/plugins/element.ts</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span> ElementPlus<span class="token keyword">from</span><span class="token string">'element-plus'</span><span class="token keyword">import</span><span class="token string">'element-plus/lib/theme-chalk/index.css'</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">(</span>app<span class="token punctuation">:</span><span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>   app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>ElementPlus<span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <p>src/main.ts</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span> router<span class="token keyword">from</span><span class="token string">'./router'</span><span class="token keyword">import</span> store<span class="token keyword">from</span><span class="token string">'./store'</span><span class="token keyword">import</span> App<span class="token keyword">from</span><span class="token string">'./App.vue'</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> createApp<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">import</span> installElementPlus<span class="token keyword">from</span><span class="token string">'./plugins/element'</span><span class="token keyword">const</span> app<span class="token operator">=</span><span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token function">installElementPlus</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span> app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span></code></pre> <p>在页面中加一个按钮</p> <pre><code class="prism language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span><span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>el-button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span><span class="token punctuation">&gt;</span></span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/5e7bdd766de4027e78beca131aaf75e9.jpg" alt="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）"><br /> 在新版的vue3.x版本中还保留了原有的生命周期函数</p> <pre><code class="prism language-typescript"><span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token string">"message"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/dc6a570c18ce17c4e157218e07f28e27.jpg" alt="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）"><br /> 打印了一下this<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220823/ca7d5aeee8e03ea28232b43c322076a3.jpg" alt="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）"></p> <p>更新补充:</p> <h2><a id="elementplus_53" rel="nofollow"></a>element-plus按需引入</h2> <p>src/plugins/element.ts</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> Button<span class="token punctuation">,</span> Message<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'element-plus'</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span>   app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Button<span class="token punctuation">)</span>   app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <p>babel.config.js</p> <pre><code class="prism language-javascript">module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token string">"presets"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">"@vue/cli-plugin-babel/preset"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token string">"plugins"</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"component"</span><span class="token punctuation">,</span><span class="token punctuation">{<!-- --></span><span class="token string">"libraryName"</span><span class="token punctuation">:</span><span class="token string">"element-plus"</span><span class="token punctuation">,</span><span class="token string">"styleLibraryName"</span><span class="token punctuation">:</span><span class="token string">"theme-chalk"</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">}</span></code></pre> <h2><a id="vue30_setup_84" rel="nofollow"></a>在vue3.0 setup中使用</h2> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> setup<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vue-class-component'</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> getCurrentInstance<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span>   name<span class="token punctuation">:</span><span class="token string">'App'</span><span class="token punctuation">,</span>   components<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">setup</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span><span class="token punctuation">{<!-- --></span>ctx<span class="token punctuation">}</span><span class="token operator">=</span><span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     ctx<span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token string">"mesage"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <p>更新:ctx 打包之后无法调用<code>$message</code>，可以使用<code>proxy</code></p> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> getCurrentInstance<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">export</span><span class="token keyword">default</span><span class="token punctuation">{<!-- --></span>   name<span class="token punctuation">:</span><span class="token string">'App'</span><span class="token punctuation">,</span>   components<span class="token punctuation">:</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span><span class="token punctuation">{<!-- --></span>proxy<span class="token punctuation">}</span><span class="token operator">=</span><span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     proxy<span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token string">"mesage"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-55197.htm">ruby 版本管理RVM （ruby version manager）</a></p>
+                                        <p>下一个：<a href="/news/article-55755.htm">上海排名前十的大宠物医院（上海排名最好的宠物医院）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26074.htm" title="猫不打疫苗有时对人有什么影响没（猫不打疫苗会发生什么）">猫不打疫苗有时对人有什么影响没（猫不打疫苗会发生什么）</a></li>
+                        <li class="py-2"><a href="/news/article-41434.htm" title="python输出计算结果_Python学习&#8211;02输入和输出、运算符">python输出计算结果_Python学习&#8211;02输入和输出、运算符</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-winxray-windows.htm" title="11月6日 | Winxray Github每天更新20M/S免费节点订阅链接">11月6日 | Winxray Github每天更新20M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-winxray-node-share.htm" title="11月25日 | Winxray Github每天更新23M/S免费节点订阅链接">11月25日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55755.htm" title="上海排名前十的大宠物医院（上海排名最好的宠物医院）">上海排名前十的大宠物医院（上海排名最好的宠物医院）</a></li>
+                        <li class="py-2"><a href="/news/article-38971.htm" title="动物疫苗批号查询官网（动物疫苗价格查询）">动物疫苗批号查询官网（动物疫苗价格查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-13-latest-winxray-node.htm" title="12月13日 | Winxray Github每天更新22.2M/S免费节点订阅链接">12月13日 | Winxray Github每天更新22.2M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21474.htm" title="做梦梦到抱别的女人走路什么意思（做梦梦到抱别的女人走路什么意思呀）">做梦梦到抱别的女人走路什么意思（做梦梦到抱别的女人走路什么意思呀）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-12-winxray-node-github.htm" title="2月12日 | Winxray Github每天更新19.3M/S免费节点订阅地址分享">2月12日 | Winxray Github每天更新19.3M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-44917.htm" title="动物疫苗是什么单位的工作内容（动物疫苗经营）">动物疫苗是什么单位的工作内容（动物疫苗经营）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
