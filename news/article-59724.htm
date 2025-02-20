@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-59724.htm" />
+    <meta charset="utf-8">
+    <title>Java中的多态</title>
+        <meta name="description" content="多态： 从字面意思理解就是多种形态。而在Java中多态是同一个行为具有多个不同表现形式或形态的能力。 多态分为: 方法多态：方法的重写和重载就是方法的多态的体现形式 对象多态： 1.一个对象 的编译类" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-59724.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Java中的多态" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/e7eccc1103fd4f0dce20bdcad9b15690.webp" />
+        <meta property="og:release_date" content="2025-02-20T09:55:45" />
+    <meta property="og:updated_time" content="2025-02-20T09:55:45" />
+        <meta property="og:description" content="多态： 从字面意思理解就是多种形态。而在Java中多态是同一个行为具有多个不同表现形式或形态的能力。 多态分为: 方法多态：方法的重写和重载就是方法的多态的体现形式 对象多态： 1.一个对象 的编译类" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java中的多态">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>Java中的多态</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h3><strong>多态：</strong></h3> <p>从字面意思理解就是多种形态。而在Java中多态是同一个行为具有多个不同表现形式或形态的能力。</p> <p><strong>多态分为:</strong></p> <p><strong>方法多态：方法的重写和重载就是方法的多态的体现形式</strong></p> <p><strong>对象多态：</strong></p> <p>1.一个对象 的编译类型和运行类型是不一样</p> <p>2.编译类型是在定义对象的时候，就已经确定好的</p> <p>3.运行类型是可以改变的</p> <p>4.编译类型看=的左边 运行类型看 =的右边</p> <p>例：<strong>Person person = new Person();</strong></p> <p><strong>注意：</strong></p> <p>1.必须有继承</p> <p>2.必须有重写</p> <p>3.等号左边是父类的引用，等号右边是子类的对象。</p> <p><strong>多态的转型：【向上转型和向下转型】</strong></p> <h3><strong>1.向上转型</strong></h3> <p>本质就是：父类的引用指向子类对象。</p> <p>语法格式：</p> <p> 父类 父类引用 = new 子类（）；</p> <pre><code class="language-java">示例：package com.qfedu.d_duotai;  class Person { 	public void eat () { 		 	} } class Student extends Person { 	@Override 	public void eat() { 		System.out.println("学生吃饭，吃披萨"); 	} 	public void sleep () { 		System.out.println("中午不谁下午崩溃！！！"); 	} } public class Demo1 { 	public static void main(String[] args) { 		Person person = new Student();//向上转型 		person.eat(); 		//person.sleep(); 	}  } </code></pre> <p>将子类的对象赋值给了父类的引用。小范围（子类） 转为大范围（父类）自动转</p> <p>父类的引用可以调用父类的所有成员方法，可以调用子类的重写父类的方法，但是不能调用子类独有的方法。</p> <h3><strong>2.向下转型</strong></h3> <p>语法格式：</p> <p>父类 父类引用 = new 子类（）；</p> <p>子类 子类引用 = （子类）父类的引用；</p> <pre><code class="language-java">实例：package com.qfedu.d_duotai;  class TestA { 	//Object 是所有类的父类 	public void test (Object obj ) { 		//必须给我打印一个String类型的狗蛋，我不要Object类型的狗蛋 //		String str = (String) obj;  //		System.out.println(str); 		int i1 = (int)obj; 		System.out.println(i1); 		 	} } public class Demo4 { 	public static void main(String[] args) { 		TestA testA = new TestA(); 		//testA.test("狗蛋"); 		Object object = "狗蛋"; 		testA.test(98); 		testA.test('狗'); 	}  } </code></pre> <h3><strong>instenceof 关键字</strong></h3> <p>是比较操作符，返回值是布尔&nbsp;<strong>Boolean</strong>类型数据</p> <p>语法格式：</p> <p>对象引用&nbsp;<strong>instenceof</strong>&nbsp;类（运行类型）</p> <p>用来判断对象的运行类型（=右边）， 是否是xx类型或者xx类型的子类</p> <p><strong>目的：是为了在强转的时候不出现问题</strong></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59152.htm">58同城免费领养小猫宜春（58同城宠物猫领养）</a></p>
+                                        <p>下一个：<a href="/news/article-59725.htm">宠物买卖交易内容（宠物买卖交易内容怎么写）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-23771.htm" title="宠物粮市场前景怎么样啊现在还有吗（宠物粮好卖吗）">宠物粮市场前景怎么样啊现在还有吗（宠物粮好卖吗）</a></li>
+                        <li class="py-2"><a href="/news/article-41944.htm" title="动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）">动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-winxray-github.htm" title="11月27日 | Winxray Github每天更新21.7M/S免费节点订阅链接">11月27日 | Winxray Github每天更新21.7M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18776.htm" title="动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）">动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-node-share-links.htm" title="1月23日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享">1月23日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="11月5日 | Winxray Github每天更新23M/S免费节点订阅链接">11月5日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-winxray-windows.htm" title="12月25日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享">12月25日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-32222.htm" title="参观宠物医院的心得体会（宠物医院参观社会实践总结）">参观宠物医院的心得体会（宠物医院参观社会实践总结）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-node-share-links.htm" title="1月25日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享">1月25日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-47373.htm" title="mybatis 加载配置文件的方法（两种方式）">mybatis 加载配置文件的方法（两种方式）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>

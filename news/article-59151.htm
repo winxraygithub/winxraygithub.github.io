@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-59151.htm" />
+    <meta charset="utf-8">
+    <title>Zookeeper分布式一致性协议ZAB</title>
+        <meta name="description" content="Zookeeper Atomic Broadcast（Zookeeper 原子广播协议）。ZAB 协议是为分布式协调服务 Zookeeper 专门设计的一种支持崩溃恢复&nbsp;和原子广播&nbsp" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-59151.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Zookeeper分布式一致性协议ZAB" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/108d10f6725d33dcc703b1d3778a84f4.webp" />
+        <meta property="og:release_date" content="2025-02-19T06:36:05" />
+    <meta property="og:updated_time" content="2025-02-19T06:36:05" />
+        <meta property="og:description" content="Zookeeper Atomic Broadcast（Zookeeper 原子广播协议）。ZAB 协议是为分布式协调服务 Zookeeper 专门设计的一种支持崩溃恢复&nbsp;和原子广播&nbsp" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Zookeeper分布式一致性协议ZAB">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>Zookeeper分布式一致性协议ZAB</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>Zookeeper Atomic Broadcast（Zookeeper 原子广播协议）。ZAB 协议是为分布式协调服务 Zookeeper 专门设计的一种支持<strong>崩溃恢复</strong>&nbsp;和<strong>原子广播</strong>&nbsp;的协议。<strong>整个 Zookeeper 就是在这两个模式之间切换</strong>。&nbsp;简而言之，当 Leader 服务可以正常使用，就进入消息广播模式，当 Leader 不可用时，则进入崩溃恢复模式。</p> </h1> <p>半数节点以上同步成功，3/2+1也就是3个节点需要2个节点同步。zk不是实时的强一致性，可以说是顺序一致性。leader挂了，事务id最大的那个节点成为新的主节点（因为他同步的数据最多）。</p> </h1> <p>&nbsp;ZAB 协议的消息广播过程使用的是一个原子广播协议，类似一个<strong>两阶段提交过程（2PC）</strong>。对于客户端发送的写请求，全部由 Leader 接收，Leader 将请求封装成一个事务 Proposal，将其发送给所有 Follwer ，然后，根据所有 Follwer 的反馈，如果超过半数(含leader自己)成功响应，则执行 commit 操作。<strong>发送请求会先写到log中，leader收到超过半数ack才会commit写入内存。</strong></p> </h1> <p>通过nio的socketChannel发送到客户端</p> </h1> <p>LeaderZooKeeperServer 和 FollowerZooKeeperServer 责任链有一定不同，但整体是类似的 ，leader做过的syncRequest(同步日志到磁盘)，ackRequest(发送ack到leader)，commit(提交数据到内存)，finalRequest(数据到内存，节点变动触发客户端监听) ，follower也要做一遍这些操作。</p> <p><img fetchpriority="high" decoding="async" alt="" height="392" src="http://img.555519.xyz/uploads3/20220830/09881ee75d9bf4bdb7525ac484bf5b9a.jpg"></p> <p><img decoding="async" alt="" height="319" src="http://img.555519.xyz/uploads3/20220830/afea689f69045077c153b8ae1ed08120.jpg"></p> <pre><code class="language-java">//LeaderZooKeeperServer     protected void setupRequestProcessors() {//构建leader请求处理链 -责任链 设计模式         RequestProcessor finalProcessor = new FinalRequestProcessor(this);         RequestProcessor toBeAppliedProcessor = new Leader.ToBeAppliedRequestProcessor(finalProcessor, getLeader());         commitProcessor = new CommitProcessor(toBeAppliedProcessor,                 Long.toString(getServerId()), false,                 getZooKeeperServerListener());         commitProcessor.start();         ProposalRequestProcessor proposalProcessor = new ProposalRequestProcessor(this,                 commitProcessor);         proposalProcessor.initialize();         prepRequestProcessor = new PrepRequestProcessor(this, proposalProcessor);         prepRequestProcessor.start();//线程处理消息         firstProcessor = new LeaderRequestProcessor(this, prepRequestProcessor);          setupContainerManager();     } ProposalRequestProcessor构造器中又初始化了两个Processor public ProposalRequestProcessor(LeaderZooKeeperServer zks,             RequestProcessor nextProcessor) {         this.zks = zks;         this.nextProcessor = nextProcessor;         AckRequestProcessor ackProcessor = new AckRequestProcessor(zks.getLeader());         syncProcessor = new SyncRequestProcessor(zks, ackProcessor);     }</code></pre> </h1> <p>SyncRequestProcessor</p> <p><strong>client 发起request create /zhuge 666</strong></p> <p><strong>Leader的操作</strong>1.1 leader向所有follower发送proposal&nbsp;1.2 写本地数据文件&nbsp;1.3 给自己发ack</p> <p><strong>Follower的操作</strong> 2.1 写本地数据文件 2.2 返回ack给Leader</p> <p><strong>Leader的操作</strong> 3.1 leader收到半数以上给所有Follower发送commit 3.2 发送inform让<strong>observer</strong>存储消息&nbsp;3.3 commit:写自己的内存数据 3.4&nbsp; 回发节点数据变动通知给客户端,触发客户端client监听事件 3.5 返回客户端命令操作结果</p> <p><strong>Follower的操作</strong>&nbsp; 4 commit:写自己的内存数据</p> <p> &nbsp;当leader发完时还没有超过半数以上，等follower发过来超过后会commit。1.1步中发生的proposal是加入到一个leader的queuedPackets队列里了，leader.lead启动时有启动一个线程LearnerHandler run方法种startSendingPackets方法又启动线程 ，将队列中的packet阻塞式poll数据转发给follower</p> </h1> <p><img decoding="async" alt="" height="152" src="http://img.555519.xyz/uploads3/20220830/c0a9d64f9bcdf964366df40e8ef45a61.jpg"></p> <p>这么设计是因为某个leader挂掉后，事务Id在jvm内存中是无法同步的，所以下一次LeaderId+1即可，这样避免了事务Id又重0开始覆盖之前的记录的问题。private final AtomicLong hzxid = new AtomicLong(0); 事务id自增是原子性的</p> </h1> <p>客户端用path和wathcer绑定好存到一个集合里，到时服务端（发现节点变动触发监听机制）传回来一个path，客户端就会根据path从wathcer集合里去找相应的watcher。出于性能考虑监听是一次性的，触发一次后在服务端的watcherTable里会remove这个path</p> </h1> <p>leader和follower选举后的通讯是建立BIO连接(<strong>适用于连接数比较少</strong>)，除开选举的端口是另一个端口。</p> <p>zk默认使用NIO连接(<strong>适用于多个客户端</strong>)，因为以前Netty有时候不稳定，需要保证系统的稳定。Netty在后期加入，可以手动配置，现在官方是推荐使用netty.</p> <p>将zoo.cfg文件位置配置到启动参数里</p> <p><strong>-Dzookeeper.serverCnxnFactory=org.apache.zookeeper.server.NettyServerCnxnFactory</strong></p> <p>使用Netty通信</p> <p><img loading="lazy" decoding="async" alt="" height="179" src="http://img.555519.xyz/uploads3/20220830/9ae0e22797fbe25240b55744102faa82.jpg"></p> </h1> <p>脑裂（brain-split）：脑裂是指在主备切换时，由于切换不彻底或其他原因，导致客户端和follower误以为出现两个leader，最终使得整个集群处于混乱状态。</p> <p>zookeeper 如果leader挂掉，会进行重新选举，选举周期会+1，就是leaderId会比上一个大，这样可以判断最大的zxid才是最终的leader。就算他后面恢复了，log记录的内容也会被清除掉，因为leaderId不是最大的那个。</p> </h1> <p>ZAB协议（多节点分布式一致性算法的实现），原子广播，并发消息队列/并发编程，bio/nio通讯，zxid，leader选举（多级内存队列，半数以上），崩溃恢复</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-58660.htm">Kerberos (五) &#8212;&#8212;&#8212; Hive 用户认证配置</a></p>
+                                        <p>下一个：<a href="/news/article-59152.htm">58同城免费领养小猫宜春（58同城宠物猫领养）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-winxray-github.htm" title="1月26日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享">1月26日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-51962.htm" title="泰安泰宠宠物食品有限公司待遇怎么样（泰安泰宠宠物食品有限公司待遇怎么样啊）">泰安泰宠宠物食品有限公司待遇怎么样（泰安泰宠宠物食品有限公司待遇怎么样啊）</a></li>
+                        <li class="py-2"><a href="/news/article-21939.htm" title="开宠物食品厂需要什么手续和证件 开宠物食品厂需要什么手续和证件呢">开宠物食品厂需要什么手续和证件 开宠物食品厂需要什么手续和证件呢</a></li>
+                        <li class="py-2"><a href="/news/article-18776.htm" title="动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）">动物接种疫苗的好处和坏处有哪些图片大全（动物疫苗的使用方法及注意事项）</a></li>
+                        <li class="py-2"><a href="/news/article-22391.htm" title="动物疫苗可以快递吗现在能打吗（动物疫苗可以快递吗现在能打吗有毒吗）">动物疫苗可以快递吗现在能打吗（动物疫苗可以快递吗现在能打吗有毒吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-5-free-node-subscribe.htm" title="11月5日 | Winxray Github每天更新23M/S免费节点订阅链接">11月5日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55197.htm" title="ruby 版本管理RVM （ruby version manager）">ruby 版本管理RVM （ruby version manager）</a></li>
+                        <li class="py-2"><a href="/news/article-58660.htm" title="Kerberos (五) &#8212;&#8212;&#8212; Hive 用户认证配置">Kerberos (五) &#8212;&#8212;&#8212; Hive 用户认证配置</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-latest-winxray-node.htm" title="1月6日 | Winxray Github每天更新18.6M/S免费节点订阅地址分享">1月6日 | Winxray Github每天更新18.6M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45408.htm" title="猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）">猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
