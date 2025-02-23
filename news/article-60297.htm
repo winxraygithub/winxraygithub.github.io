@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-60297.htm" />
+    <meta charset="utf-8">
+    <title>PDB调试方法</title>
+        <meta name="description" content="本文目录  PDB调试     两种方式调试 具体操作        笔者的项目涉及了大量的环境、shell脚本等，用IDE调试非常麻烦，因此学着使用PDB调试，记录分享给大家。 pdb调试是为了在远" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-60297.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="PDB调试方法" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/6b6d8c773df30379529a79fdb44a8f36.webp" />
+        <meta property="og:release_date" content="2025-02-21T09:19:14" />
+    <meta property="og:updated_time" content="2025-02-21T09:19:14" />
+        <meta property="og:description" content="本文目录  PDB调试     两种方式调试 具体操作        笔者的项目涉及了大量的环境、shell脚本等，用IDE调试非常麻烦，因此学着使用PDB调试，记录分享给大家。 pdb调试是为了在远" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="PDB调试方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>PDB调试方法</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>本文目录</h3> <ul> <li><a href="#PDB_1" rel="nofollow">PDB调试</a></li> <li> <ul> <li> <ul> <li><a href="#_8" rel="nofollow">两种方式调试</a></li> <li><a href="#_19" rel="nofollow">具体操作</a></li> </ul> </li> </ul> </li> </ul> </div> </h1> <p>笔者的项目涉及了大量的环境、shell脚本等，用IDE调试非常麻烦，因此学着使用PDB调试，记录分享给大家。</p> <p>pdb调试是为了在远程服务器上，无界面的模式下，进行的。<br /> 由于工业界的正版IDE很贵，当然也可以使用VSCODE进行调试。</p> <blockquote> <p>大佬的话：最好的调试方法是打印.</p> </blockquote> <h3> <a id="_8" rel="nofollow"></a>两种方式调试</h3> <ol> <li>非侵入式方法<br /><code>python3 -m pdb filename.py</code> 如果还有后续的参数，直接加在它后面。</li> </ol> <p>如果是要调试Pytorch的神经网络，如下命令：<br /><code>torchrun -m pdb filename.py</code> : <strong>注意调试的时候使用一个GPU， 一个线程来调试最好。</strong></p> <ol start="2"> <li>侵入式方法（<strong>推荐这个</strong>）<br /> 需要在运行的文件中增加一行<br /><code>import pdb;pdb.set_trace()</code> </li> </ol> <h3> <a id="_19" rel="nofollow"></a>具体操作</h3> <ul> <li> <p>查看源代码：<code>l</code> 查看当前位置前后11行。<br /><code>ll</code>,查看当前函数的所有代码</p> </li> <li> <p>添加断点：</p> </li> </ul> <pre><code>b               # 单独使用可以用来显示目前已经具有的所有断点 b lineno        # 给第几行添加断点 b filename:lineno        # 给某个函数的第几行添加断点 b functionname    # 给某个函数添加断点 </code></pre> <ul> <li>添加临时断点</li> </ul> <pre><code>tbreak tbreak lineno tbreak filename:lineno tbreak functionname </code></pre> <ul> <li>清除断点</li> </ul> <pre><code>cl             						# 清楚所有断点 cl filename:lineno  cl bpnumber [bpnumber ...] </code></pre> <ul> <li>打印变量值</li> </ul> <pre><code>p expression  p param # 如果变量是个复杂的对象，可以先打印查看变量的属性。 p dir(param) # 然后查看变量的某个属性值  p param.xxx　　 </code></pre> <ul> <li>逐行调试命令</li> </ul> <pre><code>s          # 执行下一行，能够进入函数体 n          # 执行下一行，不进入函数体 r          # 执行下一行，如果在函数中，直接运行到函数返回处   c          # 持续执行程序，直到遇到一个断点 unt lineno  # 持续执行直到运行到指定行 j lineno     # 直接跳转到指定行  </code></pre> <ul> <li>查看函数参数</li> </ul> <pre><code>a         # 在函数中时打印函数的参数和参数的值 </code></pre> <ul> <li>打印变量类型</li> </ul> <pre><code>whatis expression             # 打印表达式类型，也可以用来打印变量值 </code></pre> <ul> <li>启动交互式解释器</li> </ul> <pre><code>interact               # 启动一个python的交互式解释器，使用(ctrl + d)返回pdb </code></pre> <ul> <li>打印堆栈信息</li> </ul> <pre><code>w                      # 打印堆栈信息，最新的帧在最底部 </code></pre> <ul> <li>忽略某段代码<br /> 直接跳转到line_number开始</li> </ul> <pre><code>j line_number </code></pre> <ul> <li>退出pdb</li> </ul> <pre><code>q </code></pre> <p>注意，这里的退出pdb是退出了整个debugger系统。<br /> 如果要重新开始下一次调试：(即保留断点设置和debugger设置)</p> <pre><code>restart </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59725.htm">宠物买卖交易内容（宠物买卖交易内容怎么写）</a></p>
+                                        <p>下一个：<a href="/news/article-60298.htm">内江宠物店有狗卖的在哪里（内江宠物店位置）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-50389.htm" title="Spring boot项目打包成jar在linux环境下设置开机自启动">Spring boot项目打包成jar在linux环境下设置开机自启动</a></li>
+                        <li class="py-2"><a href="/news/article-39960.htm" title="C ++中的虚拟基类">C ++中的虚拟基类</a></li>
+                        <li class="py-2"><a href="/news/article-55196.htm" title="【定义+用法+区别+使用场景】escape(),encodeURI(),encodeURIComponent()">【定义+用法+区别+使用场景】escape(),encodeURI(),encodeURIComponent()</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="1月15日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享">1月15日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-60892.htm" title="SQL Server中函数、存储过程与触发器的用法_MsSql">SQL Server中函数、存储过程与触发器的用法_MsSql</a></li>
+                        <li class="py-2"><a href="/news/article-32688.htm" title="长沙宠物领养平台有哪些（长沙市宠物领养）">长沙宠物领养平台有哪些（长沙市宠物领养）</a></li>
+                        <li class="py-2"><a href="/news/article-27018.htm" title="实践搭建Redis一主两从三哨兵">实践搭建Redis一主两从三哨兵</a></li>
+                        <li class="py-2"><a href="/news/article-19647.htm" title="动物疫苗可以快递吗现在能打吗（动物疫苗可以快递吗现在能打吗有毒吗）">动物疫苗可以快递吗现在能打吗（动物疫苗可以快递吗现在能打吗有毒吗）</a></li>
+                        <li class="py-2"><a href="/news/article-23770.htm" title="@Transactional 详解">@Transactional 详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-node-share-links.htm" title="1月22日 | Winxray Github每天更新22.5M/S免费节点订阅地址分享">1月22日 | Winxray Github每天更新22.5M/S免费节点订阅地址分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">69</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
