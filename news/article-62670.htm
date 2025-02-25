@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-62670.htm" />
+    <meta charset="utf-8">
+    <title>C#反射调用dll文件中的方法操作泛型与属性字段_C#教程</title>
+        <meta name="description" content="一、使用方法   查找DLL文件，   通过Reflection反射类库里的各种方法来操作dll文件   二、步骤 加载DLL文件  Assembly assembly1 = Assembly.Loa" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-62670.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="C#反射调用dll文件中的方法操作泛型与属性字段_C#教程" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/86304d802735273fb99a65fc0a250f03.webp" />
+        <meta property="og:release_date" content="2025-02-25T04:59:18" />
+    <meta property="og:updated_time" content="2025-02-25T04:59:18" />
+        <meta property="og:description" content="一、使用方法   查找DLL文件，   通过Reflection反射类库里的各种方法来操作dll文件   二、步骤 加载DLL文件  Assembly assembly1 = Assembly.Loa" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C#反射调用dll文件中的方法操作泛型与属性字段_C#教程">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>C#反射调用dll文件中的方法操作泛型与属性字段_C#教程</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>一、使用方法</h2> <ul> <li> <p>查找DLL文件，</p> </li> <li> <p>通过Reflection反射类库里的各种方法来操作dll文件</p> </li> </ul> <h2>二、步骤</h2> <p>加载DLL文件</p> <div class="ay1code"> <pre class="brush:csharp;">Assembly assembly1 = Assembly.Load("SqlServerDB");//方式一：这个DLL文件要在启动项目下  string filePath = Environment.CurrentDirectory + "";  Assembly assembly2 = Assembly.LoadFile(filePath + @"\SqlServerDB.dll");//方式二：完整路径  Assembly assembly3 = Assembly.LoadFrom(filePath + @"\SqlServerDB.dll");//方式三：完整路径  Assembly assembly4 = Assembly.LoadFrom(@"SqlServerDB.dll");//方式三：完整路径</pre> </div> <p>获取指定类型</p> <div class="ay1code"> <pre class="brush:csharp;">foreach (var item in assembly4.GetTypes())//查找所有的类型,就是有多少个类  {      Console.WriteLine(item.Name);  }</pre> </div> <p>获取构造函数</p> <div class="ay1code"> <pre class="brush:csharp;">Type type = assembly4.GetType("SqlServerDB.ReflectionTest");//在ReflectionTest类中调用  foreach (var ctor in type.GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))  {      Console.WriteLine($"构造方法：{ctor.Name}");      foreach (var param in ctor.GetParameters())      {          Console.WriteLine($"构造方法的参数：{param.ParameterType}");      }  }  //【3】实例化  //ReflectionTest reflectionTest = new ReflectionTest();//这种实例化是知道具体类型--静态    //object objTest = Activator.CreateInstance(type);//动态实例化--调用我们的构造方法  object objTest1 = Activator.CreateInstance(type, new object[] { "string" });//动态实例化--调用我们的有参数构造方法    //调用私有构造函数  //ReflectionTest reflectionTest = new ReflectionTest();  //普通调用  object objTest2 = Activator.CreateInstance(type, true);</pre> </div> <p>调用非构造方法</p> <div class="ay1code"> <pre class="brush:csharp;">object objTest2 = Activator.CreateInstance(type, true);  //调用普通方法  ReflectionTest reflectionTest = objTest2 as ReflectionTest;//as转换的好处，它不报错，类型不对的话就返回null  reflectionTest.Show1();    //调用私有方法  var method = type.GetMethod("Show2", BindingFlags.Instance | BindingFlags.NonPublic);  method.Invoke(objTest2, new object[] { });</pre> </div> <p>调用泛型方法</p> <div class="ay1code"> <pre class="brush:csharp;">//泛型无参数  var method3 = type.GetMethod("Show3");//查找指定方法  var genericMethod = method3.MakeGenericMethod(new Type[] { typeof(int) });//指定泛型参数类型T  genericMethod.Invoke(objTest2, new object[] { });    //泛型有参数  var method4 = type.GetMethod("Show4");//查找指定方法  var genericMethod4 = method4.MakeGenericMethod(new Type[] { typeof(string) });//指定泛型参数类型T  genericMethod4.Invoke(objTest2, new object[] { 123, "泛型string参数" });</pre> </div> <p>反射测试类</p> <blockquote> <p>位于SqlServerDB.dll中的ReflectionTest.cs文件中</p> </blockquote> <div class="ay1code"> <pre class="brush:csharp;">    /// &lt;summary&gt;      /// 反射测试类      /// &lt;/summary&gt;     public class ReflectionTest      {          //私有构造函数          private ReflectionTest()          {              Console.WriteLine("这是私有无参数构造方法");          }            //普通构造函数          //public ReflectionTest()          //{          //    Console.WriteLine("这是无参数构造方法");          //}            public ReflectionTest(string name)          {              Console.WriteLine($"这是有参数构造方法+参数值是：{name}");          }            public void Show1()          {              Console.WriteLine("调用普通方法", this.GetType());          }            private void Show2()          {              Console.WriteLine("调用私有方法",this.GetType());          }              public void Show3&lt;T&gt;()          {              Console.WriteLine("调用无参数泛型方法", this.GetType());          }            public void Show4&lt;T&gt;(int id,string name)          {              Console.WriteLine($"调用有参数泛型方法，参数是{id}，{name}", this.GetType());          }      }</pre> </div> <h2>操作泛型类和泛型方法</h2> <p>加载DLL文件</p> <div class="ay1code"> <pre class="brush:csharp;">Assembly assembly = Assembly.LoadFrom(@"SqlServerDB.dll");</pre> </div> <p>获取指定类型</p> <div class="ay1code"> <pre class="brush:csharp;">Type type = assembly.GetType("SqlServerDB.GenericClass`2").MakeGenericType(typeof(int), typeof(string));//一定给定具体类型参数</pre> </div> <p>调用泛型方法</p> <div class="ay1code"> <pre class="brush:csharp;">object objTest2 = Activator.CreateInstance(type);  var method = type.GetMethod("GenericMethod").MakeGenericMethod(typeof(int));  method.Invoke(objTest2, new object[] { });</pre> </div> <p>反射测试类</p> <blockquote> <p>位于SqlServerDB.dll中的GenericClass.cs文件中</p> </blockquote> <div class="ay1code"> <pre class="brush:csharp;">public class GenericClass&lt;T,W&gt;  {      public void GenericMethod&lt;TType&gt;()      {          Console.WriteLine("泛型类调用+泛型方法");      }  }</pre> </div> <h2>操作类属性字段</h2> <p>加载DLL文件</p> <div class="ay1code"> <pre class="brush:csharp;">Assembly assembly2 = Assembly.LoadFrom("SqlServerDB.dll");</pre> </div> <p>获取指定类型</p> <div class="ay1code"> <pre class="brush:csharp;">Type type2 = assembly2.GetType("SqlServerDB.PropertyClass");</pre> </div> <p>调用泛型方法</p> <div class="ay1code"> <pre class="brush:csharp;">object obj = Activator.CreateInstance(type2);  foreach (var property in type2.GetProperties())  {      Console.WriteLine(property.Name);      //给属性设置值      if (property.Name.Equals("Id"))      {          property.SetValue(obj, 1);      }      else if (property.Name.Equals("Name"))      {          property.SetValue(obj, "学习编程");      }      else if (property.Name.Equals("Phone"))      {          property.SetValue(obj, "123459789");      }      //获取属性值      Console.WriteLine(property.GetValue(obj));  }  </pre> </div> <p>反射测试类</p> <blockquote> <p>位于SqlServerDB.dll中的PropertyClass.cs文件中</p> </blockquote> <div class="ay1code"> <pre class="brush:csharp;">public class PropertyClass  {      public int Id { get; set; }      public string Name { get; set; }      public string Phone { get; set; }  }</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-62669.htm">TypeError: Cannot read property &#8216;xxxx&#8217; of undefined的解决方法</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-55197.htm" title="ruby 版本管理RVM （ruby version manager）">ruby 版本管理RVM （ruby version manager）</a></li>
+                        <li class="py-2"><a href="/news/article-19188.htm" title="vue+Echarts绘制动态折线图">vue+Echarts绘制动态折线图</a></li>
+                        <li class="py-2"><a href="/news/article-51962.htm" title="泰安泰宠宠物食品有限公司待遇怎么样（泰安泰宠宠物食品有限公司待遇怎么样啊）">泰安泰宠宠物食品有限公司待遇怎么样（泰安泰宠宠物食品有限公司待遇怎么样啊）</a></li>
+                        <li class="py-2"><a href="/news/article-56308.htm" title="领养宠物狗的流程视频（领养宠物狗的流程视频播放）">领养宠物狗的流程视频（领养宠物狗的流程视频播放）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-node-share-links.htm" title="1月22日 | Winxray Github每天更新22.5M/S免费节点订阅地址分享">1月22日 | Winxray Github每天更新22.5M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-25-winxray-node-share.htm" title="11月25日 | Winxray Github每天更新23M/S免费节点订阅链接">11月25日 | Winxray Github每天更新23M/S免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-43420.htm" title="netty依赖精简">netty依赖精简</a></li>
+                        <li class="py-2"><a href="/news/article-35540.htm" title="golang 的panic、defer、recover和error应用方式">golang 的panic、defer、recover和error应用方式</a></li>
+                        <li class="py-2"><a href="/news/article-20099.htm" title="Python——Fibonacci斐波那契数列的函数fib(n) 输出前20项（每项宽度5字符位置，右对齐），每行输出10个 递归和非递归实现">Python——Fibonacci斐波那契数列的函数fib(n) 输出前20项（每项宽度5字符位置，右对齐），每行输出10个 递归和非递归实现</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-free-subscribe-node.htm" title="12月18日 | Winxray Github每天更新19.5M/S免费节点订阅链接">12月18日 | Winxray Github每天更新19.5M/S免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
