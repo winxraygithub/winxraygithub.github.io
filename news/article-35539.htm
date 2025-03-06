@@ -82,19 +82,18 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-6 col-md-3 col-xl-4  d-block">
-                                                <a href="/" class="text-black h2 mb-0">Winxray<span class="text-primary">github</span></a>
-                                            </div>
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
                     <div class="col-12 col-md-9 col-xl-8 main-menu">
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
                                                                 <li><a href="/" class="nav-link">首页</a></li>
                                                                 <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
                                                                 <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
                                                                 <li><a href="/news/" class="nav-link">新闻资讯</a></li>
-                                                                
-                                <li><a href="#" class="nav-link">关于</a></li>
-                                <li><a href="#" class="nav-link">联系</a></li>
-                            </ul>
+                                                            </ul>
                         </nav>
                     </div>
                     <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
@@ -126,7 +125,6 @@
                                         <input type="hidden" id="share-website-info" data-name="" data-url="">
                   				  				  				<div id="content_views" class="htmledit_views"> <p>示例代码</p> <pre><code class="language-java">public class ThreadProperty {  	public static void main(String[] args) { 		TestThread testThread = new TestThread(); 		for (int i = 0; i &lt; 5; i++) { 			Thread t = new Thread(testThread, "name" + (i + 1)); 			t.setPriority(10 - i); 			if (i == 1) 				t.setDaemon(true); 			t.start(); 		}  		Thread main = Thread.currentThread(); 		String threadName = main.getName(); 		System.out.println("这是主线程" + threadName); 		System.out.println("返回当前线程" + threadName + "的线程组中活动线程的数目" + Thread.activeCount()); 		System.out.println("返回当前线程" + threadName + "标识符" + main.getId()); 		System.out.println("返回当前线程" + threadName + "优先级" + main.getPriority()); 		System.out.println("返回当前线程" + threadName + "状态" + main.getState()); 		System.out.println("返回当前线程" + threadName + "所属的线程组" + main.getThreadGroup()); 		System.out.println("返回当前线程" + threadName + "是否处于活动状态" + main.isAlive()); 		System.out.println("返回当前线程" + threadName + "是否为守护线程" + main.isDaemon()); 		System.out.println("返回当前线程" + threadName + "是否中断" + main.isInterrupted()); 		try { 			Thread.sleep(5000); 		} catch (InterruptedException e) { 			e.printStackTrace(); 		} 		System.out.println("主线程结束了"); 	} }  class TestThread implements Runnable {  	@Override 	public void run() { 		try { 			Thread.sleep(10000); 		} catch (Exception e) { 		} 		Thread thread = Thread.currentThread(); 		String threadName = thread.getName(); 		System.out.println("这是线程名称" + threadName); 		System.out.println("返回当前线程" + threadName + "的线程组中活动线程的数目" + Thread.activeCount()); 		System.out.println("返回当前线程" + threadName + "标识符" + thread.getId()); 		System.out.println("返回当前线程" + threadName + "优先级" + thread.getPriority()); 		System.out.println("返回当前线程" + threadName + "状态" + thread.getState()); 		System.out.println("返回当前线程" + threadName + "所属的线程组" + thread.getThreadGroup()); 		System.out.println("返回当前线程" + threadName + "是否处于活动状态" + thread.isAlive()); 		System.out.println("返回当前线程" + threadName + "是否为守护线程" + thread.isDaemon()); 		System.out.println("返回当前线程" + threadName + "是否中断" + thread.isInterrupted()); 	} }</code></pre> <p>运行结果 </p> <p>这是主线程main<br /> 返回当前线程main的线程组中活动线程的数目6<br /> 返回当前线程main标识符1<br /> 返回当前线程main优先级5<br /> 返回当前线程main状态RUNNABLE<br /> 返回当前线程main所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程main是否处于活动状态true<br /> 返回当前线程main是否为守护线程false<br /> 返回当前线程main是否中断false<br /> 主线程结束了<br /> 这是线程名称name2<br /> 这是线程名称name4<br /> 这是线程名称name1<br /> 这是线程名称name3<br /> 返回当前线程name2的线程组中活动线程的数目6<br /> 返回当前线程name3的线程组中活动线程的数目6<br /> 返回当前线程name3标识符12<br /> 返回当前线程name3优先级8<br /> 返回当前线程name3状态RUNNABLE<br /> 返回当前线程name3所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name3是否处于活动状态true<br /> 返回当前线程name3是否为守护线程false<br /> 返回当前线程name3是否中断false<br /> 这是线程名称name5<br /> 返回当前线程name4的线程组中活动线程的数目6<br /> 返回当前线程name1的线程组中活动线程的数目6<br /> 返回当前线程name2标识符11<br /> 返回当前线程name4标识符13<br /> 返回当前线程name1标识符10<br /> 返回当前线程name2优先级9<br /> 返回当前线程name5的线程组中活动线程的数目5<br /> 返回当前线程name1优先级10<br /> 返回当前线程name1状态RUNNABLE<br /> 返回当前线程name1所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name1是否处于活动状态true<br /> 返回当前线程name1是否为守护线程false<br /> 返回当前线程name1是否中断false<br /> 返回当前线程name4优先级7<br /> 返回当前线程name4状态RUNNABLE<br /> 返回当前线程name4所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name4是否处于活动状态true<br /> 返回当前线程name4是否为守护线程false<br /> 返回当前线程name4是否中断false<br /> 返回当前线程name2状态RUNNABLE<br /> 返回当前线程name2所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name2是否处于活动状态true<br /> 返回当前线程name2是否为守护线程true<br /> 返回当前线程name2是否中断false<br /> 返回当前线程name5标识符14<br /> 返回当前线程name5优先级6<br /> 返回当前线程name5状态RUNNABLE<br /> 返回当前线程name5所属的线程组java.lang.ThreadGroup[name=main,maxpri=10]<br /> 返回当前线程name5是否处于活动状态true<br /> 返回当前线程name5是否为守护线程false<br /> 返回当前线程name5是否中断false</p> </p></div> 			                <div class="clearfix"></div>
                 <div class="col-md-12 mt-5">
-                                        <p>上一个：<a href="/news/article-35033.htm">动物防疫法对人和动物危害严重（动物防疫法法律责任）</a></p>
                                         <p>下一个：<a href="/news/article-35540.htm">golang 的panic、defer、recover和error应用方式</a></p>
                                     </div>
                                     </div>
@@ -137,16 +135,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-18775.htm" title="成都宠物领养中心地址电话是多少（成都宠物领养中心地址电话是多少号码）">成都宠物领养中心地址电话是多少（成都宠物领养中心地址电话是多少号码）</a></li>
-                        <li class="py-2"><a href="/news/article-28413.htm" title="哪种HTML5标签更适合表示金额">哪种HTML5标签更适合表示金额</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-26-winxray-github.htm" title="1月26日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享">1月26日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-13-latest-winxray-node.htm" title="12月13日 | Winxray Github每天更新22.2M/S免费节点订阅链接">12月13日 | Winxray Github每天更新22.2M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-39445.htm" title="动物疫苗在哪里买的到正规的（动物疫苗在哪打）">动物疫苗在哪里买的到正规的（动物疫苗在哪打）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-4-winxray-github.htm" title="12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接">12月4日 | Winxray Github每天更新21.6M/S免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-21-winxray-node-share.htm" title="12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">12月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
-                        <li class="py-2"><a href="/news/article-42424.htm" title="上海免费领养猫猫的地方（上海领养猫咪的地方）">上海免费领养猫猫的地方（上海领养猫咪的地方）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-node-subscribe.htm" title="1月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享">1月21日 | Winxray Github每天更新20M/S免费节点订阅地址分享</a></li>
-                        <li class="py-2"><a href="/news/article-41944.htm" title="动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）">动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）</a></li>
+                        <li class="py-2"><a href="/news/article-62669.htm" title="TypeError: Cannot read property &#8216;xxxx&#8217; of undefined的解决方法">TypeError: Cannot read property &#8216;xxxx&#8217; of undefined的解决方法</a></li>
+                        <li class="py-2"><a href="/news/article-52494.htm" title="动物疫苗可以带上高铁吗北京（动物疫苗能放冰箱吗）">动物疫苗可以带上高铁吗北京（动物疫苗能放冰箱吗）</a></li>
+                        <li class="py-2"><a href="/news/article-36506.htm" title="动物疫苗接种方法有哪些种类的 动物疫苗接种方法有哪些种类的图片">动物疫苗接种方法有哪些种类的 动物疫苗接种方法有哪些种类的图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-high-speed-nodes.htm" title="3月2日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享">3月2日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45407.htm" title="宠物医院手续（宠物医院办理流程）">宠物医院手续（宠物医院办理流程）</a></li>
+                        <li class="py-2"><a href="/news/article-48302.htm" title="成人想学兽医还能学吗（成人想学兽医怎么开始）">成人想学兽医还能学吗（成人想学兽医怎么开始）</a></li>
+                        <li class="py-2"><a href="/news/article-43421.htm" title="三国杀武将技能特效大全（三国杀武将技能特效大全图）">三国杀武将技能特效大全（三国杀武将技能特效大全图）</a></li>
+                        <li class="py-2"><a href="/news/article-36991.htm" title="宠物美容好学吗学多久才会（宠物美容好学吗学多久才会学）">宠物美容好学吗学多久才会（宠物美容好学吗学多久才会学）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-high-speed-nodes.htm" title="2月13日 | Winxray Github每天更新19.5M/S免费节点订阅地址分享">2月13日 | Winxray Github每天更新19.5M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-40954.htm" title="宠物医院心得体会（宠物医院心得体会怎么写）">宠物医院心得体会（宠物医院心得体会怎么写）</a></li>
                     </ul>
     </div>
 </div>
@@ -158,16 +156,13 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                     </ul>
     </div>

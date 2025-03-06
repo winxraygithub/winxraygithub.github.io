@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-68256.htm" />
+    <meta charset="utf-8">
+    <title>springboot整合Dubbo与Feign的实现 (无注册中心)_java</title>
+        <meta name="description" content="1.1.1 核心依赖  1.1.2 核心配置  1.1.3 服务提供者代码结构  1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）  1.1.5 服务提供者端的对象（Us" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-68256.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="springboot整合Dubbo与Feign的实现 (无注册中心)_java" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/209c919131d4150a1ab038db875ad717.webp" />
+        <meta property="og:release_date" content="2025-03-06T11:01:32" />
+    <meta property="og:updated_time" content="2025-03-06T11:01:32" />
+        <meta property="og:description" content="1.1.1 核心依赖  1.1.2 核心配置  1.1.3 服务提供者代码结构  1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）  1.1.5 服务提供者端的对象（Us" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="springboot整合Dubbo与Feign的实现 (无注册中心)_java">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>springboot整合Dubbo与Feign的实现 (无注册中心)_java</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="1.1.1 核心依赖">1.1.1 核心依赖</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="1.1.2 核心配置">1.1.2 核心配置</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="1.1.3 服务提供者代码结构">1.1.3 服务提供者代码结构</a></li> <li><i class="be be-arrowright"></i> <a href="#title-3" title="1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）">1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）</a></li> <li><i class="be be-arrowright"></i> <a href="#title-4" title="1.1.5 服务提供者端的对象（User）">1.1.5 服务提供者端的对象（User）</a></li> <li><i class="be be-arrowright"></i> <a href="#title-5" title="1.2.1 核心依赖">1.2.1 核心依赖</a></li> <li><i class="be be-arrowright"></i> <a href="#title-6" title="1.2.2 核心配置">1.2.2 核心配置</a></li> <li><i class="be be-arrowright"></i> <a href="#title-7" title="1.2.3 服务消费者代码结构">1.2.3 服务消费者代码结构</a></li> <li><i class="be be-arrowright"></i> <a href="#title-8" title="1.2.4 服务消费者调用服务提供者">1.2.4 服务消费者调用服务提供者</a></li> <li><i class="be be-arrowright"></i> <a href="#title-9" title="1.3.1 消费者入口（测试是否导通）">1.3.1 消费者入口（测试是否导通）</a></li> <li><i class="be be-arrowright"></i> <a href="#title-10" title="1.3.2 消费者入口（测试携带参数与返回值）">1.3.2 消费者入口（测试携带参数与返回值）</a></li> <li><i class="be be-arrowright"></i> <a href="#title-11" title="2.1.1 服务提供者基础配置 ">2.1.1 服务提供者基础配置 </a></li> <li><i class="be be-arrowright"></i> <a href="#title-12" title="2.1.2 服务提供者代码结构 ">2.1.2 服务提供者代码结构 </a></li> <li><i class="be be-arrowright"></i> <a href="#title-13" title="2.2.1 服务消费者代码结构">2.2.1 服务消费者代码结构</a></li> <li><i class="be be-arrowright"></i> <a href="#title-14" title="2.2.2 核心依赖">2.2.2 核心依赖</a></li> <li><i class="be be-arrowright"></i> <a href="#title-15" title="2.2.3 核心配置">2.2.3 核心配置</a></li> <li><i class="be be-arrowright"></i> <a href="#title-16" title="2.2.4 启动类注解 ">2.2.4 启动类注解 </a></li> <li><i class="be be-arrowright"></i> <a href="#title-17" title="2.2.5 在消费者端中声明提供者端的API">2.2.5 在消费者端中声明提供者端的API</a></li> <li><i class="be be-arrowright"></i> <a href="#title-18" title="2.2.6 在消费者端中调用提供者端的API">2.2.6 在消费者端中调用提供者端的API</a></li> <li><i class="be be-arrowright"></i> <a href="#title-19" title="2.3.1 测试是否导通">2.3.1 测试是否导通</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">一，SpringBoot 整合 Dubbo</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">1.1 服务提供者</a></li> <ul class="third_class_ul"> <li><a href="#_label3_0_0_0" rel="nofollow">1.1.1 核心依赖</a></li> <li><a href="#_label3_0_0_1" rel="nofollow">1.1.2 核心配置</a></li> <li><a href="#_label3_0_0_2" rel="nofollow">1.1.3 服务提供者代码结构</a></li> <li><a href="#_label3_0_0_3" rel="nofollow">1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）</a></li> <li><a href="#_label3_0_0_4" rel="nofollow">1.1.5 服务提供者端的对象（User）</a></li> </ul> <li><a href="#_lab2_0_1" rel="nofollow">1.2 服务消费者</a></li> <ul class="third_class_ul"> <li><a href="#_label3_0_1_5" rel="nofollow">1.2.1 核心依赖</a></li> <li><a href="#_label3_0_1_6" rel="nofollow">1.2.2 核心配置</a></li> <li><a href="#_label3_0_1_7" rel="nofollow">1.2.3 服务消费者代码结构</a></li> <li><a href="#_label3_0_1_8" rel="nofollow">1.2.4 服务消费者调用服务提供者</a></li> </ul> <li><a href="#_lab2_0_2" rel="nofollow">1.3 调用示例</a></li> <ul class="third_class_ul"> <li><a href="#_label3_0_2_9" rel="nofollow">1.3.1 消费者入口（测试是否导通）</a></li> <li><a href="#_label3_0_2_10" rel="nofollow">1.3.2 消费者入口（测试携带参数与返回值）</a></li> </ul> <li><a href="#_lab2_0_3" rel="nofollow">1.4 小结</a></li> <ul class="third_class_ul"></ul> </ul> <li><a href="#_label1" rel="nofollow">二, SpringBoot 整合 Feign</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_4" rel="nofollow">2.1 服务提供者</a></li> <ul class="third_class_ul"> <li><a href="#_label3_1_4_11" rel="nofollow">2.1.1 服务提供者基础配置 </a></li> <li><a href="#_label3_1_4_12" rel="nofollow">2.1.2 服务提供者代码结构 </a></li> </ul> <li><a href="#_lab2_1_5" rel="nofollow">2.2 服务消费者</a></li> <ul class="third_class_ul"> <li><a href="#_label3_1_5_13" rel="nofollow">2.2.1 服务消费者代码结构</a></li> <li><a href="#_label3_1_5_14" rel="nofollow">2.2.2 核心依赖</a></li> <li><a href="#_label3_1_5_15" rel="nofollow">2.2.3 核心配置</a></li> <li><a href="#_label3_1_5_16" rel="nofollow">2.2.4 启动类注解 </a></li> <li><a href="#_label3_1_5_17" rel="nofollow">2.2.5 在消费者端中声明提供者端的API</a></li> <li><a href="#_label3_1_5_18" rel="nofollow">2.2.6 在消费者端中调用提供者端的API</a></li> </ul> <li><a href="#_lab2_1_6" rel="nofollow">2.3 调用示例</a></li> <ul class="third_class_ul"> <li><a href="#_label3_1_6_19" rel="nofollow">2.3.1 测试是否导通</a></li> </ul> <li><a href="#_lab2_1_7" rel="nofollow">2.4 小结</a></li> <ul class="third_class_ul"></ul> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>一，SpringBoot 整合 Dubbo</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>1.1 服务提供者</h3> <p class="maodian"><a name="_label3_0_0_0" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-0">1.1.1 核心依赖</h4> <div class="ay1code"> <pre class="brush:xml;">&lt;!-- dubbo依赖 --&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;              &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;              &lt;version&gt;3.0.5&lt;/version&gt;          &lt;/dependency&gt;</pre> </div> <p class="maodian"><a name="_label3_0_0_1" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-1">1.1.2 核心配置</h4> <div class="ay1code"> <pre class="brush:plain;">server:    port: 8081  spring:    application:      name: provide-api     dubbo:    registry:      address: N/A # 表示无注册中心    protocol:      name: dubbo # 提供者协议      port: 18081 # 提供者dubbo端口      host: 127.0.0.1 # 服务提供者所在机器地址    scan:      base-packages: com.paycools.service # 提供者需要交由dubbo管理的扫描包路径    application:      name: provide-server # 提供者服务名   </pre> </div> <p class="maodian"><a name="_label3_0_0_2" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-2">1.1.3 服务提供者代码结构</h4> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/1eb6f68082c7b93b6e1053982608fcbe.jpg"></p> <p class="maodian"><a name="_label3_0_0_3" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-3">1.1.4 服务提供者暴露的API（DubboDemoServiceImpl）</h4> <div class="ay1code"> <pre class="brush:java;">package com.jxz.service.impl;     import com.jxz.service.IDubboDemoService;  import com.jxz.service.vo.User;  import lombok.extern.slf4j.Slf4j;  import org.apache.dubbo.config.annotation.DubboService;  import org.springframework.stereotype.Service;     import java.util.ArrayList;  import java.util.List;     /**   * @author jiangXueZhi   * @data 2022/4/1   */  @Service // spring 的注解  @DubboService // dubbo 提供者的注解  @Slf4j  public class DubboDemoServiceImpl implements IDubboDemoService {      /**       * 用于测试 dubbo 的rpc 远程过程调用是否成功       */      @Override      public String dubboTest() {          log.info("###########  服务提供者成功提供API响应");          return "服务提供者成功提供API响应";      }         /**       * 用于测试 dubbo 的rpc 远程过程调用携带参数与返回值是否正常       */      @Override      public List&lt;User&gt; dubboVoTest(Integer aa) {          if (aa == 1) {              List&lt;User&gt; list = new ArrayList&lt;&gt;(3);              list.add(new User().setName("张三").setAge(18));              list.add(new User().setName("李四").setAge(5));              log.info("###########  服务提供者成功提供API响应,参数为{}, 返回值为{}", aa, list);              return list;          }          log.info("###########  服务提供者成功提供API响应,参数为{}, 返回值为{}", aa, null);          return null;      }  }</pre> </div> <p class="maodian"><a name="_label3_0_0_4" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-4">1.1.5 服务提供者端的对象（User）</h4> <p><strong>一定要实现序列化！！！</strong></p> <div class="ay1code"> <pre class="brush:java;">package com.jxz.service.vo;     import lombok.Data;  import lombok.experimental.Accessors;     import java.io.Serializable;     /**   * @author jiangXueZhi   * @data 2022/4/2   */  @Data  @Accessors(chain = true)  public class User implements Serializable { // 一定要序列化，因为dubbo传输数据以二进制的方式      private String name;      private int age;  }</pre> </div> <p class="maodian"><a name="_lab2_0_1" rel="nofollow"></a></p> <h3>1.2 服务消费者</h3> <p class="maodian"><a name="_label3_0_1_5" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-5">1.2.1 核心依赖</h4> <p>与提供者端一样</p> <div class="ay1code"> <pre class="brush:xml;">&lt;!-- dubbo依赖 --&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;              &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;              &lt;version&gt;3.0.5&lt;/version&gt;          &lt;/dependency&gt;</pre> </div> <p class="maodian"><a name="_label3_0_1_6" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-6">1.2.2 核心配置</h4> <div class="ay1code"> <pre class="brush:plain;">server:    port: 8082  spring:    application:      name: consumer-api     dubbo:    registry:      address: N/A # 表示无注册中心    #scan: # 作为提供者时使用      #base-packages: com.paycools.service # 扫描包的路径    protocol:      name: dubbo      port: 18082      host: 127.0.0.1    application:      name: consumer-server     # 自定义配置--因无注册中心，则需指定服务提供者地址  provide:    host: "dubbo://127.0.0.1:18081"      </pre> </div> <p class="maodian"><a name="_label3_0_1_7" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-7">1.2.3 服务消费者代码结构</h4> <p><strong>注意，本文中的 UserDemo 完全可以不需要，</strong></p> <p><strong>可以直接在Controller中注入 IDubboDemoService</strong></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/69c2db0d6ca07dfadb94194bf766840d.jpg"></p> <p class="maodian"><a name="_label3_0_1_8" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-8">1.2.4 服务消费者调用服务提供者</h4> <p>controller</p> <div class="ay1code"> <pre class="brush:java;">package com.jxz.controller;     import com.jxz.service.UserDemo;  import org.springframework.web.bind.annotation.PathVariable;  import org.springframework.web.bind.annotation.RequestMapping;  import org.springframework.web.bind.annotation.RequestMethod;  import org.springframework.web.bind.annotation.RestController;     import javax.annotation.Resource;     /**   * @author jiangXueZhi   * @data 2022/4/1   */  @RequestMapping("/api")  @RestController  public class DemoTestController {      @Resource      private UserDemo userDemo;         @RequestMapping(value = "/demoTest", method = RequestMethod.GET)      public String demoTest() {          return userDemo.demoTest();      }         @RequestMapping(value = "/demoVoTest/{aa}", method = RequestMethod.GET)      public String demoVoTest(@PathVariable("aa") Integer aa) {          return userDemo.demoVoTest(aa);      }  }</pre> </div> <p>userDemo（可省去此类，而直接调用提供者API）</p> <div class="ay1code"> <pre class="brush:java;">package com.jxz.service;     import org.apache.dubbo.config.annotation.DubboReference;  import org.springframework.stereotype.Service;     /**   * @author jiangXueZhi   * @data 2022/4/1   */  @Service  public class UserDemo {         @DubboReference(check = false, url = "${provide.host}") // 无注册中心时的参数配置      IDubboDemoService iDubboDemoService;         public String demoTest() {          return "###  服务消费者成功拿到提供者的API响应：" + iDubboDemoService.dubboTest();      }         public String demoVoTest(Integer aa) {          return "### &lt;带参数以及对象返回值&gt; 服务消费者成功拿到提供者的API响应：" + iDubboDemoService.dubboVoTest(aa);      }  }</pre> </div> <p>IDubboDemoService<strong> </strong></p> <p><strong>包的路径与名称必须与服务提供者端的保持一致！！！并且无需实现</strong></p> <div class="ay1code"> <pre class="brush:java;">package com.jxz.service;     import com.paycools.service.pojo.User;     import java.util.List;     public interface IDubboDemoService {      String dubboTest();         List&lt;User&gt; dubboVoTest(Integer aa);  }</pre> </div> <p>User</p> <div class="ay1code"> <pre class="brush:java;">package com.jxz.service.pojo;     import lombok.Data;     import java.io.Serializable;     /**   * @author jiangXueZhi   * @data 2022/4/2   */  @Data  public class User implements Serializable { // 必须实现序列化      private String name;      private int age;  }</pre> </div> <p class="maodian"><a name="_lab2_0_2" rel="nofollow"></a></p> <h3>1.3 调用示例</h3> <p class="maodian"><a name="_label3_0_2_9" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-9">1.3.1 消费者入口（测试是否导通）</h4> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/0f196c8ffe28afbed2ac2797d3a06142.jpg"></p> <p>1.3.1.1 服务提供者端日志打印</p> <blockquote> <p>2022-04-06 11:27:03.047  INFO 12284 --- [:18081-thread-6] c.p.service.impl.DubboDemoServiceImpl    : ###########  服务提供者成功提供API响应</p> </blockquote> <p class="maodian"><a name="_label3_0_2_10" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-10">1.3.2 消费者入口（测试携带参数与返回值）</h4> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/2f934deb9056a5bbb9cd3c5004428f2b.jpg"></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/98fb08629cfdf6ab23fa3b425bb49d8a.jpg"></p> <p>1.3.2.1 服务提供者端日志打印</p> <blockquote> <p>2022-04-06 11:30:46.489  INFO 12284 --- [:18081-thread-9] c.p.service.impl.DubboDemoServiceImpl    : ###########  服务提供者成功提供API响应,参数为0, 返回值为null</p> <p>2022-04-06 11:30:58.910  INFO 12284 --- [18081-thread-10] c.p.service.impl.DubboDemoServiceImpl    : ###########  服务提供者成功提供API响应,参数为1, 返回值为[User(name=张三, age=18), User(name=李四, age=5)]</p> </blockquote> <p class="maodian"><a name="_lab2_0_3" rel="nofollow"></a></p> <h3>1.4 小结</h3> <blockquote> <p>a.  dubbo 服务提供者暴露的API，在服务消费者中必须保持包名与文件名一致</p> <p>b.  dubbo 服务消费者在注入API时，要用到  @DubboReference 注解</p> <p>c.  dubbo 基于TCP传输协议，其对象都必须实现序列化</p> </blockquote> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>二, SpringBoot 整合 Feign</h2> <p class="maodian"><a name="_lab2_1_4" rel="nofollow"></a></p> <h3>2.1 服务提供者</h3> <p><strong>使用feign 的方式时，服务提供者无需任何特殊处理，仅正常启动程序即可</strong></p> <p class="maodian"><a name="_label3_1_4_11" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-11">2.1.1 服务提供者基础配置 </h4> <div class="ay1code"> <pre class="brush:plain;">server:    port: 8083     spring:    application:      name: provide-server    profiles:      active: dev   </pre> </div> <p class="maodian"><a name="_label3_1_4_12" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-12">2.1.2 服务提供者代码结构 </h4> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/85d46bc6e053124b8d5eaaf351b61033.jpg"></p> <p class="maodian"><a name="_lab2_1_5" rel="nofollow"></a></p> <h3>2.2 服务消费者</h3> <p class="maodian"><a name="_label3_1_5_13" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-13">2.2.1 服务消费者代码结构</h4> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/e9f912be1aa07193e2794f976e2bbdaf.jpg"></p> <p class="maodian"><a name="_label3_1_5_14" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-14">2.2.2 核心依赖</h4> <div class="ay1code"> <pre class="brush:xml;">&lt;!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign --&gt;          &lt;dependency&gt;              &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;              &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;              &lt;version&gt;3.1.1&lt;/version&gt;          &lt;/dependency&gt;</pre> </div> <p class="maodian"><a name="_label3_1_5_15" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-15">2.2.3 核心配置</h4> <div class="ay1code"> <pre class="brush:plain;">server:    port: 8084  spring:    application:      name: consumer-server        # 自定义配置，因无注册中心，需直接指定服务提供者  provider:    application-name: provide-server    host: http://127.0.0.1:8083</pre> </div> <p class="maodian"><a name="_label3_1_5_16" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-16">2.2.4 启动类注解 </h4> <div class="ay1code"> <pre class="brush:java;">package com.jxz;     import org.springframework.boot.SpringApplication;  import org.springframework.boot.autoconfigure.SpringBootApplication;  import org.springframework.cloud.openfeign.EnableFeignClients;     @SpringBootApplication  @EnableFeignClients  public class FeignConsumerDemoApplication {         public static void main(String[] args) {          SpringApplication.run(FeignConsumerDemoApplication.class, args);          System.out.println("服务消费者启动成功...");      }     }</pre> </div> <p class="maodian"><a name="_label3_1_5_17" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-17">2.2.5 在消费者端中声明提供者端的API</h4> <div class="ay1code"> <pre class="brush:java;">package com.paycools.service;     import com.paycools.pojo.User;  import org.springframework.cloud.openfeign.FeignClient;  import org.springframework.web.bind.annotation.PathVariable;  import org.springframework.web.bind.annotation.RequestMapping;     import java.util.List;     @FeignClient(value = "${provider.application-name}", url = "${provider.host}") // 因无注册中心，需直接指定其url  public interface IProvideService {         @RequestMapping("/api/provide/getProvideResponse")      String getProvideResponse();         @RequestMapping("/api/provide/getProvideVoResponse/{id}")      List&lt;User&gt; getProvideVoResponse(@PathVariable("id") Integer id);  }</pre> </div> <p class="maodian"><a name="_label3_1_5_18" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-18">2.2.6 在消费者端中调用提供者端的API</h4> <div class="ay1code"> <pre class="brush:java;">package com.jxz.controller;     import com.jxz.service.IProvideService;  import lombok.extern.slf4j.Slf4j;  import org.springframework.web.bind.annotation.PathVariable;  import org.springframework.web.bind.annotation.RequestMapping;  import org.springframework.web.bind.annotation.RequestMethod;  import org.springframework.web.bind.annotation.RestController;     import javax.annotation.Resource;     /**   * @author jiangXueZhi   * @data 2022/4/2   */  @RestController  @RequestMapping("/api/consumer")  @Slf4j  public class ConsumerDemoController {         @Resource      private IProvideService iProvideService;         @RequestMapping("/getProvideResponse")      public String getProvideResponse() {          log.info("服务消费者，成功调用服务提供者API");          return "服务消费者端，" + iProvideService.getProvideResponse();      }         @RequestMapping(value = "/getProvideVoResponse/{id}", method = RequestMethod.GET)      public String getProvideVoResponse(@PathVariable("id") Integer id) {          log.info("服务消费者，成功调用服务提供者API");          return "服务消费者端，" + iProvideService.getProvideVoResponse(id);      }  }</pre> </div> <p class="maodian"><a name="_lab2_1_6" rel="nofollow"></a></p> <h3>2.3 调用示例</h3> <p class="maodian"><a name="_label3_1_6_19" rel="nofollow"></a></p> <span class="directory"></span><h4 id="title-19">2.3.1 测试是否导通</h4> <p style="text-align:center"><img decoding="async" alt="" height="294" src="http://img.555519.xyz/uploads3/20220424/785074b0f7864d74cf420fae8a9f0802.jpg"></p> <p>2.3.1.1 服务提供者端的日志打印</p> <blockquote> <p>2022-04-06 11:56:46.472  INFO 4724 --- [nio-8083-exec-1] com.paycools.controller.UserController   : 服务提供者， 成功通过feign的方式提供服务</p> </blockquote> <p>2.3.1.2 服务消费者端的日志打印</p> <blockquote> <p>2022-04-06 11:56:46.399  INFO 3352 --- [nio-8084-exec-2] c.p.controller.ConsumerDemoController    : 服务消费者，成功调用服务提供者API</p> </blockquote> <p>2.3.2 测试携带参数与获取返回值是否正常</p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/c38f294905e112dd32163f8894e01b2d.jpg"></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220424/8fac93864eddd94739a393ce54064e4d.jpg"></p> <p>2.3.2.1 服务提供者端的日志打印</p> <blockquote> <p>2022-04-06 12:01:14.588  INFO 4724 --- [nio-8083-exec-8] com.paycools.controller.UserController   : 服务提供者， &lt;带有参数与返回值&gt;成功通过feign的方式提供服务, 参数为0，响应为null<br />2022-04-06 12:02:51.754  INFO 4724 --- [nio-8083-exec-5] com.paycools.controller.UserController   : 服务提供者， &lt;带有参数与返回值&gt;成功通过feign的方式提供服务, 参数为1，响应为[User(id=1, name=王五, age=19), User(id=1, name=赵六, age=15)]</p> </blockquote> <p>2.3.2.2 服务消费者端的日志打印</p> <blockquote> <p>2022-04-06 12:01:14.579  INFO 3352 --- [nio-8084-exec-3] c.p.controller.ConsumerDemoController    : 服务消费者，成功调用服务提供者API<br />2022-04-06 12:02:51.751  INFO 3352 --- [nio-8084-exec-8] c.p.controller.ConsumerDemoController    : 服务消费者，成功调用服务提供者API</p> </blockquote> <p class="maodian"><a name="_lab2_1_7" rel="nofollow"></a></p> <h3>2.4 小结</h3> <blockquote> <p>a. 服务提供者无需特殊操作</p> <p>b. 服务消费者端启动类声明注解</p> <p>c. 服务消费者端声明服务提供者的API，然后调用时与本地API无异</p> </blockquote> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-67620.htm">宠物粮食行业发展前景分析论文题目 宠物粮食行业发展前景分析论文题目怎么写</a></p>
+                                        <p>下一个：<a href="/news/article-68257.htm">1970年4月24日出生是什么命（1970年阴历4月24日阳历是多少）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-43946.htm" title="全国知名兽药厂家排行榜（知名的兽药厂家）">全国知名兽药厂家排行榜（知名的兽药厂家）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-winxray-node.htm" title="2月3日 | Winxray Github每天更新22M/S免费节点订阅地址分享">2月3日 | Winxray Github每天更新22M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-66987.htm" title="宠物领养平台的意义（宠物领养中心app）">宠物领养平台的意义（宠物领养中心app）</a></li>
+                        <li class="py-2"><a href="/news/article-62670.htm" title="C#反射调用dll文件中的方法操作泛型与属性字段_C#教程">C#反射调用dll文件中的方法操作泛型与属性字段_C#教程</a></li>
+                        <li class="py-2"><a href="/news/article-44917.htm" title="动物疫苗是什么单位的工作内容（动物疫苗经营）">动物疫苗是什么单位的工作内容（动物疫苗经营）</a></li>
+                        <li class="py-2"><a href="/news/article-65730.htm" title="promise与async/await的使用及区别">promise与async/await的使用及区别</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-winxray-windows.htm" title="1月7日 | Winxray Github每天更新18.8M/S免费节点订阅地址分享">1月7日 | Winxray Github每天更新18.8M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-54093.htm" title="宠物粮商标取名大全图片（宠物粮属于哪类商标）">宠物粮商标取名大全图片（宠物粮属于哪类商标）</a></li>
+                        <li class="py-2"><a href="/news/article-42937.htm" title="动物疫苗怎么卖 动物疫苗怎么卖出去">动物疫苗怎么卖 动物疫苗怎么卖出去</a></li>
+                        <li class="py-2"><a href="/news/article-64490.htm" title="动物疫苗管理法律法规最新版本是什么样的（动物疫苗政策）">动物疫苗管理法律法规最新版本是什么样的（动物疫苗政策）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
