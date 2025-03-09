@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-70190.htm" />
+    <meta charset="utf-8">
+    <title>python3 元组 tuple&#8211;讲义</title>
+        <meta name="description" content="4.元组 tuple   Tuple元组概念  元组可以存储多个数据,数据不允许修改 元组里可以存放任何类型的数据 比如嵌套,元组,列表    元组tuple是小括号( )  tup1=(元素data" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-70190.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="python3 元组 tuple&#8211;讲义" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/d6a74753a4a335071792be4134f97d41.webp" />
+        <meta property="og:release_date" content="2025-03-09T09:45:05" />
+    <meta property="og:updated_time" content="2025-03-09T09:45:05" />
+        <meta property="og:description" content="4.元组 tuple   Tuple元组概念  元组可以存储多个数据,数据不允许修改 元组里可以存放任何类型的数据 比如嵌套,元组,列表    元组tuple是小括号( )  tup1=(元素data" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python3 元组 tuple&#8211;讲义">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>python3 元组 tuple&#8211;讲义</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3> <a id="4_tuple_0" rel="nofollow"></a>4.元组 tuple</h3> <ul> <li> <p>Tuple元组概念</p> <ul> <li>元组可以存储多个数据,数据不允许修改</li> <li>元组里可以存放任何类型的数据</li> <li>比如嵌套,元组,列表</li> </ul> </li> <li> <p>元组tuple是小括号( )</p> <ul> <li>tup1=(元素data,)</li> <li>tup1=tuple(元素data,)</li> </ul> </li> <li> <p>特性：不可修改</p> <ul> <li>str和tuple是不可变类型，修改需要重新赋值</li> </ul> </li> <li> <p>1）与列表的区别<br /> 类似列表，但列表用[ ]标识，元组用()标识，并且列表元素可二次赋值，但元组元素不能。</p> </li> <li> <p>2）元组的创建<br /> 创建空元组：tuple（） 。</p> <ul> <li>元组特点：定义元组使⽤⼩括号，且逗号隔开各个数据，数据可以是不同的数据类型。</li> <li>创建只有一个元素的元组：tuple（a，）必须要在元素后加逗号</li> <li>注意：如果定义的元组只有⼀个数据，那么这个数据后⾯也要添加逗号</li> </ul> </li> <li> <p>3）元素的访问</p> <ul> <li> <p>元组也是用下标索引</p> </li> <li> <p>虽然创建时用（）包含，但是在访问单个元素时，与列表一样，通过[ 索引号 ]来访问。</p> <ul> <li> <p>示例</p> <ul> <li> <p>print(tu[0:2])</p> <ul> <li>打印下标0-2的元素,不含2</li> </ul> </li> <li> <p>print(tu[1])</p> <ul> <li>访问下标为1的元素</li> </ul> </li> </ul> </li> </ul> </li> </ul> </li> <li> <p>元组的常见操作</p> <ul> <li> <p>查找：index()、count()</p> <ul> <li> <p>index()</p> <ul> <li>查找某个数据，如果数据存在返回对应的下标，否则报错，语法和列表、字符串串的index<br /> 方法相同。</li> <li>print(tuple1.index(‘aa’))</li> </ul> </li> <li> <p>count(0</p> <ul> <li>统计某个数据在当前元组出现的次数。</li> <li>print(tunple1.count(‘bb’))</li> </ul> </li> <li> <p>len(tuple)</p> <ul> <li>计算元组元素个数。</li> </ul> </li> </ul> </li> <li> <p>注意</p> <ul> <li>注意：元组内的直接数据如果修改则立即报错</li> <li>但是如果元组里面有列表，修改列表里面的数据则是支持的，故自觉很重要。</li> </ul> </li> </ul> </li> <li> <p>元组函数</p> <ul> <li> <p>cmp(tuple1, tuple2)</p> <ul> <li>比较两个元组元素。</li> </ul> </li> <li> <p>max(tuple)</p> <ul> <li>返回元组中元素最大值。</li> </ul> </li> <li> <p>min(tuple)</p> <ul> <li>返回元组中元素最小值。</li> </ul> </li> <li> <p>tuple(seq)</p> <ul> <li>将列表转换为元组。</li> </ul> </li> </ul> </li> <li> <p>4）删除元组</p> <ul> <li>元组中的单个元素不能被删除，但是元组可以通过del语句整个删除。</li> </ul> </li> <li> <p>5）元组运算符（同列表）</p> </li> <li> <p>6）任意无符号的对象，以逗号隔开，默认为元组（无关闭分隔符）</p> </li> <li> <p>7）元组内置函数</p> </li> <li> <p>访问里面的元素</p> <ul> <li> <p>示例</p> <ul> <li> <p>print(tu[0:2])</p> <ul> <li>打印下标0-2的元素,不含2</li> </ul> </li> <li> <p>print(tu[1])</p> <ul> <li>访问下标为1的元素</li> </ul> </li> </ul> </li> </ul> </li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-69549.htm">动物疫苗检测中心上班时间（动物疫苗检测中心上班时间是几点）</a></p>
+                                        <p>下一个：<a href="/news/article-70191.htm">宠物粮市场前景如何分析的（宠物粮行业）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="1月15日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享">1月15日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-59152.htm" title="58同城免费领养小猫宜春（58同城宠物猫领养）">58同城免费领养小猫宜春（58同城宠物猫领养）</a></li>
+                        <li class="py-2"><a href="/news/article-53551.htm" title="上海宠物领养中心真假鉴定电话（上海宠物领养救助站是真的吗）">上海宠物领养中心真假鉴定电话（上海宠物领养救助站是真的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-45920.htm" title="猫疫苗不打有事吗（猫疫苗不打完可以吗）">猫疫苗不打有事吗（猫疫苗不打完可以吗）</a></li>
+                        <li class="py-2"><a href="/news/article-41944.htm" title="动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）">动物诊疗许可证在哪个部门办理的呢（动物诊疗许可证办理流程）</a></li>
+                        <li class="py-2"><a href="/news/article-51425.htm" title="动物防疫站几点关门啊（动物防疫站工作时间）">动物防疫站几点关门啊（动物防疫站工作时间）</a></li>
+                        <li class="py-2"><a href="/news/article-41435.htm" title="【狗狗领养】（狗狗领养文案）">【狗狗领养】（狗狗领养文案）</a></li>
+                        <li class="py-2"><a href="/news/article-67618.htm" title="重庆正规免费领养宠物猫的地方（重庆哪里有免费领养猫）">重庆正规免费领养宠物猫的地方（重庆哪里有免费领养猫）</a></li>
+                        <li class="py-2"><a href="/news/article-48879.htm" title="瑞鹏宠物医院收费价目表最新版图片（瑞鹏宠物医院是公立还是私立）">瑞鹏宠物医院收费价目表最新版图片（瑞鹏宠物医院是公立还是私立）</a></li>
+                        <li class="py-2"><a href="/news/article-70190.htm" title="python3 元组 tuple&#8211;讲义">python3 元组 tuple&#8211;讲义</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
