@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-72175.htm" />
+    <meta charset="utf-8">
+    <title>webpack 执行npm run 时，因为版本依赖报的那些错</title>
+        <meta name="description" content="环境介绍 webpack 4.34.0 webpack-dev-server 3.7.0 报错 Error: invalid "instanceof" keyword value Promise   " />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-72175.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="webpack 执行npm run 时，因为版本依赖报的那些错" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/108d10f6725d33dcc703b1d3778a84f4.webp" />
+        <meta property="og:release_date" content="2025-03-12T06:07:55" />
+    <meta property="og:updated_time" content="2025-03-12T06:07:55" />
+        <meta property="og:description" content="环境介绍 webpack 4.34.0 webpack-dev-server 3.7.0 报错 Error: invalid "instanceof" keyword value Promise   " />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="webpack 执行npm run 时，因为版本依赖报的那些错">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>webpack 执行npm run 时，因为版本依赖报的那些错</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h4><a id="_0" rel="nofollow"></a>环境介绍</h4> <p>webpack 4.34.0<br /> webpack-dev-server 3.7.0</p> <h4><a id="_3" rel="nofollow"></a>报错</h4> <pre><code>Error: invalid "instanceof" keyword value Promise     at getConstructor (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv-keywords\keywords\instanceof.js:52:11)     at Ajv.compile (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv-keywords\keywords\instanceof.js:21:27)     at Object.useCustomRule (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\compile\index.js:275:26)     at Object.generate_custom [as code] (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\dotjs\custom.js:32:24)     at Object.generate_validate [as validate] (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\dotjs\validate.js:347:35)     at Object.generate_anyOf [as code] (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\dotjs\anyOf.js:34:27)     at generate_validate (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\dotjs\validate.js:347:35)     at localCompile (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\compile\index.js:87:22)     at Ajv.compile (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\compile\index.js:56:13)     at Ajv._compile (C:\Users\HAM-PC\AppData\Roaming\npm\node_modules\webpack\node_modules\ajv\lib\ajv.js:358:27) npm ERR! code ELIFECYCLE</code></pre> <h4><a id="_19" rel="nofollow"></a>解决方法</h4> <p>解决的方法我是网上找的，就是把webpack-server降低版本：</p> <pre><code>npm install webpack-dev-server@2.9.4 --save-dev</code></pre> <hr/> <h4><a id="_27" rel="nofollow"></a>环境介绍</h4> <p>webpack 4.34.0<br /> extract-text-webpack-plugin 3.4.0</p> <h4><a id="_30" rel="nofollow"></a>报错</h4> <pre><code>Error: Chunk.entrypoints: Use Chunks.groupsIterable and filter by instanceof Entrypoint instead     at Chunk.get (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Chunk.js:857:9)     at D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\extract-text-webpack-plugin\index.js:260:40     at Array.forEach (&lt;anonymous&gt;)     at ExtractTextPlugin.&lt;anonymous&gt; (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\extract-text-webpack-plugin\index.js:255:11)     at AsyncSeriesHook.eval [as callAsync] (eval at create (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\tapable\lib\HookCodeFactory.js:33:10), &lt;anonymous&gt;:7:1)     at AsyncSeriesHook.lazyCompileHook (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\tapable\lib\Hook.js:154:20)     at Compilation.seal (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compilation.js:1244:27)     at compilation.finish.err (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compiler.js:625:18)     at hooks.finishModules.callAsync.err (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compilation.js:1167:4)     at AsyncSeriesHook.eval [as callAsync] (eval at create (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\tapable\lib\HookCodeFactory.js:33:10), &lt;anonymous&gt;:24:1)     at AsyncSeriesHook.lazyCompileHook (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\tapable\lib\Hook.js:154:20)     at Compilation.finish (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compilation.js:1159:28)     at hooks.make.callAsync.err (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compiler.js:622:17)     at _err0 (eval at create (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\tapable\lib\HookCodeFactory.js:33:10), &lt;anonymous&gt;:11:1)     at _addModuleChain (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compilation.js:1091:12)     at processModuleDependencies.err (D:\开发项目目录\webstorm\testVeu\js\demon\node_modules\webpack\lib\Compilation.js:1003:9) npm ERR! code ELIFECYCLE</code></pre> <h4><a id="_53" rel="nofollow"></a>解决办法</h4> <pre><code>npm install --save-dev extract-text-webpack-plugin@next</code></pre> <hr/> <h4><a id="_58" rel="nofollow"></a>环境介绍</h4> <p>webpack 4.34.0<br /> vue-loader 15.7.0</p> <h4><a id="_61" rel="nofollow"></a>报错</h4> <pre><code>ERROR in ./app.vue?vue&amp;type=style&amp;index=0&amp;id=381730fa&amp;scoped=true&amp;lang=css&amp; 16:3 Module parse failed: Unexpected token (16:3) File was processed with these loaders:  * ./node_modules/vue-loader/lib/index.js You may need an additional loader to handle the result of these loaders.</code></pre> <h4><a id="_69" rel="nofollow"></a>解决</h4> <pre><code>npm install --save-dev vue-loader@14.2.4</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72174.htm">实现垂直居中的几种方式</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-64491.htm" title="宠物领养论文主要内容 宠物领养论文主要内容怎么写">宠物领养论文主要内容 宠物领养论文主要内容怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-59151.htm" title="Zookeeper分布式一致性协议ZAB">Zookeeper分布式一致性协议ZAB</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-20-today-winxray-node.htm" title="2月20日 | Winxray Github每天更新21M/S免费节点订阅地址分享">2月20日 | Winxray Github每天更新21M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share.htm" title="2月15日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享">2月15日 | Winxray Github每天更新22.8M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-66987.htm" title="宠物领养平台的意义（宠物领养中心app）">宠物领养平台的意义（宠物领养中心app）</a></li>
+                        <li class="py-2"><a href="/news/article-45920.htm" title="猫疫苗不打有事吗（猫疫苗不打完可以吗）">猫疫苗不打有事吗（猫疫苗不打完可以吗）</a></li>
+                        <li class="py-2"><a href="/news/article-48301.htm" title="生产狗粮的机器叫什么（家庭狗粮生产机）">生产狗粮的机器叫什么（家庭狗粮生产机）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-winxray-node-github.htm" title="2月8日 | Winxray Github每天更新18.6M/S免费节点订阅地址分享">2月8日 | Winxray Github每天更新18.6M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-55754.htm" title="element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）">element-plus  一个vue3.xUI框架 （element-ui的3.x 版初体验）</a></li>
+                        <li class="py-2"><a href="/news/article-60891.htm" title="python推送数据到kafka的kerberos服务验证（ubuntu）">python推送数据到kafka的kerberos服务验证（ubuntu）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>

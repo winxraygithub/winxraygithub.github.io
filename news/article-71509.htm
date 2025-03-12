@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-71509.htm" />
+    <meta charset="utf-8">
+    <title>微信小程序——设置公用组件</title>
+        <meta name="description" content="创建components文件夹 然后创建好组件文件夹  要调用文件中设置 在json文件设置“使用组件” {   "usingComponents": {   	//名称为SearchInput,路径" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-71509.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="微信小程序——设置公用组件" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/32443e4bd3b20a198dc304fef7b6fd24.webp" />
+        <meta property="og:release_date" content="2025-03-11T07:47:02" />
+    <meta property="og:updated_time" content="2025-03-11T07:47:02" />
+        <meta property="og:description" content="创建components文件夹 然后创建好组件文件夹  要调用文件中设置 在json文件设置“使用组件” {   "usingComponents": {   	//名称为SearchInput,路径" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="微信小程序——设置公用组件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>微信小程序——设置公用组件</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <h3> <a id="components_0" rel="nofollow"></a>创建components文件夹</h3> <p>然后创建好组件文件夹<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230217/cad1e9f2c9d24a5f0e466cde88b1c385.jpg" alt="微信小程序——设置公用组件"></p> <h3> <a id="_3" rel="nofollow"></a>要调用文件中设置</h3> <p>在json文件设置“使用组件”</p> <pre><code class="prism language-json"><span class="token punctuation">{<!-- --></span>   <span class="token string">"usingComponents"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>   	<span class="token comment">//名称为SearchInput,路径为/components/SearchInput/SearchInput</span>     <span class="token string">"SearchInput"</span><span class="token operator">:</span> <span class="token string">"/components/SearchInput/SearchInput"</span><span class="token punctuation">,</span>     <span class="token string">"Tabs"</span><span class="token operator">:</span> <span class="token string">"/components/Tabs/Tabs"</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> </code></pre> <h3> <a id="_13" rel="nofollow"></a>调用时</h3> <p>调用的html</p> <pre><code class="prism language-html"><span class="token comment">&lt;!--第一个tabs是组件js中定义的名称，第二个tabs是当前js中传递的值--&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Tabs</span> <span class="token attr-name">tabs</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{<!-- -->{tabs}}<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span> </code></pre> <p>组件的js</p> <pre><code class="prism language-js">properties<span class="token operator">:</span> <span class="token punctuation">{<!-- --></span> 	<span class="token comment">//tabs：type类型，value默认值</span>     tabs<span class="token operator">:</span><span class="token punctuation">{<!-- --></span>       type<span class="token operator">:</span>Array<span class="token punctuation">,</span>       value<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span>     <span class="token punctuation">}</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70868.htm">给动物打疫苗的简报怎么写范文（给动物打疫苗的简报怎么写范文三年级）</a></p>
+                                        <p>下一个：<a href="/news/article-71510.htm">动物疫苗真假怎么查询的（动物疫苗查询系统）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-1-5-winxray-windows.htm" title="1月5日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享">1月5日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-45408.htm" title="猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）">猫疫苗三针隔多久打狂犬疫苗（猫咪三针疫苗后多久打狂犬）</a></li>
+                        <li class="py-2"><a href="/news/article-45407.htm" title="宠物医院手续（宠物医院办理流程）">宠物医院手续（宠物医院办理流程）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-node-share-links.htm" title="1月25日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享">1月25日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-winxray-node.htm" title="1月12日 | Winxray Github每天更新22.6M/S免费节点订阅地址分享">1月12日 | Winxray Github每天更新22.6M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-54655.htm" title="中国最大的猫粮工厂 中国最大的猫粮工厂在哪里">中国最大的猫粮工厂 中国最大的猫粮工厂在哪里</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-winxray-windows.htm" title="1月7日 | Winxray Github每天更新18.8M/S免费节点订阅地址分享">1月7日 | Winxray Github每天更新18.8M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-67620.htm" title="宠物粮食行业发展前景分析论文题目 宠物粮食行业发展前景分析论文题目怎么写">宠物粮食行业发展前景分析论文题目 宠物粮食行业发展前景分析论文题目怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-71510.htm" title="动物疫苗真假怎么查询的（动物疫苗查询系统）">动物疫苗真假怎么查询的（动物疫苗查询系统）</a></li>
+                        <li class="py-2"><a href="/news/article-48302.htm" title="成人想学兽医还能学吗（成人想学兽医怎么开始）">成人想学兽医还能学吗（成人想学兽医怎么开始）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
