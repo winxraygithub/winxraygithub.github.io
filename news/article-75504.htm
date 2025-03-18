@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-75504.htm" />
+    <meta charset="utf-8">
+    <title>Docker极简入门：使用Docker-Compose 搭建redis集群</title>
+        <meta name="description" content="为了构建一个集群，我们首先要让 redis 启用集群模式 一个简单的配置文件如下redis.conf # redis.conf file port 6379 cluster-enabled yes c" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-75504.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Docker极简入门：使用Docker-Compose 搭建redis集群" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/732c0b3ed65f6f22e4c421484a305656.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:39:41" />
+    <meta property="og:updated_time" content="2025-03-17T09:39:41" />
+        <meta property="og:description" content="为了构建一个集群，我们首先要让 redis 启用集群模式 一个简单的配置文件如下redis.conf # redis.conf file port 6379 cluster-enabled yes c" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Docker极简入门：使用Docker-Compose 搭建redis集群">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>Docker极简入门：使用Docker-Compose 搭建redis集群</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>为了构建一个集群，我们首先要让 redis 启用集群模式<br /> 一个简单的配置文件如下<code>redis.conf</code></p> <pre><code class="language-shell"># redis.conf file port 6379 cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000 appendonly yes</code></pre> <p>因为是在单机上演示，所以我们得修改 port 防止冲突<br /> 比如我们要创建3主5副的集群，那么这八个 redis 实例启动的时候就应该用不同的端口(7000,7001...7007)，这样能防止冲突。</p> <pre><code class="language-shell">. ├── 7000 │   └── redis.conf ├── 7001 │   └── redis.conf ├── 7002 │   └── redis.conf ├── 7003 │   └── redis.conf ├── 7004 │   └── redis.conf ├── 7005 │   └── redis.conf ├── 7006 │   └── redis.conf ├── 7007 │   └── redis.conf</code></pre> <p><code>./7000/redis.conf</code> 中的 port 设置成7000,依此类推<code>./7007/redis.conf</code>中的 port 应该设置成7007</p> <p>万事俱备，只需运行<code>redis-server ./redis.conf</code>命令即可，当然你需要依次启动八个 redis server</p> <pre><code class="language-shell">for i in `seq 7000 7007`; do 	exec redis-server ./${i}/redis.conf &amp; done  redis-cli --cluster create\ 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003\ 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 127.0.0.1:7007\ --cluster-replicas 1</code></pre> <p>这样整个集群就搭建好了，你可以选择运行在 port 7000-7007中的任意一个 servr 登录，然后去执行一些你喜欢的命令验证一下[狗头]</p> <h2 id="使用docker-compose构建集群">使用Docker-Compose构建集群</h2> <p>现在让我们来明确一下流程，首先我们需要启动八个 redis server 实例，然后运行<code>redis-cli --cluster create</code> 命令创建集群，这意味着我们需要创建一个 docker network 使得集群成员能够互相通讯</p> <p>创建一个 network 也很简单</p> <pre><code class="language-shell">networks:   redis-network:     name: redis-network     ## 使用网桥     driver: bridge     ipam:       driver: default       ## 指定网段，需要注意不能与已有的 docker network 相冲突       config:         - subnet: 172.18.0.0/24</code></pre> <p>还记得之前命令行是如何启动集群的吗？最后需要运行命令<code>redis-cli --cluster create</code>，整个集群才算成功创建，那在 yml 文件中该怎么写呢？<br /> 我们可以借助<code>depends_on</code>来告诉 docker 当前的 service 依赖其他的 service<br /> 具体的细节请看完整的yml文件</p> <pre><code class="language-shell">## redis.conf port 6379 cluster-enabled yes cluster-config-file nodes-redis.conf cluster-node-timeout 5000 appendonly yes appendfilename "appendonly-redis.aof"</code></pre> <pre><code class="language-yaml">version: "3.7"  networks:   redis-network:     name: redis-network     driver: bridge     ipam:       driver: default       config:         - subnet: 172.18.0.0/24  services:   redis-cluster:     image: redis:6-alpine     command: 'redis-cli --cluster create      172.18.0.11:6379 172.18.0.12:6379 172.18.0.13:6379 172.18.0.14:6379      172.18.0.15:6379 172.18.0.16:6379 172.18.0.17:6379 172.18.0.18:6379     --cluster-yes --cluster-replicas 1'     networks:       - redis-network     depends_on:       - redis1       - redis2       - redis3       - redis4       - redis5       - redis6       - redis7       - redis8    redis1:     image: redis:6-alpine     container_name: redis1     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.11     expose:       - 6379     volumes:       - $PWD/docker-data/redis1:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf    redis2:     image: redis:6-alpine     container_name: redis2     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.12     expose:       - 6379     volumes:       - $PWD/docker-data/redis2:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf    redis3:     image: redis:6-alpine     container_name: redis3     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.13     expose:       - 6379     volumes:       - $PWD/docker-data/redis3:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf    redis4:     image: redis:6-alpine     container_name: redis4     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.14     expose:       - 6379     volumes:       - $PWD/docker-data/redis4:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf          redis5:     image: redis:6-alpine     container_name: redis5     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.15     expose:       - 6379     volumes:       - $PWD/docker-data/redis5:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf          redis6:     image: redis:6-alpine     container_name: redis6     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.16     expose:       - 6379     volumes:       - $PWD/docker-data/redis6:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf                redis7:     image: redis:6-alpine     container_name: redis7     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.17     expose:       - 6379     volumes:       - $PWD/docker-data/redis7:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf          redis8:     image: redis:6-alpine     container_name: redis8     command: redis-server /usr/local/etc/redis/redis.conf     networks:       redis-network:         ipv4_address: 172.18.0.18     expose:       - 6379     volumes:       - $PWD/docker-data/redis8:/data       - $PWD/docker-config/redis.conf:/usr/local/etc/redis/redis.conf</code></pre> <p>最后不要忘记了最基本的命令</p> <pre><code class="language-shell">sudo docker-compose up # 在当前命令下运行，启动集群 sudo docker-compose down # 关闭集群的同时会将 docker-network也一并删除</code></pre> <h3 id="如何与集群通信">如何与集群通信</h3> <pre><code class="language-shell"># 登录任意一个节点执行命令即可，集群会根据key的哈希值，将你的命令重定位 sudo docker exec -it redis5 redis-cli -p 6379 set foo bar</code></pre> <pre><code class="language-shell">sudo docker exec -it redis1 redis-cli -p 6379 get foo # output bar</code></pre> <h3 id="参考">参考</h3> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://university.redis.com/courses/ru301/"  target="_blank" rel="nofollow">reids官网 course</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75503.htm">golang中的panic</a></p>
+                                        <p>下一个：<a href="/news/article-76202.htm">Spring IOC Bean 创建的整体流程</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40952.htm" title="中国宠物用品市场（中国宠物用品市场在哪里）">中国宠物用品市场（中国宠物用品市场在哪里）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-node-share-links.htm" title="3月1日 | Winxray Github每天更新19.2M/S免费节点订阅地址分享">3月1日 | Winxray Github每天更新19.2M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-65099.htm" title="上海宠物医院多少家（上海宠物医院口碑）">上海宠物医院多少家（上海宠物医院口碑）</a></li>
+                        <li class="py-2"><a href="/news/article-65100.htm" title="广州宠物犬批发市场（广州市宠物狗市场）">广州宠物犬批发市场（广州市宠物狗市场）</a></li>
+                        <li class="py-2"><a href="/news/article-47372.htm" title="通过+（字符串串联）运算符进行字符串串联。">通过+（字符串串联）运算符进行字符串串联。</a></li>
+                        <li class="py-2"><a href="/news/article-49364.htm" title="宠物医院好评评语100字 宠物医院好评评语100字怎么写">宠物医院好评评语100字 宠物医院好评评语100字怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-38470.htm" title="如果未提供任何参数，MySQL ASCII()函数将返回什么？">如果未提供任何参数，MySQL ASCII()函数将返回什么？</a></li>
+                        <li class="py-2"><a href="/news/article-68905.htm" title="宠物粮食生产线设计图片大全集（宠物粮生产流程）">宠物粮食生产线设计图片大全集（宠物粮生产流程）</a></li>
+                        <li class="py-2"><a href="/news/article-68257.htm" title="1970年4月24日出生是什么命（1970年阴历4月24日阳历是多少）">1970年4月24日出生是什么命（1970年阴历4月24日阳历是多少）</a></li>
+                        <li class="py-2"><a href="/news/article-58005.htm" title="java class 文件格式解析">java class 文件格式解析</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
