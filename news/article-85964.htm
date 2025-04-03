@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-85964.htm" />
+    <meta charset="utf-8">
+    <title>python函数参数的默认参数、元组参数和字典参数例解</title>
+        <meta name="description" content="python函数除了不带参数，带固定参数之外，还有另外三类函数参数有重要使用价值，是提升python水平需要强化的内容。它们是默认参数、元组参数和字典参数。下面举例子说明。 1.默认参数 即在函数定义" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-85964.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="python函数参数的默认参数、元组参数和字典参数例解" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/732c0b3ed65f6f22e4c421484a305656.webp" />
+        <meta property="og:release_date" content="2025-04-01T09:47:31" />
+    <meta property="og:updated_time" content="2025-04-01T09:47:31" />
+        <meta property="og:description" content="python函数除了不带参数，带固定参数之外，还有另外三类函数参数有重要使用价值，是提升python水平需要强化的内容。它们是默认参数、元组参数和字典参数。下面举例子说明。 1.默认参数 即在函数定义" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python函数参数的默认参数、元组参数和字典参数例解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>python函数参数的默认参数、元组参数和字典参数例解</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>python函数除了不带参数，带固定参数之外，还有另外三类函数参数有重要使用价值，是提升python水平需要强化的内容。它们是默认参数、元组参数和字典参数。下面举例子说明。</p> <p>1.默认参数</p> <p>即在函数定义时赋值的参数。</p> <pre class="has"><code class="hljs language-python">#默认参数主要是为了减少重复输入的次数。 def func_default(x,y=100,z="good"):     print(x,y,z)  func_default(78) func_default(78,99) func_default(78,99,"电影") func_default(x=120,z="电视剧") func_default(z="喜剧",x=500)#参数可以调换位置。 </code></pre> <p>输出是：</p> <p><img fetchpriority="high" decoding="async" alt="" class="has" height="203" src="http://img.555519.xyz/uploads/20221228/aa48c732e0d54dc99dc474a778898e85.jpg"></p> <p>2.以元组为参数</p> <p>以元组为参数时在参数名前加一个“*”号以示区别。</p> <pre class="has"><code class="hljs language-python">#以元组作为参数 def func_tuple(name,*args):     print(name + " 有以下雅称:")     for i in args:         print(i)  func_tuple("孙悟空","monkey","maomao","xueba")</code></pre> <p>输出是：</p> <p><img decoding="async" alt="" class="has" height="75" src="http://img.555519.xyz/uploads/20221228/a0f69dbf6eef4d3b0e1b2ea43417a193.jpg"></p> <p>3.以字典作为参数</p> <p>参数名前加“**”以示区别。</p> <pre class="has"><code class="hljs language-python">#以字典（键值对）作为参数 def func_dict(**kwargs):     print("参数的格式为：",type(kwargs))     for i in kwargs:#输出值         print(kwargs[i])     for i in kwargs:#输出键         print(i)     for i in kwargs:#输出键值         print(i,kwargs[i])     for i in kwargs:#输出所有键值i次         print(kwargs) func_dict(aa=1,bb=2,cc=3)#注意赋值方式</code></pre> <p>输出是：</p> <p><img decoding="async" alt="" class="has" height="247" src="http://img.555519.xyz/uploads/20221228/81b09ae9ede38333bbdd4b20f9de0ba9.jpg"></p> <p>4.一个综合的例子</p> <pre class="has"><code class="hljs language-python">#综合例子 # 带一个*的是元组，带两个星号的是字典。 def total(a=5,*numbers,**phonebook):     print('a',a)     for single_item in numbers:         print('single_item',single_item)     for first_part,second_part in phonebook.items():         print(first_part,second_part) total(10,1,2,3,Jack=1123,John=2231,Inge=1560)</code></pre> <p>输出是：</p> <p><img loading="lazy" decoding="async" alt="" class="has" height="138" src="http://img.555519.xyz/uploads/20221228/080bc1efeeeee5418bdbe1f9b4b180e5.jpg"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-85241.htm">有哪些质量不错的毛笔值得购买的(有哪些质量不错的毛笔值得购买的品牌)</a></p>
+                                        <p>下一个：<a href="/news/article-85965.htm">小猫多久能知道自己的名字（猫要多久能知道自己的名字）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-7-free-subscribe-node.htm" title="3月7日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享">3月7日 | Winxray Github每天更新21.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-76867.htm" title="成都宠物疫苗多少钱一针（成都宠物打狂犬疫苗在什么地方去打?）">成都宠物疫苗多少钱一针（成都宠物打狂犬疫苗在什么地方去打?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-winxray-node-github.htm" title="3月18日 | Winxray Github每天更新19.4M/S免费节点订阅地址分享">3月18日 | Winxray Github每天更新19.4M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-today-winxray-node.htm" title="3月26日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享">3月26日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-winxray-github.htm" title="3月13日 | Winxray Github每天更新19.6M/S免费节点订阅地址分享">3月13日 | Winxray Github每天更新19.6M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-71509.htm" title="微信小程序——设置公用组件">微信小程序——设置公用组件</a></li>
+                        <li class="py-2"><a href="/news/article-86666.htm" title="动物医院实践心得5000字左右作文怎么写 动物医院实践心得5000字左右作文怎么写的">动物医院实践心得5000字左右作文怎么写 动物医院实践心得5000字左右作文怎么写的</a></li>
+                        <li class="py-2"><a href="/news/article-81017.htm" title="天津宠物领养 猫 天津宠物领养 猫的地方">天津宠物领养 猫 天津宠物领养 猫的地方</a></li>
+                        <li class="py-2"><a href="/news/article-85240.htm" title="我所在的城市有一家动物医院的英文作文（我所在的城市有一家宠物医院用英语怎么说）">我所在的城市有一家动物医院的英文作文（我所在的城市有一家宠物医院用英语怎么说）</a></li>
+                        <li class="py-2"><a href="/news/article-72839.htm" title="猫三联加狂犬疫苗要打多久才有效（猫三联加狂犬疫苗多少钱）">猫三联加狂犬疫苗要打多久才有效（猫三联加狂犬疫苗多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <p>
+                        <a href="/">首页</a> | 
+                        <a href="/free-node/">免费节点</a> | 
+                        <a href="/news/">新闻资讯</a> |
+                        <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
