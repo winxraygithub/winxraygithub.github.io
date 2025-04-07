@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-90319.htm" />
+    <meta charset="utf-8">
+    <title>Java中的公平锁和非公平锁实现详解</title>
+        <meta name="description" content="文章目录  前言 ReentrantLock的可重入性分析   synchronized的可重入性 ReentrantLock的可重入性   ReentrantLock锁的实现分析   公平锁和非公平" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-90319.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="Java中的公平锁和非公平锁实现详解" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/86304d802735273fb99a65fc0a250f03.webp" />
+        <meta property="og:release_date" content="2025-04-07T09:01:57" />
+    <meta property="og:updated_time" content="2025-04-07T09:01:57" />
+        <meta property="og:description" content="文章目录  前言 ReentrantLock的可重入性分析   synchronized的可重入性 ReentrantLock的可重入性   ReentrantLock锁的实现分析   公平锁和非公平" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java中的公平锁和非公平锁实现详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>Java中的公平锁和非公平锁实现详解</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#_1" rel="nofollow">前言</a></li> <li><a href="#ReentrantLock_24" rel="nofollow">ReentrantLock的可重入性分析</a></li> <li> <ul> <li><a href="#synchronized_28" rel="nofollow">synchronized的可重入性</a></li> <li><a href="#ReentrantLock_41" rel="nofollow">ReentrantLock的可重入性</a></li> </ul> </li> <li><a href="#ReentrantLock_85" rel="nofollow">ReentrantLock锁的实现分析</a></li> <li> <ul> <li><a href="#_87" rel="nofollow">公平锁和非公平锁</a></li> <li><a href="#FairSync_108" rel="nofollow">公平锁FairSync</a></li> <li><a href="#NonfairSync_129" rel="nofollow">非公平锁NonfairSync</a></li> </ul> </li> <li><a href="#ReentrantLock_142" rel="nofollow">ReentrantLock锁的释放</a></li> <li> <ul> <li><a href="#ReentrantLock_161" rel="nofollow">ReentrantLock等待队列中元素的唤醒</a></li> </ul> </li> <li><a href="#ReentrantLock_186" rel="nofollow">ReentrantLock内存可见性分析</a></li> <li> <ul> <li><a href="#CASvolatile_Java_198" rel="nofollow">CAS和volatile， Java并发的基石</a></li> <li><a href="#JSR133_225" rel="nofollow">JSR-133编译器编写手册</a></li> <li><a href="#ReentrantLock_248" rel="nofollow">ReentrantLock内存可见性</a></li> <li><a href="#CASvolatile_254" rel="nofollow">CAS的类似volatile内存屏障原理</a></li> </ul> </li> </ul> </div> </h1> <p>Java语言中有许多原生线程安全的数据结构，比如<code>ArrayBlockingQueue</code>、<code>CopyOnWriteArrayList</code>、<code>LinkedBlockingQueue</code>，它们线程安全的实现方式并非通过<code>synchronized</code>关键字，而是通过<code>java.util.concurrent.locks.ReentrantLock</code>来实现。 刚好对这个很感兴趣， 因此写一篇博客详细分析此 “可重入锁实现原理”。<br /><code>ReentrantLock</code>的实现是基于其内部类<code>FairSync</code>(公平锁)和<code>NonFairSync</code>(非公平锁)实现的。 其可重入性是基于<code>Thread.currentThread()</code>实现的: 如果当前线程已经获得了执行序列中的锁， 那执行序列之后的所有方法都可以获得这个锁。</p> <hr/> <p>公平锁：</p> <ul> <li>公平和非公平锁的队列都基于锁内部维护的一个双向链表，表结点Node的值就是每一个请求当前锁的线程。公平锁则在于每次都是依次从队首取值。</li> <li>锁的实现方式是基于如下几点： <ul> <li>表结点<code>Node</code>和状态<code>state</code>的<code>volatile</code>关键字。</li> <li><code>sum.misc.Unsafe.compareAndSet</code>的原子操作(见附录)。</li> </ul> </li> </ul> <p>非公平锁：</p> <ul> <li>在等待锁的过程中， 如果有任意新的线程妄图获取锁，都是有很大的几率直接获取到锁的。</li> </ul> <blockquote> <p><code>ReentrantLock</code>锁都**<em>不会<em><em><em>使得线程中断，除非开发者自己设置了中断位。<br /><code>ReentrantLock</code>获取锁里面有</em>看似</em>自旋的代码，但是它</em>不是</em>自旋锁。<br /><code>ReentrantLock</code>公平与非公平锁都是属于排它锁。</p> </blockquote> </h1> <p>这里有一篇对锁介绍甚为详细的文章<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://blog.csdn.net/u013256816/article/details/51204385"  rel="nofollow">朱小厮的博客-Java中的锁</a>.</p> <h2><a id="synchronized_28" rel="nofollow"></a>synchronized的可重入性</h2> <p>参考这篇文章：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://blog.csdn.net/qyp199312/article/details/78438273#synchronized__159"  rel="nofollow"> synchronized 锁实现</a>。</p> <hr/> <p>两者的原理基本类似，<code>synchronized</code>在不同的锁级别下， 重入的实现不一样。</p> <ul> <li>偏向锁：<code>Mark Word</code> 中记录的<code>ThreadId</code>。</li> <li>轻量级锁：<code>Mark Word</code> 指向的当前线程的锁记录。</li> <li>重量级锁：采用<code>Mark Word</code> 指向对比和<code>_recursions</code>累增加锁、减锁。</li> </ul> <p><code>ReentrantLock</code> 基于当前锁持有的线程对象<code>thread</code>， 然后对<code>state</code> 进行累计或者累减。和重量级锁的实现比较像。</p> <h2><a id="ReentrantLock_41" rel="nofollow"></a>ReentrantLock的可重入性</h2> <p>前言里面提到，<code>ReentrantLock</code>重入性是基于<code>Thread.currentThread()</code>实现的: 如果当前线程已经获得了锁， 那该线程下的所有方法都可以获得这个锁。<code>ReentrantLock</code>的锁依赖只有<code>NonfairSync</code>和<code>FairSync</code>两个实现类， 他们的锁获取方式大同小异。</p> <blockquote> <p>可重入性的实现基于下面代码片段的<code>else if</code> 语句</p> </blockquote> <pre><code>protected final boolean tryAcquire(int acquires) {     final Thread current = Thread.currentThread();     int c = getState();     if (c == 0) {         ...         // 尝试获取锁成功     }     else if (current == getExclusiveOwnerThread()) { 	    // 是当前线程，直接获取到锁。实现可重入性。         int nextc = c + acquires;         if (nextc &lt; 0)             throw new Error("Maximum lock count exceeded");         setState(nextc);         return true;     }     return false; }</code></pre> <p>此处有两个值需要关心：</p> <pre><code>    /**      * The current owner of exclusive mode synchronization.      * 持有该锁的当前线程      */     private transient Thread exclusiveOwnerThread;       -----------------两个值不在同一个类----------------           /**      * The synchronization state.      * 0： 初始状态-无任何线程得到了锁      * &gt; 0: 被线程持有， 具体值表示被当前线程持有的执行次数      *       * 这个字段在解锁的时候也需要用到。      * 注意这个字段的修饰词: volatile      */     private volatile int state;</code></pre> </h1> <h2><a id="_87" rel="nofollow"></a>公平锁和非公平锁</h2> <p><code>ReentrantLock</code> 的公平锁和非公平锁都委托了<code>AbstractQueuedSynchronizer#acquire</code> 去请求获取。</p> <pre><code>public final void acquire(int arg) {     if (!tryAcquire(arg) &amp;&amp;         acquireQueued(addWaiter(Node.EXCLUSIVE), arg))         selfInterrupt(); }</code></pre> <ul> <li><code>tryAcquire</code> 是一个抽象方法，是***公平与非公平***的实现原理所在。</li> <li><code>addWaiter</code> 是将当前线程结点加入等待队列之中。<strong>公平锁在锁释放后会严格按照等到队列去取后续值</strong>，<em>而非公平锁在对于新晋线程有很大优势</em>。</li> <li><code>acquireQueued</code> 在多次循环中尝试获取到锁或者将当前线程阻塞。</li> <li><code>selfInterrupt</code> 如果线程在阻塞期间发生了中断，调用<code>Thread.currentThread().interrupt()</code> 中断当前线程。</li> </ul> <blockquote> <p><code>ReentrantLock</code> 对线程的阻塞是基于<code>LockSupport.park(this);</code> (见<code>AbstractQueuedSynchronizer#parkAndCheckInterrupt</code>)。 先决条件是当前节点有限次尝试获取锁失败。</p> </blockquote> <p><strong>公平锁和非公平锁在说的获取上都使用到了<code>volatile</code> 关键字修饰的<code>state</code>字段， 这是保证多线程环境下锁的获取与否的核心。</strong><br /><strong>但是当并发情况下多个线程都读取到<code>state == 0</code>时，则必须用到CAS技术，一门CPU的原子锁技术，可通过CPU对共享变量加锁的形式，实现数据变更的原子操作。</strong><br /><strong>volatile 和 CAS的结合是并发抢占的关键。</strong></p> <h2><a id="FairSync_108" rel="nofollow"></a>公平锁FairSync</h2> <p>公平锁的实现机理在于每次有线程来抢占锁的时候，都会检查一遍有没有等待队列，如果有， 当前线程会执行如下步骤：</p> <pre><code>if (!hasQueuedPredecessors() &amp;&amp;     compareAndSetState(0, acquires)) {     setExclusiveOwnerThread(current);     return true; }</code></pre> <p>其中<code>hasQueuedPredecessors</code>是用于检查是否有等待队列的。</p> <pre><code>    public final boolean hasQueuedPredecessors() {         Node t = tail; // Read fields in reverse initialization order         Node h = head;         Node s;         return h != t &amp;&amp;             ((s = h.next) == null || s.thread != Thread.currentThread());     }</code></pre> <h2><a id="NonfairSync_129" rel="nofollow"></a>非公平锁NonfairSync</h2> <p>非公平锁在实现的时候多次强调随机抢占：</p> <pre><code>if (c == 0) {     if (compareAndSetState(0, acquires)) {         setExclusiveOwnerThread(current);         return true;     } }</code></pre> <p>与公平锁的区别在于新晋获取锁的进程会有多次机会去抢占锁。如果被加入了等待队列后则跟公平锁没有区别。</p> </h1> <p>ReentrantLock锁的释放是逐级释放的，也就是说在 可重入性 场景中，必须要等到场景内所有的加锁的方法都释放了锁， 当前线程持有的锁才会被释放！<br /> 释放的方式很简单， state字段减一即可：</p> <pre><code>protected final boolean tryRelease(int releases) {     //  releases = 1     int c = getState() - releases;     if (Thread.currentThread() != getExclusiveOwnerThread())         throw new IllegalMonitorStateException();     boolean free = false;     if (c == 0) {         free = true;         setExclusiveOwnerThread(null);     }     setState(c);     return free; }</code></pre> <h2><a id="ReentrantLock_161" rel="nofollow"></a>ReentrantLock等待队列中元素的唤醒</h2> <p>当当前拥有锁的线程释放锁之后， 且非公平锁无线程抢占，就开始线程唤醒的流程。<br /> 通过<code>tryRelease</code>释放锁成功，调用<code>LockSupport.unpark(s.thread);</code> 终止线程阻塞。<br /> 见代码：</p> <pre><code>private void unparkSuccessor(Node node) {     // 强行回写将被唤醒线程的状态     int ws = node.waitStatus;     if (ws &lt; 0)         compareAndSetWaitStatus(node, ws, 0);     Node s = node.next;     // s为h的下一个Node, 一般情况下都是非Null的     if (s == null || s.waitStatus &gt; 0) {         s = null;         // 否则按照FIFO原则寻找最先入队列的并且没有被Cancel的Node         for (Node t = tail; t != null &amp;&amp; t != node; t = t.prev)             if (t.waitStatus &lt;= 0)                 s = t;     }     // 再唤醒它     if (s != null)         LockSupport.unpark(s.thread); }</code></pre> </h1> <p>针对如下代码：</p> <pre><code>try {     lock.lock();     i ++; } finally {     lock.unlock(); }</code></pre> <p>可以发现哪怕在不使用<code>volatile</code>关键字修饰元素<code>i</code>的时候， 这里的<code>i</code> 也是没有并发问题的。</p> <h2><a id="CASvolatile_Java_198" rel="nofollow"></a>CAS和volatile， Java并发的基石</h2> <p>volatile 是Java语言的关键字， 功能是保证被修饰的元素(共享变量):</p> <blockquote> <p>任何进程在读取的时候，都会清空本进程里面持有的共享变量的值，强制从主存里面获取；<br /> 任何进程在写入完毕的时候，都会强制将共享变量的值写会主存。<br /> volatile 会干预指令重排。<br /> volatile 实现了JMM规范的 happen-before 原则。</p> </blockquote> <p>在多核多线程CPU环境下， CPU为了提升指令执行速度，在保证程序语义正确的前提下，允许编译器对指令进行重排序。也就是说这种指令重排序对于上层代码是感知不到的，我们称之为 processor ordering.</p> <p>JMM 允许编译器在指令重排上自由发挥，除非程序员通过<strong>volatile</strong>等 显式干预这种重排机制，建立起同步机制，保证多线程代码正确运行。见文章：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://blog.csdn.net/jiyiqinlovexx/article/details/50989328"  rel="nofollow">Java并发：volatile内存可见性和指令重排</a>。</p> <p><strong>当多个线程之间有互相的数据依赖的之后， 就必须显式的干预这个指令重排机制</strong>。</p> <hr/> <p>CAS是CPU提供的一门技术。在单核单线程处理器上，所有的指令允许都是顺序操作；但是在多核多线程处理器上，多线程访问同一个共享变量的时候，可能存在并发问题。</p> <blockquote> <p>使用CAS技术可以锁定住元素的值。<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3a-part-1-manual.html"  rel="nofollow">Intel开发文档, 第八章</a><br /> 编译器在将线程持有的值与被锁定的值进行比较，相同则更新为更新的值。<br /> CAS同样遵循JMM规范的 happen-before 原则。<br /> 看<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://zl198751.iteye.com/blog/1848575"  rel="nofollow">JAVA CAS原理深度分析</a>博客</p> </blockquote> <p><strong>公平锁和非公平锁在说的获取上都使用到了<code>volatile</code> 关键字修饰的<code>state</code>字段， 这是保证多线程环境下锁的获取与否的核心。</strong><br /><strong>但是当并发情况下多个线程都读取到<code>state == 0</code>时，则必须用到CAS技术，一门CPU的原子锁技术，可通过CPU对共享变量加锁的形式，实现数据变更的原子操作。</strong><br /><strong>volatile 和 CAS的结合是并发抢占的关键。</strong></p> <h2><a id="JSR133_225" rel="nofollow"></a>JSR-133编译器编写手册</h2> <p>JMM规范经历了多代迭代， JSR-133为较为通用的一版规范。</p> <blockquote> <p>编译器编写手册文档见:<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://gee.cs.oswego.edu/dl/jmm/cookbook.html"  rel="nofollow">The JSR-133 Cookbook for Compiler Writers</a> (非官方指南)</p> </blockquote> <p>上面小章节描述到了<code>volatile</code>可以避免掉的指令重排， 那它怎么避免的呢？</p> <p>在内存的读写过程中， 无非 读/写 两者操作的四种组合：</p> <ul> <li>LoadStore</li> <li>LoadLoad</li> <li>StoreStore</li> <li>StoreLoad</li> </ul> <blockquote> <p>volatile关键字通过提供“内存屏障”的方式来防止指令被重排序，为了实现volatile的内存语义，编译器在生成字节码时，会在指令序列中插入内存屏障来禁止特定类型的处理器重排序。而大多数的处理器都支持内存屏障的指令。</p> </blockquote> <ul> <li>volatile读操作的后面插入一个LoadLoad屏障。</li> <li>volatile写操作的后面插入一个StoreLoad屏障。</li> </ul> <p>那这个<code>StoreLoad</code> /<code>LoadLoad</code>有什么用处呢？ 见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.intel.com/content/www/us/en/architecture-and-technology/64-ia-32-architectures-software-developer-vol-3a-part-1-manual.html"  rel="nofollow">Intel开发文档, 第八章</a>。 简单的说<code>StoreLoad</code>就是触发后续指令中的线程缓存回写到内存; 而<code>LoadLoad</code>会触发线程重新从主存里面读数据进行处理。</p> <blockquote> <p>Synchronization mechanisms in multiple-processor systems may depend upon a strong memory-ordering model. Here, a program can use a locking instruction such as the XCHG instruction or the LOCK prefix to ensure that a read-modify-write operation on memory is carried out atomically. Locking operations typically operate like I/O operations in that they wait for all previous instructions to complete and for all buffered writes to drain to memory.</p> </blockquote> <h2><a id="ReentrantLock_248" rel="nofollow"></a>ReentrantLock内存可见性</h2> <p>在上述博客中的： ReentrantLock锁的实现分析#公平锁和非公平锁 中讲到：ReentrantLock 通过<code>volatile</code> 和<code>CAS</code> 的搭配实现锁的功能。</p> <p>顺带的，<code>volatile</code> 关键字修饰的<code>state</code> 字段读和后续的锁释放中的<code>state</code> 字段写， 共同组成了保证ReentrantLock内存可见性的内存屏障。 此屏障保证了ReentrantLock的内存可见性</p> <h2><a id="CASvolatile_254" rel="nofollow"></a>CAS的类似volatile内存屏障原理</h2> <p>参见文章<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://ifeve.com/java-memory-model-5/"  rel="nofollow">深入理解Java内存模型（五）——锁</a><br /><strong>如下文档部分摘录</strong></p> <p>volatile是通过在Java编译时，添加字节码来实现内存屏障功能。</p> <p>CAS通过本地JNI调用，Java代码为 Unsafe.java， 层次调用为：unsafe.cpp &gt; atomic.cpp &gt; atomicwindowsx86.inline.hpp。调用的代码如是：</p> <pre><code>#define LOCK_IF_MP(mp) __asm cmp mp, 0  \                        __asm je L0      \                        __asm _emit 0xF0 \                        __asm L0:  inline jint     Atomic::cmpxchg    (jint     exchange_value, volatile jint*     dest, jint     compare_value) {   // alternative for InterlockedCompareExchange   int mp = os::is_MP();   __asm {     mov edx, dest     mov ecx, exchange_value     mov eax, compare_value     LOCK_IF_MP(mp)     cmpxchg dword ptr [edx], ecx   } }</code></pre> <blockquote> <p>如上面源代码所示，程序会根据当前处理器的类型来决定是否为cmpxchg指令添加lock前缀。如果程序是在多处理器上运行，就为cmpxchg指令加上lock前缀（lock cmpxchg）。反之，如果程序是在单处理器上运行，就省略lock前缀（单处理器自身会维护单处理器内的顺序一致性，不需要lock前缀提供的内存屏障效果）。</p> </blockquote> <p>intel的手册对lock前缀的说明如下：</p> <ol> <li>确保对内存的读-改-写操作原子执行。在Pentium及Pentium之前的处理器中，带有lock前缀的指令在执行期间会锁住总线，使得其他处理器暂时无法通过总线访问内存。很显然，这会带来昂贵的开销。从Pentium 4，Intel Xeon及P6处理器开始，intel在原有总线锁的基础上做了一个很有意义的优化：如果要访问的内存区域（area of memory）在lock前缀指令执行期间已经在处理器内部的缓存中被锁定（即包含该内存区域的缓存行当前处于独占或以修改状态），并且该内存区域被完全包含在单个缓存行（cache line）中，那么处理器将直接执行该指令。由于在指令执行期间该缓存行会一直被锁定，其它处理器无法读/写该指令要访问的内存区域，因此能保证指令执行的原子性。这个操作过程叫做缓存锁定（cache locking），缓存锁定将大大降低lock前缀指令的执行开销，但是当多处理器之间的竞争程度很高或者指令访问的内存地址未对齐时，仍然会锁住总线。</li> <li>禁止该指令与之前和之后的读和写指令重排序。</li> <li>把写缓冲区中的所有数据刷新到内存中。</li> </ol> <p>上面的第2点和第3点所具有的内存屏障效果，足以同时实现volatile读和volatile写的内存语义。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-89569.htm">昆明领养宠物的地方在哪里（昆明市领养宠物）</a></p>
+                                        <p>下一个：<a href="/news/article-90320.htm">动物疫苗的管理方法有哪些呢图片（动物疫苗接种技术）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81646.htm" title="宠物粮食成本多少钱 宠物粮食成本多少钱一斤">宠物粮食成本多少钱 宠物粮食成本多少钱一斤</a></li>
+                        <li class="py-2"><a href="/news/article-87385.htm" title="这几个关于Spring 依赖注入的问题你清楚吗？">这几个关于Spring 依赖注入的问题你清楚吗？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-winxray-node-share.htm" title="3月5日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享">3月5日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-73496.htm" title="猫咪多久做一次内外驱虫啊（猫咪多久做一次内外驱虫啊）">猫咪多久做一次内外驱虫啊（猫咪多久做一次内外驱虫啊）</a></li>
+                        <li class="py-2"><a href="/news/article-71510.htm" title="动物疫苗真假怎么查询的（动物疫苗查询系统）">动物疫苗真假怎么查询的（动物疫苗查询系统）</a></li>
+                        <li class="py-2"><a href="/news/article-87386.htm" title="动物疫苗种类及类型分类表（动物疫苗接种技术）">动物疫苗种类及类型分类表（动物疫苗接种技术）</a></li>
+                        <li class="py-2"><a href="/news/article-69548.htm" title="被猫咬了怎样判断用不用打狂犬疫苗（被猫咬了怎样判断用不用打狂犬疫苗了）">被猫咬了怎样判断用不用打狂犬疫苗（被猫咬了怎样判断用不用打狂犬疫苗了）</a></li>
+                        <li class="py-2"><a href="/news/article-75504.htm" title="Docker极简入门：使用Docker-Compose 搭建redis集群">Docker极简入门：使用Docker-Compose 搭建redis集群</a></li>
+                        <li class="py-2"><a href="/news/article-81017.htm" title="天津宠物领养 猫 天津宠物领养 猫的地方">天津宠物领养 猫 天津宠物领养 猫的地方</a></li>
+                        <li class="py-2"><a href="/news/article-78924.htm" title="重庆哪儿可以领养宠物猫（重庆在哪里可以领养猫咪）">重庆哪儿可以领养宠物猫（重庆在哪里可以领养猫咪）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
