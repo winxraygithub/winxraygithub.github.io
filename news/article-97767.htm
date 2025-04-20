@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://winxraygithub.github.io/news/article-97767.htm" />
+    <meta charset="utf-8">
+    <title>MSSQL基本语法及实例操作语句_MsSql_</title>
+        <meta name="description" content="刷新本地缓存  Ctrl+Shift+R  查询  select *from [table]  修改 1、普通更新  UPDATE [table] set [字段]=[values]  2、关联表更新" />
+        <link rel="icon" href="/assets/website/img/winxraygithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Winxray Github免费节点分享站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://winxraygithub.github.io/news/article-97767.htm" />
+    <meta property="og:site_name" content="Winxray Github免费节点分享站" />
+    <meta property="og:title" content="MSSQL基本语法及实例操作语句_MsSql_" />
+    <meta property="og:image" content="https://winxraygithub.github.io/uploads/20240803/bd5645279237ec3a9162266b6fd372d2.webp" />
+        <meta property="og:release_date" content="2025-04-17T09:00:32" />
+    <meta property="og:updated_time" content="2025-04-17T09:00:32" />
+        <meta property="og:description" content="刷新本地缓存  Ctrl+Shift+R  查询  select *from [table]  修改 1、普通更新  UPDATE [table] set [字段]=[values]  2、关联表更新" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MSSQL基本语法及实例操作语句_MsSql_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/icomoon/style.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/website/fonts/winxraygithub/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/aos.css">
+    <link rel="stylesheet" href="/assets/website/css/winxraygithub/style.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFCQTZN3L8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFCQTZN3L8');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <div id="overlayer"></div>
+    <div class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="site-wrap" id="home-section">
+                <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-md-3 col-xl-4  d-block">
+                        <a href="/" class="text-black h2 mb-0">
+                                                Winxray<span class="text-primary">github</span>                        </a>
+                    </div>
+                    <div class="col-12 col-md-9 col-xl-8 main-menu">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                                                                <li><a href="/" class="nav-link">首页</a></li>
+                                                                <li><a href="/free-nodes/" class="nav-link">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/" class="nav-link">推荐机场</a></li>
+                                                                <li><a href="/client.htm" class="nav-link">客户端</a></li>
+                                                                <li><a href="/news/" class="nav-link">新闻资讯</a></li>
+                                                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="site-blocks-cover list" style="overflow: hidden;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/assets/website/img/winxraygithub/undraw_investing_7u74.svg" alt="Image" class="img-fluid img-absolute">
+                        <div class="row" data-aos="fade-up" data-aos-delay="200">
+                            <div class="col-lg-6 mr-auto">
+                                <h1>MSSQL基本语法及实例操作语句_MsSql_</h1>
+                                <p class="mb-5">
+                                    <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="feature-big my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                                        <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2>刷新本地缓存</h2> <div class="ay1code"> <pre class="brush:sql;">Ctrl+Shift+R</pre> </div> <h2>查询</h2> <div class="ay1code"> <pre class="brush:sql;">select *from [table]</pre> </div> <h2>修改</h2> <h3>1、普通更新</h3> <div class="ay1code"> <pre class="brush:sql;">UPDATE [table] set [字段]=[values]</pre> </div> <h3>2、关联表更新</h3> <div class="ay1code"> <pre class="brush:sql;">UPDATE A SET A1 = B1, A2 = B2, A3 = B3 FROM A, B WHERE A.ID = B.ID</pre> </div> <h2>删除（数据）</h2> <div class="ay1code"> <pre class="brush:sql;">delete [table]</pre> </div> <h2>删除（表）</h2> <div class="ay1code"> <pre class="brush:sql;">drop [table]</pre> </div> <h2>条件查询</h2> <div class="ay1code"> <pre class="brush:sql;">select *from [table] where [字段]=[values]</pre> </div> <h2>事务</h2> <p>1 开始事务: begin transaction</p> <p>2 提交事务：commit transaction</p> <p>3 回滚事务: rollback transaction</p> <p>4 结束事务: 提交或回滚事务都将结束事务</p> <div class="ay1code"> <pre class="brush:sql;">/*--开始事务--*/  begin transaction  declare @errorSum int    --定义变量，用于累计事务执行过程中的错误  /*--转帐--*/  update bank set currentMoney=currentMoney-800 where customerName='张三'  set @errorSum=@errorSum+@@error    --累计是否有错误  update bank set currentMoney=currentMoney+800 where customerName='李四'  set @errorSum=@errorSum+@@error --累计是否有错误    print '查看转帐事务过程中的余额'  select * from bank    /*--根据是否有错误，确定事务是提交还是回滚--*/  if @errorSum&gt;0      begin          print '交易失败，回滚事务.'          rollback transaction      end  else      begin          print '交易成功，提交事务，写入硬盘，永久保存！'          /*--提交并且结束事务--*/          commit transaction      end  go    print '查看转帐后的余额'  select * from bank  go</pre> </div> <h2>查询所有表名</h2> <div class="ay1code"> <pre class="brush:sql;">select * from sys.tables</pre> </div> <h2>查询所有表包含的字段名</h2> <div class="ay1code"> <pre class="brush:sql;">select * from sys.columns</pre> </div> <h2>查询所有字段说明</h2> <div class="ay1code"> <pre class="brush:sql;">select * from sys.extended_properties</pre> </div> <h2>根据表查询所含字段说明</h2> <div class="ay1code"> <pre class="brush:sql;">SELECT t.[name] AS 表名,c.[name] AS 字段名,cast(ep.[value]  as varchar(100)) AS [字段说明]  FROM sys.tables AS t  INNER JOIN sys.columns AS c   ON t.object_id = c.object_id  LEFT JOIN sys.extended_properties AS ep  ON ep.major_id = c.object_id AND ep.minor_id = c.column_id WHERE ep.class =1  AND t.name='UTB_GBNT_PROJ_INFO'--------表名</pre> </div> <h2>创建视图</h2> <div class="ay1code"> <pre class="brush:sql;">create view ViewName  (字段1，字段2)  as  (      select 字段1, 字段2       from [table]   )</pre> </div> <h2>数据字典</h2> <div class="ay1code"> <pre class="brush:sql;">SELECT t.FieldExp 名称,t.ColumnName 代码,    case t.FieldDataType   when 'bigint' then t.FieldDataType  when 'int' then t.FieldDataType  when 'datetime' then t.FieldDataType  when 'numeric' then t.FieldDataType  when 'nvarchar' then (cast(t.FieldDataType as varchar(100))+'('+cast(t.Fieldlength as varchar(100))+')')  when 'decimal' then (cast(t.FieldDataType as varchar(100))+'('+cast(t.Fieldlength as varchar(100))+','+cast(t.Scale as varchar(100))+')')  end as 数据类型    ,t.Fieldlength 长度,t.Scale 精确度    ,case t.FieldNullable  when 0 then '不为空'  when 1 then '' end as 说明    from (select   colorder=C.column_id,   FieldExp=ISNULL(PFD.[value],N''),   ColumnName=C.name,   FieldDataType=T.name,   Fieldlength=COLUMNPROPERTY(c.object_id ,c.name ,'PRECISION'),   Scale=C.scale,  FieldNullable=C.is_nullable  --FieldDefVal=D.definition  FROM sys.columns C   INNER JOIN sys.objects O   ON C.[object_id]=O.[object_id]   AND (O.type='U' or O.type='V')   AND O.is_ms_shipped=0   INNER JOIN sys.types T   ON C.user_type_id=T.user_type_id   LEFT JOIN sys.default_constraints D   ON C.[object_id]=D.parent_object_id   AND C.column_id=D.parent_column_id   AND C.default_object_id=D.[object_id]   LEFT JOIN sys.extended_properties PFD   ON PFD.class=1   AND C.[object_id]=PFD.major_id   AND C.column_id=PFD.minor_id   LEFT JOIN sys.extended_properties PTB   ON PTB.class=1   AND PTB.minor_id=0   AND C.[object_id]=PTB.major_id   LEFT JOIN   (   SELECT   IDXC.[object_id],   IDXC.column_id,   Sort=CASE INDEXKEY_PROPERTY(IDXC.[object_id],IDXC.index_id,IDXC.index_column_id,'IsDescending')  WHEN 1 THEN 'DESC' WHEN 0 THEN 'ASC' ELSE '' END,    PrimaryKey=CASE WHEN IDX.is_primary_key=1 THEN N'√'ELSE N'' END,   IndexName=IDX.Name    FROM sys.indexes IDX    INNER JOIN sys.index_columns IDXC    ON IDX.[object_id]=IDXC.[object_id]    AND IDX.index_id=IDXC.index_id    LEFT JOIN sys.key_constraints KC    ON IDX.[object_id]=KC.[parent_object_id]    AND IDX.index_id=KC.unique_index_id    INNER JOIN    (    SELECT [object_id], Column_id, index_id=MIN(index_id)    FROM sys.index_columns    GROUP BY [object_id], Column_id    ) IDXCUQ    ON IDXC.[object_id]=IDXCUQ.[object_id]    AND IDXC.Column_id=IDXCUQ.Column_id    AND IDXC.index_id=IDXCUQ.index_id    ) IDX    ON C.[object_id]=IDX.[object_id]    AND C.column_id=IDX.column_id    WHERE O.name='--tablename--')as t  ORDER BY colorder,ColumnName</pre> </div> <div class="ay1code"> <pre class="brush:sql;">SELECT    表名=case when a.colorder=1 then d.name else '' end,   表说明=case when a.colorder=1 then isnull(f.value,'') else '' end,  字段序号=a.colorder,   字段名=a.name,   标识=case when COLUMNPROPERTY(a.id,a.name,'IsIdentity')=1 then '√'else '' end,   主键=case when exists(SELECT 1 FROM sysobjects where xtype='PK' and name in (    SELECT name FROM sysindexes WHERE indid in(     SELECT indid FROM sysindexkeys WHERE id = a.id AND colid=a.colid      ))) then '√' else '' end,   类型=b.name,   占用字节数=a.length,   长度=COLUMNPROPERTY(a.id,a.name,'PRECISION'),   小数位数=isnull(COLUMNPROPERTY(a.id,a.name,'Scale'),0),   允许空=case when a.isnullable=1 then '√'else '' end,   默认值=isnull(e.text,''),   字段说明=isnull(g.[value],'')   FROM syscolumns a   left join systypes b on a.xtype=b.xusertype   inner join sysobjects d on a.id=d.id and d.xtype='U' and d.name&lt;&gt;'dtproperties'   left join syscomments e on a.cdefault=e.id   left join sys.extended_properties g on a.id=g.major_id and a.colid=g.minor_id   left join sys.extended_properties f on d.id=f.major_id and f.minor_id =0   --where d.name='要查询的表' --如果只查询指定表,加上此条件     order by a.id,a.colorder</pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-96993.htm">我所在的城市有一家宠物医院的英语怎么写 我所在的城市有一家宠物医院的英语怎么写</a></p>
+                                        <p>下一个：<a href="/news/article-97769.htm">动物医学职业资格证书（动物医学医师证）</a></p>
+                                    </div>
+                                    </div>
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-81017.htm" title="天津宠物领养 猫 天津宠物领养 猫的地方">天津宠物领养 猫 天津宠物领养 猫的地方</a></li>
+                        <li class="py-2"><a href="/news/article-70867.htm" title="宠物出售需要什么资格证（宠物店出售宠物有什么条件）">宠物出售需要什么资格证（宠物店出售宠物有什么条件）</a></li>
+                        <li class="py-2"><a href="/news/article-80280.htm" title="给动物打的疫苗是什么药名（给动物打疫苗有什么用）">给动物打的疫苗是什么药名（给动物打疫苗有什么用）</a></li>
+                        <li class="py-2"><a href="/news/article-73496.htm" title="猫咪多久做一次内外驱虫啊（猫咪多久做一次内外驱虫啊）">猫咪多久做一次内外驱虫啊（猫咪多久做一次内外驱虫啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-15-winxray-github.htm" title="4月15日 | Winxray Github每天更新20.8M/S免费节点订阅地址分享">4月15日 | Winxray Github每天更新20.8M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-today-winxray-node.htm" title="3月26日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享">3月26日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-latest-winxray-node.htm" title="3月6日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享">3月6日 | Winxray Github每天更新18.7M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83800.htm" title="让猫挠了几天之内打针有事吗（让猫挠了用不用打狂犬疫苗多久）">让猫挠了几天之内打针有事吗（让猫挠了用不用打狂犬疫苗多久）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-winxray-github.htm" title="4月17日 | Winxray Github每天更新23M/S免费节点订阅地址分享">4月17日 | Winxray Github每天更新23M/S免费节点订阅地址分享</a></li>
+                        <li class="py-2"><a href="/news/article-83799.htm" title="猫咪打疫苗一共几针?多少钱一针啊（猫咪打疫苗打几针多少钱）">猫咪打疫苗一共几针?多少钱一针啊（猫咪打疫苗打几针多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">58</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="footer py-5 text-center">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <p class="mb-0">
+                            <a href="#" class="p-3"><span class="icon-facebook"></span></a>
+                            <a href="#" class="p-3"><span class="icon-twitter"></span></a>
+                            <a href="#" class="p-3"><span class="icon-instagram"></span></a>
+                            <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
+                            <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                                            <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                        <p class="mb-0">
+                        Winxray Github免费节点分享站 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-3.3.1.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery-ui.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/popper.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/owl.carousel.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.countdown.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/bootstrap-datepicker.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.easing.1.3.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/aos.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.fancybox.min.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/jquery.sticky.js"></script>
+        <script src="/assets/website/js/frontend/winxraygithub/main.js"></script>
+        <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+        <script src="/assets/website/js/frontend/G.js"></script>
+    </div> <!-- .site-wrap -->
+</body>
+
+</html>
