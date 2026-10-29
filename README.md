@@ -1,4 +1,4 @@
-# 10月22日 | Winxray Github每天更新21.8M/S免费节点订阅地址分享  更新时间 2026-10-22 00:21:44
+# 10月29日 | Winxray Github每天更新19.6M/S免费节点订阅地址分享  更新时间 2026-10-29 22:38:39
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://winxraygithub.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://winxraygithub.github.io/uploads/2026/10/0-20261022.yaml
-- https://winxraygithub.github.io/uploads/2026/10/1-20261022.yaml
-- https://winxraygithub.github.io/uploads/2026/10/2-20261022.yaml
-- https://winxraygithub.github.io/uploads/2026/10/3-20261022.yaml
-- https://winxraygithub.github.io/uploads/2026/10/4-20261022.yaml
+- https://winxraygithub.github.io/uploads/2026/10/0-20261029.yaml
+- https://winxraygithub.github.io/uploads/2026/10/1-20261029.yaml
+- https://winxraygithub.github.io/uploads/2026/10/2-20261029.yaml
+- https://winxraygithub.github.io/uploads/2026/10/3-20261029.yaml
+- https://winxraygithub.github.io/uploads/2026/10/4-20261029.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://winxraygithub.github.io/uploads/2026/10/0-20261022.txt
-- https://winxraygithub.github.io/uploads/2026/10/1-20261022.txt
-- https://winxraygithub.github.io/uploads/2026/10/2-20261022.txt
-- https://winxraygithub.github.io/uploads/2026/10/3-20261022.txt
-- https://winxraygithub.github.io/uploads/2026/10/4-20261022.txt
+- https://winxraygithub.github.io/uploads/2026/10/0-20261029.txt
+- https://winxraygithub.github.io/uploads/2026/10/1-20261029.txt
+- https://winxraygithub.github.io/uploads/2026/10/2-20261029.txt
+- https://winxraygithub.github.io/uploads/2026/10/3-20261029.txt
+- https://winxraygithub.github.io/uploads/2026/10/4-20261029.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://winxraygithub.github.io/uploads/2026/10/20261022.json
+- https://winxraygithub.github.io/uploads/2026/10/20261029.json
 
 ## 更多Clash节点订阅 ：
 
