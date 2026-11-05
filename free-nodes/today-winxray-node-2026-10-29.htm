@@ -360,17 +360,13 @@ Shadowrocket，不仅是工具，更是一种技术觉醒的开始。</p>
 <div class="clearfix"></div>
 <div class="col-md-12 mt-5">
         <p>上一个：<a href="/free-nodes/2026-10-28-node-share.htm">10月28日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享</a></p>
+        <p>下一个：<a href="/free-nodes/2026-10-30-winxray-github.htm">10月30日 | Winxray Github每天更新22.9M/S免费节点订阅地址分享</a></p>
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 的策略组可按 IP 段分流吗？</h5></div>
+    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
     <div class="panel-body">
-        支持。可通过 IP 段匹配将流量分流到指定节点。结合策略组，可实现国内直连、国外代理或游戏加速，实现精细化流量管理和优化网络访问。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的混淆方式如何选择最合适？</h5></div>
-    <div class="panel-body">
-        根据网络环境选择适合的混淆方式，如 tls1.2_ticket_auth 模拟 HTTPS 流量，可隐藏真实特征。结合协议插件使用，可以提高抗封锁能力和节点可用性。<hr />    </div>
+        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Sing-box 精确端口分流如何提升游戏体验？</h5></div>
@@ -378,24 +374,24 @@ Shadowrocket，不仅是工具，更是一种技术觉醒的开始。</p>
         Sing-box 可按端口设置流量分流规则，将游戏流量分配到低延迟节点。结合策略组使用，可保证游戏连接稳定，减少延迟和掉线，提高流畅度。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 的策略组可按 IP 段分流吗？</h5></div>
+    <div class="panel-body">
+        支持。可通过 IP 段匹配将流量分流到指定节点。结合策略组，可实现国内直连、国外代理或游戏加速，实现精细化流量管理和优化网络访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何针对不同用户设置流量配额？</h5></div>
+    <div class="panel-body">
+        管理员可以为每个用户单独设置流量上限或带宽限制。超过配额时可自动阻止或降速，保证服务器资源合理分配，避免单用户占用过多带宽影响其他用户。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 的 VMess gRPC 传输适合高延迟环境吗？</h5></div>
     <div class="panel-body">
         gRPC 支持长连接和多路复用，减少握手次数和连接延迟。高延迟环境下使用可保证流量稳定，特别适合移动网络和频繁访问海外网站的场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>WinXray 如何实现延迟最低节点自动切换？</h5></div>
+    <div class="panel-heading"><h5>SSR 的混淆方式如何选择最合适？</h5></div>
     <div class="panel-body">
-        WinXray 支持节点延迟检测和策略组配置，可自动将流量切换至延迟最低的节点。用户无需手动选择，提高游戏、视频和网页访问速度及稳定性，优化整体网络体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
-    <div class="panel-body">
-        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 如何导入 URL 格式的订阅？</h5></div>
-    <div class="panel-body">
-        在 Potatso Lite 的配置页点击“导入”，粘贴订阅链接并确认导入。系统会自动解析节点列表，可在主界面查看并选择不同线路。部分机场支持一键导入格式，省去手动配置步骤。<hr />    </div>
+        根据网络环境选择适合的混淆方式，如 tls1.2_ticket_auth 模拟 HTTPS 流量，可隐藏真实特征。结合协议插件使用，可以提高抗封锁能力和节点可用性。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 运行在低配设备上卡顿，如何减轻资源占用？</h5></div>
@@ -403,9 +399,14 @@ Shadowrocket，不仅是工具，更是一种技术觉醒的开始。</p>
         减少 rule-provider 数量、关闭不必要的日志与统计、降低 DNS 轮询频率并禁用内置测速；若使用 TUN 模式，可改为代理模式减少内核负担。必要时升级到更高性能的设备或使用更轻量内核。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何针对不同用户设置流量配额？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 如何导入 URL 格式的订阅？</h5></div>
     <div class="panel-body">
-        管理员可以为每个用户单独设置流量上限或带宽限制。超过配额时可自动阻止或降速，保证服务器资源合理分配，避免单用户占用过多带宽影响其他用户。<hr />    </div>
+        在 Potatso Lite 的配置页点击“导入”，粘贴订阅链接并确认导入。系统会自动解析节点列表，可在主界面查看并选择不同线路。部分机场支持一键导入格式，省去手动配置步骤。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>WinXray 如何实现延迟最低节点自动切换？</h5></div>
+    <div class="panel-body">
+        WinXray 支持节点延迟检测和策略组配置，可自动将流量切换至延迟最低的节点。用户无需手动选择，提高游戏、视频和网页访问速度及稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 自动切换节点机制如何工作？</h5></div>
@@ -458,16 +459,16 @@ Shadowrocket，不仅是工具，更是一种技术觉醒的开始。</p>
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-10-28-node-share.htm" title="10月28日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享">10月28日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-8-latest-winxray-node.htm" title="10月8日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享">10月8日 | Winxray Github每天更新18.5M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-12-node-share.htm" title="9月12日 | Winxray Github每天更新21.9M/S免费节点订阅地址分享">9月12日 | Winxray Github每天更新21.9M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-23.htm" title="10月23日 | Winxray Github每天更新18.9M/S免费节点订阅地址分享">10月23日 | Winxray Github每天更新18.9M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-22-free-subscribe-node.htm" title="9月22日 | Winxray Github每天更新19.4M/S免费节点订阅地址分享">9月22日 | Winxray Github每天更新19.4M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-16-winxray-node-github.htm" title="9月16日 | Winxray Github每天更新21.1M/S免费节点订阅地址分享">9月16日 | Winxray Github每天更新21.1M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-19.htm" title="10月19日 | Winxray Github每天更新20.6M/S免费节点订阅地址分享">10月19日 | Winxray Github每天更新20.6M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-24-winxray-github.htm" title="10月24日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享">10月24日 | Winxray Github每天更新20.4M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/today-winxray-node-2026-9-25.htm" title="9月25日 | Winxray Github每天更新19.6M/S免费节点订阅地址分享">9月25日 | Winxray Github每天更新19.6M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-free-node-subscribe.htm" title="9月4日 | Winxray Github每天更新19.5M/S免费节点订阅地址分享">9月4日 | Winxray Github每天更新19.5M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/winxray-github-2026-9-21.htm" title="9月21日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享">9月21日 | Winxray Github每天更新19.7M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/winxray-node-2026-11-5.htm" title="11月5日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享">11月5日 | Winxray Github每天更新20.7M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-10-13.htm" title="10月13日 | Winxray Github每天更新21.3M/S免费节点订阅地址分享">10月13日 | Winxray Github每天更新21.3M/S免费节点订阅地址分享</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-28-node-share.htm" title="9月28日 | Winxray Github每天更新18.2M/S免费节点订阅地址分享">9月28日 | Winxray Github每天更新18.2M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-14-winxray-node-github.htm" title="10月14日 | Winxray Github每天更新20.5M/S免费节点订阅地址分享">10月14日 | Winxray Github每天更新20.5M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/today-winxray-node-2026-10-29.htm" title="10月29日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享">10月29日 | Winxray Github每天更新21.7M/S免费节点订阅地址分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/winxray-github-2026-9-7.htm" title="9月7日 | Winxray Github每天更新18.4M/S免费节点订阅地址分享">9月7日 | Winxray Github每天更新18.4M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-20-winxray-github.htm" title="9月20日 | Winxray Github每天更新22.1M/S免费节点订阅地址分享">9月20日 | Winxray Github每天更新22.1M/S免费节点订阅地址分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-11-3.htm" title="11月3日 | Winxray Github每天更新19M/S免费节点订阅地址分享">11月3日 | Winxray Github每天更新19M/S免费节点订阅地址分享</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -479,7 +480,10 @@ Shadowrocket，不仅是工具，更是一种技术觉醒的开始。</p>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">28</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">5</span> <a href="/date/2026-11/" title="2026-11 归档">2026-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
